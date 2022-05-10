@@ -1,0 +1,15 @@
+﻿config t
+username admin privilege 15 secret ?
+line vty ?
+transport input ?
+login local
+Exit
+crypto key generate rsa general-keys
+1024
+yes
+copy running-config startup-config
+ip ssh time-out 75
+ip ssh authentication-retries 2
+
+show ip int brief
+show ip ssh

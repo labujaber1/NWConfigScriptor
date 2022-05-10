@@ -1,0 +1,25 @@
+﻿config t
+interface serial ?
+interface gig ?
+interface fa ?
+interface loopback ?
+interface ?
+ip address ?
+description ?
+no shutdown
+clock rate ?
+duplex ?
+speed ?
+exit
+ip default-gateway ?
+ip route ?
+ip routing
+	##port security extra_____##
+interface ?
+shutdown
+switchport port-security
+no shut
+exit
+end
+
+show int trunk
