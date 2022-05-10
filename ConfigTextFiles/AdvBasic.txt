@@ -7,9 +7,14 @@ Exit
 crypto key generate rsa general-keys
 1024
 yes
-copy running-config startup-config
+
 ip ssh time-out 75
 ip ssh authentication-retries 2
+
+exit
+end
+copy running-config startup-config
+wr
 
 show ip int brief
 show ip ssh

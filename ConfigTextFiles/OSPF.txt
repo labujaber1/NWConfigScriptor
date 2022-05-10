@@ -1,5 +1,5 @@
 ﻿config t
-router ospf ?1
+router ospf ?
 network ?192.168.16.0 0.0.0.255 area 0
 network ? area 0
 default-router ?
@@ -16,6 +16,11 @@ Passive-interface ?
 router rip
 version 2
 network ?
+
+exit
+end
+copy running-config startup-config
+wr
 
 show ip int brief
 showip ospf neighbor

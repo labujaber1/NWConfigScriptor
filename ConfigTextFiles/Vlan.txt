@@ -14,9 +14,11 @@ switchport mode trunk
 switchport trunk native vlan ?
 switchport trunk encapsulation dot1q
 switchport trunk allowed vlan ?
+
 exit
 end
 copy running-config startup-config
+wr
 
 show vlan
 show vlan brief

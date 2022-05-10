@@ -149,7 +149,7 @@ namespace NWConfigScriptor
                 rtbxScript.Copy();
             }
         }
-
+        //open readme.txt or make html page?
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (helpToolStripMenuItem.Text == "Help")
@@ -158,6 +158,7 @@ namespace NWConfigScriptor
             }
         }
 
+        //could the files be distributed to devices, is it needed?
         private void updownTFTP()
         {
             WebClient client = new WebClient();

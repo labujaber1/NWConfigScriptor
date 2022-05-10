@@ -12,11 +12,16 @@ permit 192.168.0.0 0.0.31.255
 permit host ?
 deny 2.2.2.2 0.0.0.0
 allow any
-End
+end
 
 interface ?
 ip access-group ? out
 ip access-group ? in
+
+exit
+end
+copy running-config startup-config
+wr
 
 show access-lists
 show access-list ?

@@ -12,11 +12,11 @@ logging synchronous
 line vty ?
 service password encryprion 
 banner MOTD # ?  #
+
 exit 
 end 
 copy running-config startup-config
-
-##endfile
+wr
 
 show ip route
 show ip int brief

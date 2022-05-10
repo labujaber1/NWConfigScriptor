@@ -56,7 +56,7 @@ namespace NWConfigScriptor
             // 
             this.lblPageTitle.AutoSize = true;
             this.lblPageTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPageTitle.Location = new System.Drawing.Point(239, 9);
+            this.lblPageTitle.Location = new System.Drawing.Point(237, 0);
             this.lblPageTitle.Name = "lblPageTitle";
             this.lblPageTitle.Size = new System.Drawing.Size(315, 38);
             this.lblPageTitle.TabIndex = 0;
@@ -88,7 +88,7 @@ namespace NWConfigScriptor
             this.lbxConfigScript.ItemHeight = 25;
             this.lbxConfigScript.Location = new System.Drawing.Point(12, 135);
             this.lbxConfigScript.Name = "lbxConfigScript";
-            this.lbxConfigScript.Size = new System.Drawing.Size(328, 279);
+            this.lbxConfigScript.Size = new System.Drawing.Size(358, 304);
             this.lbxConfigScript.TabIndex = 3;
             this.lbxConfigScript.DoubleClick += new System.EventHandler(this.lbxConfigScript_DoubleClick);
             // 
@@ -105,9 +105,9 @@ namespace NWConfigScriptor
             // 
             this.rtbxScript.BackColor = System.Drawing.SystemColors.HighlightText;
             this.rtbxScript.ContextMenuStrip = this.contextMenuStrip1;
-            this.rtbxScript.Location = new System.Drawing.Point(418, 83);
+            this.rtbxScript.Location = new System.Drawing.Point(423, 79);
             this.rtbxScript.Name = "rtbxScript";
-            this.rtbxScript.Size = new System.Drawing.Size(315, 242);
+            this.rtbxScript.Size = new System.Drawing.Size(327, 242);
             this.rtbxScript.TabIndex = 5;
             this.rtbxScript.Text = "";
             // 
@@ -154,7 +154,7 @@ namespace NWConfigScriptor
             // 
             this.lblInfo2.AutoSize = true;
             this.lblInfo2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblInfo2.Location = new System.Drawing.Point(16, 432);
+            this.lblInfo2.Location = new System.Drawing.Point(12, 457);
             this.lblInfo2.Name = "lblInfo2";
             this.lblInfo2.Size = new System.Drawing.Size(396, 52);
             this.lblInfo2.TabIndex = 7;
@@ -165,27 +165,27 @@ namespace NWConfigScriptor
             // 
             this.lblInfo.AutoSize = true;
             this.lblInfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblInfo.Location = new System.Drawing.Point(386, 337);
+            this.lblInfo.Location = new System.Drawing.Point(423, 324);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(364, 77);
+            this.lblInfo.Size = new System.Drawing.Size(327, 77);
             this.lblInfo.TabIndex = 8;
-            this.lblInfo.Text = "Edit as normal, insert by making a line space\r\nand select from command.\r\nCtl+c co" +
-    "pies to clipboard.";
+            this.lblInfo.Text = "Edit as normal, insert by making a line \r\nspace and select from command.\r\nRight c" +
+    "lick or Ctl+C copies to clipboard.";
             // 
             // tbShowCommands
             // 
-            this.tbShowCommands.Location = new System.Drawing.Point(445, 429);
+            this.tbShowCommands.Location = new System.Drawing.Point(423, 415);
             this.tbShowCommands.Multiline = true;
             this.tbShowCommands.Name = "tbShowCommands";
             this.tbShowCommands.ReadOnly = true;
             this.tbShowCommands.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbShowCommands.Size = new System.Drawing.Size(271, 73);
+            this.tbShowCommands.Size = new System.Drawing.Size(327, 115);
             this.tbShowCommands.TabIndex = 9;
             // 
             // btnAppendDisplay
             // 
             this.btnAppendDisplay.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAppendDisplay.Location = new System.Drawing.Point(37, 525);
+            this.btnAppendDisplay.Location = new System.Drawing.Point(12, 525);
             this.btnAppendDisplay.Name = "btnAppendDisplay";
             this.btnAppendDisplay.Size = new System.Drawing.Size(113, 58);
             this.btnAppendDisplay.TabIndex = 10;
@@ -195,7 +195,7 @@ namespace NWConfigScriptor
             // 
             // btnSaveFile
             // 
-            this.btnSaveFile.Location = new System.Drawing.Point(182, 525);
+            this.btnSaveFile.Location = new System.Drawing.Point(152, 525);
             this.btnSaveFile.Name = "btnSaveFile";
             this.btnSaveFile.Size = new System.Drawing.Size(113, 58);
             this.btnSaveFile.TabIndex = 11;
@@ -205,7 +205,7 @@ namespace NWConfigScriptor
             // 
             // btnClearDisplay
             // 
-            this.btnClearDisplay.Location = new System.Drawing.Point(321, 525);
+            this.btnClearDisplay.Location = new System.Drawing.Point(290, 525);
             this.btnClearDisplay.Name = "btnClearDisplay";
             this.btnClearDisplay.Size = new System.Drawing.Size(113, 58);
             this.btnClearDisplay.TabIndex = 12;
@@ -215,9 +215,9 @@ namespace NWConfigScriptor
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(603, 534);
+            this.btnExit.Location = new System.Drawing.Point(537, 536);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(113, 49);
+            this.btnExit.Size = new System.Drawing.Size(113, 58);
             this.btnExit.TabIndex = 13;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -226,11 +226,11 @@ namespace NWConfigScriptor
             // lblPoint
             // 
             this.lblPoint.AutoSize = true;
-            this.lblPoint.Location = new System.Drawing.Point(352, 197);
+            this.lblPoint.Location = new System.Drawing.Point(376, 194);
             this.lblPoint.Name = "lblPoint";
-            this.lblPoint.Size = new System.Drawing.Size(60, 50);
+            this.lblPoint.Size = new System.Drawing.Size(36, 50);
             this.lblPoint.TabIndex = 14;
-            this.lblPoint.Text = ">>>>\r\n>>>>";
+            this.lblPoint.Text = ">>\r\n>>";
             // 
             // Form1
             // 

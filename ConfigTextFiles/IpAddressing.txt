@@ -14,12 +14,16 @@ exit
 ip default-gateway ?
 ip route ?
 ip routing
-	##port security extra_____##
+##port security extra##
 interface ?
 shutdown
 switchport port-security
 no shut
+
 exit
 end
+copy running-config startup-config
+wr
 
 show int trunk
+show ip route

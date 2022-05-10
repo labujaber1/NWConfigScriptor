@@ -1,21 +1,21 @@
-﻿ip dhcp excluded-address ____address low to high or single___
-ip dhcp pool __name ie name of each LAN ___
-network __address__
-default-router ___address__
-dns-server __address__
-domain-name __name ie example.com__
-exit
-interface __router 1 g0/0__
+﻿ip dhcp excluded-address ?
+ip dhcp pool ?
+network ?
+default-router ?
+dns-server ?
+domain-name ?
+interface ?
 ip address dhcp
 no shutdown
-interface __router2 g0/1 __
+interface ?
 ip address dhcp
 no shutdown
+interface ?
+ip helper-address ?
+
 exit
-still in config#
-May need each router interface to dhcp router
-interface g0/0
-ip helper-address __dhcp router address__
-exit
+end
+copy running-config startup-config
+wr
 
 show ip dhcp snooping
