@@ -1,27 +1,25 @@
-﻿//###########################################//
-/// <summary>                                //
-/// Project: Network Scriptor Config Creater //
-/// Author:  L. Abu-Jaber                    //
-/// Date:    09/05/2022                      //
-/// Control System: Github                   //
-/// </summary>                               //
-//###########################################//
+﻿//##########################################//
+//                                          //
+// Project: Network Scriptor Config Creater //
+// Author:  L. Abu-Jaber                    //
+// Date:    09/05/2022                      //
+// Control System: Github                   //
+//                                          //
+//##########################################//
 
 using System;
-//using System.Diagnostics;
+using System.Diagnostics;
 using System.IO;
-//using System.Linq;
+using System.Linq;
 using System.Net;
 using System.Reflection;
-//using System.Reflection;
 using System.Windows.Forms;
 
 namespace NWConfigScriptor
 {
-    /// <summary>
-    /// ConfigScriptorForm class
-    /// </summary>
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public partial class ConfigScriptorForm : Form
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
         /// <summary>
         /// Initialise ConfigScriptor form and search for text files to display in combo box on startup
@@ -224,7 +222,9 @@ namespace NWConfigScriptor
             client.UploadFile("upload to path", "path of file");
             client.DownloadFile("download to path", "path of file");
         }
-
+        /// <summary>
+        /// Display an about form with project details and a brief description
+        /// </summary>
         private void lblAbout_Click(object sender, EventArgs e)
         {
             AboutBox1 about = new AboutBox1();

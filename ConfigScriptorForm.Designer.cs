@@ -179,10 +179,10 @@ namespace NWConfigScriptor
             this.lblInfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblInfo.Location = new System.Drawing.Point(465, 363);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(358, 86);
+            this.lblInfo.Size = new System.Drawing.Size(355, 86);
             this.lblInfo.TabIndex = 8;
-            this.lblInfo.Text = "Edit as normal, insert by making a line \r\nspace and select from command.\r\nRight c" +
-    "lick or Ctl+C copies to clipboard.";
+            this.lblInfo.Text = "Edit text as normal, insert a command  \r\nbetween commands. Right click or\r\nCtl+C " +
+    "to copy to the clipboard.";
             // 
             // tbShowCommands
             // 

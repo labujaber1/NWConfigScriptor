@@ -20,11 +20,6 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="T:NWConfigScriptor.ConfigScriptorForm">
-            <summary>
-            ConfigScriptorForm class
-            </summary>
-        </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.#ctor">
             <summary>
             Initialise ConfigScriptor form and search for text files to display in combo box on startup
