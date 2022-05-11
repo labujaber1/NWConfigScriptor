@@ -1,0 +1,25 @@
+﻿config t
+vlan ?
+name ?
+interface vlan ?
+ip address ?
+no shutdown
+no ip address
+shutdown 
+interface ?
+interface range ?
+switchport mode access 
+switchport access vlan ?
+switchport mode trunk 
+switchport trunk native vlan ?
+switchport trunk encapsulation dot1q
+switchport trunk allowed vlan ?
+
+exit
+end
+copy running-config startup-config
+wr
+
+show vlan
+show vlan brief
+show ip int brief

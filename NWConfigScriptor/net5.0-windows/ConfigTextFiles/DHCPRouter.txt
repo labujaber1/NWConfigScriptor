@@ -1,0 +1,21 @@
+﻿ip dhcp excluded-address ?
+ip dhcp pool ?
+network ?
+default-router ?
+dns-server ?
+domain-name ?
+interface ?
+ip address dhcp
+no shutdown
+interface ?
+ip address dhcp
+no shutdown
+interface ?
+ip helper-address ?
+
+exit
+end
+copy running-config startup-config
+wr
+
+show ip dhcp snooping

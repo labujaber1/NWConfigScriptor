@@ -1,0 +1,24 @@
+﻿config t
+hostname ?
+no ip domain-name 
+ip domain-name ?
+security passwords min-length ?
+enable secret ?
+line console ?
+password ?
+exec-timeout ?
+login 
+logging synchronous 
+line vty ?
+service password encryprion 
+banner MOTD # ?  #
+
+exit 
+end 
+copy running-config startup-config
+wr
+
+show ip route
+show ip int brief
+show ip int ?
+show running-config

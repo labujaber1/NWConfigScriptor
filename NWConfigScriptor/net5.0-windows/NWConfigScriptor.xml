@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NWConfigScriptor</name>
+    </assembly>
+    <members>
+        <member name="F:NWConfigScriptor.AboutBox1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.AboutBox1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.AboutBox1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:NWConfigScriptor.ConfigScriptorForm">
+            <summary>
+            ConfigScriptorForm class
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.#ctor">
+            <summary>
+            Initialise ConfigScriptor form and search for text files to display in combo box on startup
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.searchAddTextFiles">
+            <summary>
+            search directory for text files
+            read into combo box cmbxCmdScriptList include .txt extension
+            </summary>
+            <return>returns, in a combo box, a list of all .txt files in debug\configtextfiles folder, 
+            directory/file not found exception</return>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException"></exception>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.cmbxCmdScriptList_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            read selected script into lbxConfigScript
+            </summary>
+            <remarks>used in "searchAddTextFiles" method</remarks>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.showConfigScript(System.String)">
+            <summary>
+            display config scripts in check list box clear previous selection
+            called by cmbxCmdScriptList_SelectedIndexChanged switch based method
+            </summary>
+            <param name="fileName">created in "cmbxCmdScriptList_SelectedIndexChanged" method from user click event 
+            and passed in to search for</param>
+            <return>read all lines to a list box from a text file passed in if found, 
+            file not exist message if not found.</return>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.lbxConfigScript_DoubleClick(System.Object,System.EventArgs)">
+            <summary>
+            copies commands to listbox editor
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.btnAppendDisplay_Click(System.Object,System.EventArgs)">
+            <summary>
+            insert a command in editor between commands at the cursor
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.btnSaveFile_Click(System.Object,System.EventArgs)">
+            <summary>
+            save editor to file with date/time stamp. Browser opens for user to select
+            save location and message box opens for confirmation.
+            </summary>
+            <return>saved to user selected location and file name,
+            file not saved if user cancels, directory access denied exception, file compilation error</return>
+            <exception cref="T:System.UnauthorizedAccessException"></exception>
+            <exception cref="T:System.IO.FileFormatException"></exception>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.btnClearDisplay_Click(System.Object,System.EventArgs)">
+            <summary>
+            clear all text in editor
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.btnExit_Click(System.Object,System.EventArgs)">
+            <summary>
+             exit program
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.selectAllToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            select all text in editor 
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.selectAllCopyToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             select all text in editor and copy to clipboard ready to paste
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.copyToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            copy selected text to clipboard ready to paste
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.helpToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             open readme.txt or make html page? Create project doc like java
+            </summary>
+            <returns>Help file auto generated displayed in browser if found, file not found if not found </returns>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.updownTFTP">
+            <summary>
+            could the files be distributed to devices, is it needed?
+            </summary>
+        </member>
+        <member name="F:NWConfigScriptor.ConfigScriptorForm.components">
+            <summary>
+             Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.Dispose(System.Boolean)">
+            <summary>
+             Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.InitializeComponent">
+            <summary>
+             Required method for Designer support - do not modify
+             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.Program.Main">
+            <summary>
+             The main entry point for the application.
+            </summary>
+        </member>
+    </members>
+</doc>

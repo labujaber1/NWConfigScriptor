@@ -6,8 +6,19 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\labuj\Documents\GitHub\NWConfigScriptor\NWConfigScriptor.xml</DocumentationFile>
+    <OutputPath>NWConfigScriptor\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <Folder Include="ConfigTextFiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="AboutBox1.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

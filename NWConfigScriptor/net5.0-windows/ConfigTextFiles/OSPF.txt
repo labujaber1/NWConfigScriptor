@@ -1,0 +1,29 @@
+﻿config t
+router ospf ?
+network ?192.168.16.0 0.0.0.255 area 0
+network ? area 0
+default-router ?
+dns-server ?
+domain-name ?
+lease 2
+
+router-id ?
+end
+clear ip ospf process
+yes
+Passive-interface ?
+
+router rip
+version 2
+network ?
+
+exit
+end
+copy running-config startup-config
+wr
+
+show ip int brief
+showip ospf neighbor
+show ip ospf
+show ip ospf int brief
+show ip route | begin gateway

@@ -1,0 +1,12 @@
+﻿Directions:
+1. Click command script in combo box.
+2. Double click command in listbox to append
+    in editor.
+3. Add details in place of ?. 
+4. To insert between commands in the editor,
+    click command once, click insert button, 
+    command will insert at the cursor.
+5. Copy script in editor to the clipboard
+    by right click in the ditor or highlight text
+    and ctl+c. Paste in device CLI.
+6. Can save to file "BasicConfig_[date][time]". 

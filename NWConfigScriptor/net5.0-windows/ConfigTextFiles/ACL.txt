@@ -1,0 +1,27 @@
+﻿config t
+access-list ? remark ?Allow traffic R1
+access-list ? permit 192.168.0.0 0.0.31.255
+access-list ? permit host ?
+access-list ? deny ?
+access-list ? allow any
+access-list end
+
+Ip access-list standard ?
+remark ?
+permit 192.168.0.0 0.0.31.255
+permit host ?
+deny 2.2.2.2 0.0.0.0
+allow any
+end
+
+interface ?
+ip access-group ? out
+ip access-group ? in
+
+exit
+end
+copy running-config startup-config
+wr
+
+show access-lists
+show access-list ?

@@ -1,7 +1,15 @@
-﻿
+﻿//##########################################//
+//                                          //
+// Project: Network Scriptor Config Creater //
+// Author:  L. Abu-Jaber                    //
+// Date:    09/05/2022                      //
+// Control System: Github                   //
+//                                          //
+//##########################################//
+
 namespace NWConfigScriptor
 {
-    partial class Form1
+    partial class ConfigScriptorForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -49,6 +57,7 @@ namespace NWConfigScriptor
             this.btnClearDisplay = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblPoint = new System.Windows.Forms.Label();
+            this.lblAbout = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,28 +65,30 @@ namespace NWConfigScriptor
             // 
             this.lblPageTitle.AutoSize = true;
             this.lblPageTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPageTitle.Location = new System.Drawing.Point(237, 0);
+            this.lblPageTitle.Location = new System.Drawing.Point(168, 9);
             this.lblPageTitle.Name = "lblPageTitle";
-            this.lblPageTitle.Size = new System.Drawing.Size(315, 38);
+            this.lblPageTitle.Size = new System.Drawing.Size(403, 38);
             this.lblPageTitle.TabIndex = 0;
-            this.lblPageTitle.Text = "Network Config Scriptor";
+            this.lblPageTitle.Text = "Network Configuration Scriptor";
             // 
             // cmbxCmdScriptList
             // 
+            this.cmbxCmdScriptList.BackColor = System.Drawing.SystemColors.Control;
             this.cmbxCmdScriptList.FormattingEnabled = true;
-            this.cmbxCmdScriptList.Location = new System.Drawing.Point(16, 51);
+            this.cmbxCmdScriptList.Location = new System.Drawing.Point(14, 66);
             this.cmbxCmdScriptList.Name = "cmbxCmdScriptList";
-            this.cmbxCmdScriptList.Size = new System.Drawing.Size(324, 33);
+            this.cmbxCmdScriptList.Size = new System.Drawing.Size(393, 36);
             this.cmbxCmdScriptList.TabIndex = 1;
-            this.cmbxCmdScriptList.Text = "- Select script -";
+            this.cmbxCmdScriptList.Text = "- Select command file -";
             this.cmbxCmdScriptList.SelectedIndexChanged += new System.EventHandler(this.cmbxCmdScriptList_SelectedIndexChanged);
             // 
             // lblCmmdDisplay
             // 
             this.lblCmmdDisplay.AutoSize = true;
-            this.lblCmmdDisplay.Location = new System.Drawing.Point(96, 98);
+            this.lblCmmdDisplay.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCmmdDisplay.Location = new System.Drawing.Point(106, 109);
             this.lblCmmdDisplay.Name = "lblCmmdDisplay";
-            this.lblCmmdDisplay.Size = new System.Drawing.Size(157, 25);
+            this.lblCmmdDisplay.Size = new System.Drawing.Size(180, 28);
             this.lblCmmdDisplay.TabIndex = 2;
             this.lblCmmdDisplay.Text = "Command display";
             // 
@@ -85,19 +96,20 @@ namespace NWConfigScriptor
             // 
             this.lbxConfigScript.BackColor = System.Drawing.SystemColors.Control;
             this.lbxConfigScript.FormattingEnabled = true;
-            this.lbxConfigScript.ItemHeight = 25;
-            this.lbxConfigScript.Location = new System.Drawing.Point(12, 135);
+            this.lbxConfigScript.ItemHeight = 28;
+            this.lbxConfigScript.Location = new System.Drawing.Point(14, 141);
             this.lbxConfigScript.Name = "lbxConfigScript";
-            this.lbxConfigScript.Size = new System.Drawing.Size(358, 304);
+            this.lbxConfigScript.Size = new System.Drawing.Size(393, 368);
             this.lbxConfigScript.TabIndex = 3;
             this.lbxConfigScript.DoubleClick += new System.EventHandler(this.lbxConfigScript_DoubleClick);
             // 
             // lblScriptEditor
             // 
             this.lblScriptEditor.AutoSize = true;
-            this.lblScriptEditor.Location = new System.Drawing.Point(523, 51);
+            this.lblScriptEditor.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblScriptEditor.Location = new System.Drawing.Point(575, 57);
             this.lblScriptEditor.Name = "lblScriptEditor";
-            this.lblScriptEditor.Size = new System.Drawing.Size(109, 25);
+            this.lblScriptEditor.Size = new System.Drawing.Size(130, 28);
             this.lblScriptEditor.TabIndex = 4;
             this.lblScriptEditor.Text = "Script editor";
             // 
@@ -105,9 +117,9 @@ namespace NWConfigScriptor
             // 
             this.rtbxScript.BackColor = System.Drawing.SystemColors.HighlightText;
             this.rtbxScript.ContextMenuStrip = this.contextMenuStrip1;
-            this.rtbxScript.Location = new System.Drawing.Point(423, 79);
+            this.rtbxScript.Location = new System.Drawing.Point(465, 88);
             this.rtbxScript.Name = "rtbxScript";
-            this.rtbxScript.Size = new System.Drawing.Size(327, 242);
+            this.rtbxScript.Size = new System.Drawing.Size(359, 271);
             this.rtbxScript.TabIndex = 5;
             this.rtbxScript.Text = "";
             // 
@@ -154,9 +166,9 @@ namespace NWConfigScriptor
             // 
             this.lblInfo2.AutoSize = true;
             this.lblInfo2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblInfo2.Location = new System.Drawing.Point(12, 457);
+            this.lblInfo2.Location = new System.Drawing.Point(14, 534);
             this.lblInfo2.Name = "lblInfo2";
-            this.lblInfo2.Size = new System.Drawing.Size(396, 52);
+            this.lblInfo2.Size = new System.Drawing.Size(424, 58);
             this.lblInfo2.TabIndex = 7;
             this.lblInfo2.Text = "Double click command to append to editor.\r\nInsert command into editor using butto" +
     "n below.";
@@ -165,29 +177,29 @@ namespace NWConfigScriptor
             // 
             this.lblInfo.AutoSize = true;
             this.lblInfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblInfo.Location = new System.Drawing.Point(423, 324);
+            this.lblInfo.Location = new System.Drawing.Point(465, 363);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(327, 77);
+            this.lblInfo.Size = new System.Drawing.Size(358, 86);
             this.lblInfo.TabIndex = 8;
             this.lblInfo.Text = "Edit as normal, insert by making a line \r\nspace and select from command.\r\nRight c" +
     "lick or Ctl+C copies to clipboard.";
             // 
             // tbShowCommands
             // 
-            this.tbShowCommands.Location = new System.Drawing.Point(423, 415);
+            this.tbShowCommands.Location = new System.Drawing.Point(465, 464);
             this.tbShowCommands.Multiline = true;
             this.tbShowCommands.Name = "tbShowCommands";
             this.tbShowCommands.ReadOnly = true;
             this.tbShowCommands.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbShowCommands.Size = new System.Drawing.Size(327, 115);
+            this.tbShowCommands.Size = new System.Drawing.Size(359, 128);
             this.tbShowCommands.TabIndex = 9;
             // 
             // btnAppendDisplay
             // 
-            this.btnAppendDisplay.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAppendDisplay.Location = new System.Drawing.Point(12, 525);
+            this.btnAppendDisplay.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAppendDisplay.Location = new System.Drawing.Point(14, 600);
             this.btnAppendDisplay.Name = "btnAppendDisplay";
-            this.btnAppendDisplay.Size = new System.Drawing.Size(113, 58);
+            this.btnAppendDisplay.Size = new System.Drawing.Size(124, 65);
             this.btnAppendDisplay.TabIndex = 10;
             this.btnAppendDisplay.Text = "Insert in editor";
             this.btnAppendDisplay.UseVisualStyleBackColor = true;
@@ -195,9 +207,10 @@ namespace NWConfigScriptor
             // 
             // btnSaveFile
             // 
-            this.btnSaveFile.Location = new System.Drawing.Point(152, 525);
+            this.btnSaveFile.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSaveFile.Location = new System.Drawing.Point(168, 600);
             this.btnSaveFile.Name = "btnSaveFile";
-            this.btnSaveFile.Size = new System.Drawing.Size(113, 58);
+            this.btnSaveFile.Size = new System.Drawing.Size(124, 65);
             this.btnSaveFile.TabIndex = 11;
             this.btnSaveFile.Text = "Save to file";
             this.btnSaveFile.UseVisualStyleBackColor = true;
@@ -205,9 +218,10 @@ namespace NWConfigScriptor
             // 
             // btnClearDisplay
             // 
-            this.btnClearDisplay.Location = new System.Drawing.Point(290, 525);
+            this.btnClearDisplay.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnClearDisplay.Location = new System.Drawing.Point(314, 600);
             this.btnClearDisplay.Name = "btnClearDisplay";
-            this.btnClearDisplay.Size = new System.Drawing.Size(113, 58);
+            this.btnClearDisplay.Size = new System.Drawing.Size(124, 65);
             this.btnClearDisplay.TabIndex = 12;
             this.btnClearDisplay.Text = "Clear editor";
             this.btnClearDisplay.UseVisualStyleBackColor = true;
@@ -215,9 +229,10 @@ namespace NWConfigScriptor
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(537, 536);
+            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnExit.Location = new System.Drawing.Point(588, 600);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(113, 58);
+            this.btnExit.Size = new System.Drawing.Size(124, 65);
             this.btnExit.TabIndex = 13;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -226,18 +241,31 @@ namespace NWConfigScriptor
             // lblPoint
             // 
             this.lblPoint.AutoSize = true;
-            this.lblPoint.Location = new System.Drawing.Point(376, 194);
+            this.lblPoint.Location = new System.Drawing.Point(414, 217);
             this.lblPoint.Name = "lblPoint";
-            this.lblPoint.Size = new System.Drawing.Size(36, 50);
+            this.lblPoint.Size = new System.Drawing.Size(40, 56);
             this.lblPoint.TabIndex = 14;
             this.lblPoint.Text = ">>\r\n>>";
             // 
-            // Form1
+            // lblAbout
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.lblAbout.AutoSize = true;
+            this.lblAbout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblAbout.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.lblAbout.Location = new System.Drawing.Point(773, 634);
+            this.lblAbout.Name = "lblAbout";
+            this.lblAbout.Size = new System.Drawing.Size(54, 23);
+            this.lblAbout.TabIndex = 15;
+            this.lblAbout.Text = "About";
+            this.lblAbout.Click += new System.EventHandler(this.lblAbout_Click);
+            // 
+            // ConfigScriptorForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(762, 595);
+            this.ClientSize = new System.Drawing.Size(839, 675);
+            this.Controls.Add(this.lblAbout);
             this.Controls.Add(this.lblPoint);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnClearDisplay);
@@ -252,9 +280,10 @@ namespace NWConfigScriptor
             this.Controls.Add(this.lblCmmdDisplay);
             this.Controls.Add(this.cmbxCmdScriptList);
             this.Controls.Add(this.lblPageTitle);
+            this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Form1";
+            this.Name = "ConfigScriptorForm";
             this.Text = "Mr Scriptor";
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -283,6 +312,7 @@ namespace NWConfigScriptor
         private System.Windows.Forms.Button btnClearDisplay;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblPoint;
+        private System.Windows.Forms.Label lblAbout;
     }
 }
 
