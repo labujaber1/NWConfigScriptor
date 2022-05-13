@@ -53,12 +53,12 @@
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.lbxConfigScript_DoubleClick(System.Object,System.EventArgs)">
             <summary>
-            copies commands to listbox editor
+            copies commands to listbox editor with newline
             </summary>
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.btnAppendDisplay_Click(System.Object,System.EventArgs)">
             <summary>
-            insert a command in editor between commands at the cursor
+            insert a command in editor between commands at the cursor with no newline
             </summary>
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.btnSaveFile_Click(System.Object,System.EventArgs)">
@@ -105,6 +105,11 @@
         <member name="M:NWConfigScriptor.ConfigScriptorForm.updownTFTP">
             <summary>
             could the files be distributed to devices, is it needed?
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.lblAbout_Click(System.Object,System.EventArgs)">
+            <summary>
+            Display an about form with project details and a brief description
             </summary>
         </member>
         <member name="F:NWConfigScriptor.ConfigScriptorForm.components">

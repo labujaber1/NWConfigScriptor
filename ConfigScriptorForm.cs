@@ -93,22 +93,47 @@ namespace NWConfigScriptor
             else
                 MessageBox.Show("File does not exist");
         }
+
+        private int getQuestionIndex()
+        {
+            int res = 0;
+
+            return res;
+        }
         /// <summary>
-        /// copies commands to listbox editor
+        /// copies commands to listbox editor with newline
         /// </summary>
         private void lbxConfigScript_DoubleClick(object sender, EventArgs e)
         {
-            rtbxScript.AppendText(lbxConfigScript.SelectedItem.ToString() + "\n");
+            string command = lbxConfigScript.SelectedItem.ToString();
+            if (command.Contains("?"))
+            {
+                int icomm = command.IndexOf("?");
+                command = command.Remove(icomm);
+                rtbxScript.AppendText(command + "\n");
+            }
+            else
+            {
+                rtbxScript.AppendText(command + "\n");
+            }
         }
-
-
+       
         /// <summary>
-        /// insert a command in editor between commands at the cursor
+        /// insert a command in editor between commands at the cursor with no newline
         /// </summary>
         private void btnAppendDisplay_Click(object sender, EventArgs e)
         {
-            //add to richtextbox at cursor
-            rtbxScript.SelectedText = lbxConfigScript.SelectedItem.ToString();
+            string command = lbxConfigScript.SelectedItem.ToString();
+            if (command.Contains("?"))
+            {
+                int icomm = command.IndexOf("?");
+                command = command.Remove(icomm);
+                rtbxScript.SelectedText = command;
+            }
+            else
+            {
+                rtbxScript.SelectedText = command;
+            }
         }
 
         /// <summary>

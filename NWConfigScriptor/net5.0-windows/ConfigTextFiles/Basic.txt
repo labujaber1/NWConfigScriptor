@@ -1,17 +1,17 @@
 ﻿config t
-hostname ?
+hostname ?R1
 no ip domain-name 
-ip domain-name ?
-security passwords min-length ?
-enable secret ?
-line console ?
-password ?
-exec-timeout ?
+ip domain-name ?example.com
+security passwords min-length ?10
+enable secret ?password
+line console ?0
+password ?otherpswd
+exec-timeout ?75
 login 
 logging synchronous 
-line vty ?
+line vty ?0 15
 service password encryprion 
-banner MOTD # ?  #
+banner MOTD # ?Unauthorized access is strictly prohibited. #
 
 exit 
 end 
@@ -20,5 +20,5 @@ wr
 
 show ip route
 show ip int brief
-show ip int ?
+show ip int ?fa0/1
 show running-config

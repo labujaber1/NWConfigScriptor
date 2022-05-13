@@ -114,7 +114,7 @@ namespace NWConfigScriptor
             this.labelCopyright.Name = "labelCopyright";
             this.labelCopyright.Size = new System.Drawing.Size(451, 33);
             this.labelCopyright.TabIndex = 21;
-            this.labelCopyright.Text = "Copyright @github/labujaber1";
+            this.labelCopyright.Text = "Copyright @github/labujaber1/NWConfigScriptor";
             this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelCompanyName

@@ -117,6 +117,7 @@ namespace NWConfigScriptor
             // 
             this.rtbxScript.BackColor = System.Drawing.SystemColors.HighlightText;
             this.rtbxScript.ContextMenuStrip = this.contextMenuStrip1;
+            this.rtbxScript.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.rtbxScript.Location = new System.Drawing.Point(465, 88);
             this.rtbxScript.Name = "rtbxScript";
             this.rtbxScript.Size = new System.Drawing.Size(359, 271);

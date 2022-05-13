@@ -1,15 +1,15 @@
 ﻿config t
-username admin privilege 15 secret ?
-line vty ?
-transport input ?
+username admin privilege 15 secret ?password12345
+line vty ?0 4
+transport input ?ssh
 login local
 exit
 crypto key generate rsa general-keys
 1024
 yes
 
-ip ssh time-out 75
-ip ssh authentication-retries 2
+ip ssh time-out ?75
+ip ssh authentication-retries ?2
 
 exit
 end
@@ -18,3 +18,4 @@ wr
 
 show ip int brief
 show ip ssh
+show interface ?fa0/1
