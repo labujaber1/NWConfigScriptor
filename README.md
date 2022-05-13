@@ -3,7 +3,7 @@ Used .NETCore.
 
  This is a simple win form program aimed at students learning routing and are tired of typing in
 repeated configuration commands for devices. It is not a learning tool to teach routing 
-configuration as Cisco and packet tracer do an excellent job. It is essentially a tool 
+configuration as Cisco and packet tracer do a great job of doing that. It is essentially a tool 
 to construct config commands to copy and paste into network devices CLI. It also allows 
 the config commands to be saved into a text file with a date and time stamp added to 
 "ConfigScript_".
