@@ -8,11 +8,8 @@
 //##########################################//
 
 using System;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace NWConfigScriptor
@@ -33,8 +30,8 @@ namespace NWConfigScriptor
         /// search directory for text files
         /// read into combo box cmbxCmdScriptList include .txt extension
         /// </summary>
-        /// <return>returns, in a combo box, a list of all .txt files in debug\configtextfiles folder, 
-        /// directory/file not found exception</return>
+        /// <returns>returns, in a combo box, a list of all .txt files in debug\configtextfiles folder, 
+        /// directory/file not found exception</returns>
         /// <exception cref="FileNotFoundException"></exception>
         /// <exception cref="DirectoryNotFoundException"></exception>
         private void searchAddTextFiles()
@@ -58,7 +55,7 @@ namespace NWConfigScriptor
         /// <summary>
         /// read selected script into lbxConfigScript
         /// </summary>
-        /// <remarks>used in "searchAddTextFiles" method</remarks>
+        /// <remarks>Used in "searchAddTextFiles" method</remarks>
         private void cmbxCmdScriptList_SelectedIndexChanged(object sender, EventArgs e)
         {
             lbxConfigScript.Items.Clear();
@@ -73,8 +70,8 @@ namespace NWConfigScriptor
         /// </summary>
         /// <param name="fileName">created in "cmbxCmdScriptList_SelectedIndexChanged" method from user click event 
         /// and passed in to search for</param>
-        /// <return>read all lines to a list box from a text file passed in if found, 
-        /// file not exist message if not found.</return>
+        /// <returns>read all lines to a list box from a text file passed in if found, 
+        /// file not exist message if not found.</returns>
         private void showConfigScript(string fileName)
         {
             string filePath = Path.Combine(Environment.CurrentDirectory + "\\ConfigTextFiles\\", fileName);
@@ -135,41 +132,90 @@ namespace NWConfigScriptor
                 rtbxScript.SelectedText = command;
             }
         }
+        
+        /// <summary>
+        /// save editor contents to a text or richtext file in location of users choice.
+        /// </summary>
+        /// <returns>exception error, if correct then file saved message</returns>
+        /// <exception cref="UnauthorizedAccessException"></exception>
+        /// <exception cref="FileFormatException"></exception>
+        private void saveToTextFile()
+        {
+            SaveFileDialog savef = new SaveFileDialog();
+            savef.Title = "Save file";
+            savef.DefaultExt = "txt";
+            savef.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            savef.FilterIndex = 1;
+            savef.InitialDirectory = @"C:\Documents\";
+            savef.ShowDialog();
+            savef.RestoreDirectory = true;
+            try
+            {
+                FileInfo fi = new FileInfo(savef.FileName);
+                string ext = fi.Extension;
+                if(savef.FileName != "" && ext == ".txt")
+                {
+                    File.WriteAllLines(@savef.FileName, rtbxScript.Lines);
+                }
+                else
+                {
+                    MessageBox.Show("File not saved", savef.Title);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, savef.Title);
+            }
+        }
+
+        /// <summary>
+        /// load file contents of txt or rtf to editor to append, adjust, or view
+        /// </summary>
+        /// <returns>exception error or file loaded successfully message</returns>
+        /// <exception cref="FileFormatException"></exception>
+        private void loadTextFile()
+        {
+            OpenFileDialog openf = new OpenFileDialog();
+            openf.ShowDialog();
+            openf.Title = "Load file";
+            openf.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openf.FilterIndex = 1;
+            openf.DefaultExt = "txt";
+            openf.InitialDirectory = @"C:\Documents\";
+            openf.RestoreDirectory = true;
+
+            try
+            {
+                if(openf.FileName != "" && openf.FileName.EndsWith(".txt") )
+                {
+                    rtbxScript.Text = File.ReadAllText(openf.FileName);
+                }
+                else if(openf.FileName != "" && !openf.FileName.EndsWith(".txt"))
+                {
+                    MessageBox.Show("Incorrect file format only .txt available", openf.Title);
+                }
+                else
+                {
+                    MessageBox.Show("File load cancelled", openf.Title);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, openf.Title);
+            }
+        }
 
         /// <summary>
         /// save editor to file with date/time stamp. Browser opens for user to select
         /// save location and message box opens for confirmation.
         /// </summary>
-        /// <return>saved to user selected location and file name,
-        /// file not saved if user cancels, directory access denied exception, file compilation error</return>
+        /// <returns>saved to user selected location and file name,
+        /// file not saved if user cancels, directory access denied exception, file compilation error</returns>
         /// <exception cref="UnauthorizedAccessException"></exception>
         /// <exception cref="FileFormatException"></exception>
         private void btnSaveFile_Click(object sender, EventArgs e)
         {
-            //get user input for folder path using explorer
-            string title = "Configuration Script";
-            FolderBrowserDialog fileBrowse = new FolderBrowserDialog();
-            fileBrowse.ShowNewFolderButton = true;
-            DialogResult res = fileBrowse.ShowDialog();
-            try
-            {
-                if (res == DialogResult.OK)
-                {
-                    string filename = string.Format("\\ConfigScript_{0}.txt", DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss")); //yyyy-MM-dd HH.mm.ss
-                    string folderPath = fileBrowse.SelectedPath;
-                    string fullPath = Path.Combine(folderPath + filename);
-                    File.WriteAllLines(@fullPath, rtbxScript.Lines);
-                    MessageBox.Show(string.Format("Saved as ConfigScript_(dt).txt to {0}", folderPath), title);
-                }
-                else
-                {
-                    MessageBox.Show("File not saved", title);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, title);
-            }
+            saveToTextFile();
         }
         /// <summary>
         /// clear all text in editor
@@ -186,7 +232,7 @@ namespace NWConfigScriptor
             this.Close();
         }
         /// <summary>
-        /// select all text in editor 
+        /// select and highlight all text in editor 
         /// </summary>
         private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -197,7 +243,7 @@ namespace NWConfigScriptor
             }
         }
         /// <summary>
-        ///  select all text in editor and copy to clipboard ready to paste
+        ///  select and highlight all text in editor and copy to clipboard ready to paste
         /// </summary>
         private void selectAllCopyToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -218,6 +264,7 @@ namespace NWConfigScriptor
                 rtbxScript.Copy();
             }
         }
+
         /// <summary>
         ///  open readme.txt or make html page? Create project doc like java
         /// </summary>
@@ -234,6 +281,49 @@ namespace NWConfigScriptor
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message," File error");
+                }
+            }
+        }
+
+        private void saveFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveToTextFile();
+        }
+
+        private void loadFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadTextFile();
+        }
+
+        /// <summary>
+        /// Appending new commands to a file instead of opening and adding
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void appendToFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openAppend = new OpenFileDialog();
+            openAppend.Title = "Appending text to file";
+            openAppend.ShowDialog();
+            string path = openAppend.FileName;
+            if (appendToFileToolStripMenuItem.Text == "Append to file")
+            {
+                try
+                {
+                    if (path.EndsWith(".txt"))
+                    {
+                        File.AppendAllText(path, rtbxScript.Text + "\n");
+                        MessageBox.Show("Text added to textfile" + path, openAppend.Title);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Incorrect file format, only .txt available");
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, " File error");
                 }
             }
         }
@@ -255,5 +345,7 @@ namespace NWConfigScriptor
             AboutBox1 about = new AboutBox1();
             about.ShowDialog();
         }
+
+        
     }
 }

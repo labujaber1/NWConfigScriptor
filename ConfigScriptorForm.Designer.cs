@@ -49,6 +49,9 @@ namespace NWConfigScriptor
             this.selectAllCopyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appendToFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblInfo2 = new System.Windows.Forms.Label();
             this.lblInfo = new System.Windows.Forms.Label();
             this.tbShowCommands = new System.Windows.Forms.TextBox();
@@ -96,9 +99,11 @@ namespace NWConfigScriptor
             // 
             this.lbxConfigScript.BackColor = System.Drawing.SystemColors.Control;
             this.lbxConfigScript.FormattingEnabled = true;
+            this.lbxConfigScript.HorizontalScrollbar = true;
             this.lbxConfigScript.ItemHeight = 28;
             this.lbxConfigScript.Location = new System.Drawing.Point(14, 141);
             this.lbxConfigScript.Name = "lbxConfigScript";
+            this.lbxConfigScript.ScrollAlwaysVisible = true;
             this.lbxConfigScript.Size = new System.Drawing.Size(393, 368);
             this.lbxConfigScript.TabIndex = 3;
             this.lbxConfigScript.DoubleClick += new System.EventHandler(this.lbxConfigScript_DoubleClick);
@@ -131,37 +136,61 @@ namespace NWConfigScriptor
             this.selectAllToolStripMenuItem,
             this.selectAllCopyToolStripMenuItem,
             this.copyToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.saveFileToolStripMenuItem,
+            this.loadFileToolStripMenuItem,
+            this.appendToFileToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(197, 132);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(199, 228);
             // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(196, 32);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
             this.selectAllToolStripMenuItem.Text = "Select all";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
             // selectAllCopyToolStripMenuItem
             // 
             this.selectAllCopyToolStripMenuItem.Name = "selectAllCopyToolStripMenuItem";
-            this.selectAllCopyToolStripMenuItem.Size = new System.Drawing.Size(196, 32);
+            this.selectAllCopyToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
             this.selectAllCopyToolStripMenuItem.Text = "Select all copy";
             this.selectAllCopyToolStripMenuItem.Click += new System.EventHandler(this.selectAllCopyToolStripMenuItem_Click);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(196, 32);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(196, 32);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            // 
+            // saveFileToolStripMenuItem
+            // 
+            this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
+            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.saveFileToolStripMenuItem.Text = "Save file";
+            this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_Click);
+            // 
+            // loadFileToolStripMenuItem
+            // 
+            this.loadFileToolStripMenuItem.Name = "loadFileToolStripMenuItem";
+            this.loadFileToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.loadFileToolStripMenuItem.Text = "Load file";
+            this.loadFileToolStripMenuItem.Click += new System.EventHandler(this.loadFileToolStripMenuItem_Click);
+            // 
+            // appendToFileToolStripMenuItem
+            // 
+            this.appendToFileToolStripMenuItem.Name = "appendToFileToolStripMenuItem";
+            this.appendToFileToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.appendToFileToolStripMenuItem.Text = "Append to file";
+            this.appendToFileToolStripMenuItem.Click += new System.EventHandler(this.appendToFileToolStripMenuItem_Click);
             // 
             // lblInfo2
             // 
@@ -314,6 +343,9 @@ namespace NWConfigScriptor
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblPoint;
         private System.Windows.Forms.Label lblAbout;
+        private System.Windows.Forms.ToolStripMenuItem saveFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem appendToFileToolStripMenuItem;
     }
 }
 

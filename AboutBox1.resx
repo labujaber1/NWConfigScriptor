@@ -546,6 +546,6 @@ A basic network configuration script generator
 for students upto level 6 (Uk degree) studying 
 routing. Written in C# .NetCore version 5 with
 no additional packages used. Can output as 
-text files or copy and paste.</value>
+text files or copy and paste to CLI.</value>
   </data>
 </root>

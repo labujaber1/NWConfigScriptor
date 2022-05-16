@@ -30,8 +30,8 @@
             search directory for text files
             read into combo box cmbxCmdScriptList include .txt extension
             </summary>
-            <return>returns, in a combo box, a list of all .txt files in debug\configtextfiles folder, 
-            directory/file not found exception</return>
+            <returns>returns, in a combo box, a list of all .txt files in debug\configtextfiles folder, 
+            directory/file not found exception</returns>
             <exception cref="T:System.IO.FileNotFoundException"></exception>
             <exception cref="T:System.IO.DirectoryNotFoundException"></exception>
         </member>
@@ -39,7 +39,7 @@
             <summary>
             read selected script into lbxConfigScript
             </summary>
-            <remarks>used in "searchAddTextFiles" method</remarks>
+            <remarks>Used in "searchAddTextFiles" method</remarks>
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.showConfigScript(System.String)">
             <summary>
@@ -48,8 +48,8 @@
             </summary>
             <param name="fileName">created in "cmbxCmdScriptList_SelectedIndexChanged" method from user click event 
             and passed in to search for</param>
-            <return>read all lines to a list box from a text file passed in if found, 
-            file not exist message if not found.</return>
+            <returns>read all lines to a list box from a text file passed in if found, 
+            file not exist message if not found.</returns>
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.lbxConfigScript_DoubleClick(System.Object,System.EventArgs)">
             <summary>
@@ -61,13 +61,28 @@
             insert a command in editor between commands at the cursor with no newline
             </summary>
         </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.saveToTextFile">
+            <summary>
+            save editor contents to a text or richtext file in location of users choice.
+            </summary>
+            <returns>exception error, if correct then file saved message</returns>
+            <exception cref="T:System.UnauthorizedAccessException"></exception>
+            <exception cref="T:System.IO.FileFormatException"></exception>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.loadTextFile">
+            <summary>
+            load file contents of txt or rtf to editor to append, adjust, or view
+            </summary>
+            <returns>exception error or file loaded successfully message</returns>
+            <exception cref="T:System.IO.FileFormatException"></exception>
+        </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.btnSaveFile_Click(System.Object,System.EventArgs)">
             <summary>
             save editor to file with date/time stamp. Browser opens for user to select
             save location and message box opens for confirmation.
             </summary>
-            <return>saved to user selected location and file name,
-            file not saved if user cancels, directory access denied exception, file compilation error</return>
+            <returns>saved to user selected location and file name,
+            file not saved if user cancels, directory access denied exception, file compilation error</returns>
             <exception cref="T:System.UnauthorizedAccessException"></exception>
             <exception cref="T:System.IO.FileFormatException"></exception>
         </member>
@@ -83,12 +98,12 @@
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.selectAllToolStripMenuItem_Click(System.Object,System.EventArgs)">
             <summary>
-            select all text in editor 
+            select and highlight all text in editor 
             </summary>
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.selectAllCopyToolStripMenuItem_Click(System.Object,System.EventArgs)">
             <summary>
-             select all text in editor and copy to clipboard ready to paste
+             select and highlight all text in editor and copy to clipboard ready to paste
             </summary>
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.copyToolStripMenuItem_Click(System.Object,System.EventArgs)">
@@ -101,6 +116,13 @@
              open readme.txt or make html page? Create project doc like java
             </summary>
             <returns>Help file auto generated displayed in browser if found, file not found if not found </returns>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.appendToFileToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Appending new commands to a file instead of opening and adding
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.updownTFTP">
             <summary>
