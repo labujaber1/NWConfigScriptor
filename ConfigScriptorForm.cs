@@ -10,6 +10,7 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace NWConfigScriptor
@@ -36,7 +37,9 @@ namespace NWConfigScriptor
         /// <exception cref="DirectoryNotFoundException"></exception>
         private void searchAddTextFiles()
         {
-            string filePath = Path.Combine(Environment.CurrentDirectory + "\\ConfigTextFiles\\");
+            //string filePath = Path.Combine(Application.ExecutablePath, @"\ConfigTextFiles\");
+            string filePath = Path.Combine(Application.StartupPath+ @"ConfigTextFiles\");
+            MessageBox.Show(filePath);
             string fileName = "*.txt";
             try
             {
@@ -74,7 +77,7 @@ namespace NWConfigScriptor
         /// file not exist message if not found.</returns>
         private void showConfigScript(string fileName)
         {
-            string filePath = Path.Combine(Environment.CurrentDirectory + "\\ConfigTextFiles\\", fileName);
+            string filePath = Path.Combine(Application.StartupPath + @"ConfigTextFiles\", fileName);
             if (File.Exists(filePath))
             {
                 lbxConfigScript.ClearSelected();
@@ -275,7 +278,9 @@ namespace NWConfigScriptor
             {
                 try
                 {
-                    string filepath = Path.Combine(Directory.GetCurrentDirectory(), "HelpFile.txt");
+                    
+                    //string filepath = Path.Combine(Directory.GetCurrentDirectory(), "HelpFile.txt");
+                    string filepath = Path.Combine(Application.StartupPath + @"HelpFile.txt");
                     MessageBox.Show(File.ReadAllText(filepath));
                 }
                 catch (Exception ex)

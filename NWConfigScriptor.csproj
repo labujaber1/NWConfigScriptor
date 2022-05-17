@@ -12,7 +12,41 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ConfigTextFiles\" />
+    <None Remove="ConfigTextFiles\ACL.txt" />
+    <None Remove="ConfigTextFiles\AdvBasic.txt" />
+    <None Remove="ConfigTextFiles\Basic.txt" />
+    <None Remove="ConfigTextFiles\DHCPRouter.txt" />
+    <None Remove="ConfigTextFiles\IpAddressing.txt" />
+    <None Remove="ConfigTextFiles\OSPF.txt" />
+    <None Remove="ConfigTextFiles\Vlan.txt" />
+    <None Remove="HelpFile.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ConfigTextFiles\ACL.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConfigTextFiles\AdvBasic.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConfigTextFiles\Basic.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConfigTextFiles\DHCPRouter.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConfigTextFiles\IpAddressing.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConfigTextFiles\OSPF.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConfigTextFiles\Vlan.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpFile.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -22,30 +56,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ConfigTextFiles\ACL.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ConfigTextFiles\AdvBasic.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ConfigTextFiles\Basic.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ConfigTextFiles\DHCPRouter.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ConfigTextFiles\IpAddressing.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ConfigTextFiles\OSPF.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ConfigTextFiles\Vlan.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="HelpFile.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="NWConfigScriptor.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

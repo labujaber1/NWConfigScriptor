@@ -18,7 +18,7 @@
     clicking in the editor and load file. 
 8. If appending/ammending a loaded file then
     save to file, select file and overwrite.
-8. Can append commands to an existing file 
+9. Can append commands to an existing file 
     without loading by right click in the 
     editor and selecting append to file. Will
     append all text in editor.
