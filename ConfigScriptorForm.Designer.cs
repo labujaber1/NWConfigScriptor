@@ -9,6 +9,9 @@
 
 namespace NWConfigScriptor
 {
+    /// <summary>
+    /// ConfigScriptorForm
+    /// </summary>
     partial class ConfigScriptorForm
     {
         /// <summary>
@@ -38,284 +41,297 @@ namespace NWConfigScriptor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.lblPageTitle = new System.Windows.Forms.Label();
-            this.cmbxCmdScriptList = new System.Windows.Forms.ComboBox();
-            this.lblCmmdDisplay = new System.Windows.Forms.Label();
-            this.lbxConfigScript = new System.Windows.Forms.ListBox();
-            this.lblScriptEditor = new System.Windows.Forms.Label();
-            this.rtbxScript = new System.Windows.Forms.RichTextBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.selectAllCopyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.appendToFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblInfo2 = new System.Windows.Forms.Label();
-            this.lblInfo = new System.Windows.Forms.Label();
-            this.tbShowCommands = new System.Windows.Forms.TextBox();
-            this.btnAppendDisplay = new System.Windows.Forms.Button();
-            this.btnSaveFile = new System.Windows.Forms.Button();
-            this.btnClearDisplay = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.lblPoint = new System.Windows.Forms.Label();
-            this.lblAbout = new System.Windows.Forms.Label();
-            this.contextMenuStrip1.SuspendLayout();
+            this.LblPageTitle = new System.Windows.Forms.Label();
+            this.CmbxCmdScriptList = new System.Windows.Forms.ComboBox();
+            this.LblCmmdDisplay = new System.Windows.Forms.Label();
+            this.LbxConfigScript = new System.Windows.Forms.ListBox();
+            this.LblScriptEditor = new System.Windows.Forms.Label();
+            this.RtbxScript = new System.Windows.Forms.RichTextBox();
+            this.ContextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.SelectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SelectAllCopyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CopyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AppendToFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LblInfo2 = new System.Windows.Forms.Label();
+            this.LblInfo = new System.Windows.Forms.Label();
+            this.TbShowCommands = new System.Windows.Forms.TextBox();
+            this.BtnAppendDisplay = new System.Windows.Forms.Button();
+            this.BtnSaveFile = new System.Windows.Forms.Button();
+            this.BtnClearDisplay = new System.Windows.Forms.Button();
+            this.BtnExit = new System.Windows.Forms.Button();
+            this.LblPoint = new System.Windows.Forms.Label();
+            this.LblAbout = new System.Windows.Forms.Label();
+            this.BtnAddFile = new System.Windows.Forms.Button();
+            this.ContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblPageTitle
+            // LblPageTitle
             // 
-            this.lblPageTitle.AutoSize = true;
-            this.lblPageTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPageTitle.Location = new System.Drawing.Point(168, 9);
-            this.lblPageTitle.Name = "lblPageTitle";
-            this.lblPageTitle.Size = new System.Drawing.Size(403, 38);
-            this.lblPageTitle.TabIndex = 0;
-            this.lblPageTitle.Text = "Network Configuration Scriptor";
+            this.LblPageTitle.AutoSize = true;
+            this.LblPageTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblPageTitle.Location = new System.Drawing.Point(299, 9);
+            this.LblPageTitle.Name = "LblPageTitle";
+            this.LblPageTitle.Size = new System.Drawing.Size(403, 38);
+            this.LblPageTitle.TabIndex = 0;
+            this.LblPageTitle.Text = "Network Configuration Scriptor";
             // 
-            // cmbxCmdScriptList
+            // CmbxCmdScriptList
             // 
-            this.cmbxCmdScriptList.BackColor = System.Drawing.SystemColors.Control;
-            this.cmbxCmdScriptList.FormattingEnabled = true;
-            this.cmbxCmdScriptList.Location = new System.Drawing.Point(14, 66);
-            this.cmbxCmdScriptList.Name = "cmbxCmdScriptList";
-            this.cmbxCmdScriptList.Size = new System.Drawing.Size(393, 36);
-            this.cmbxCmdScriptList.TabIndex = 1;
-            this.cmbxCmdScriptList.Text = "- Select command file -";
-            this.cmbxCmdScriptList.SelectedIndexChanged += new System.EventHandler(this.cmbxCmdScriptList_SelectedIndexChanged);
+            this.CmbxCmdScriptList.BackColor = System.Drawing.SystemColors.Control;
+            this.CmbxCmdScriptList.FormattingEnabled = true;
+            this.CmbxCmdScriptList.Location = new System.Drawing.Point(14, 66);
+            this.CmbxCmdScriptList.Name = "CmbxCmdScriptList";
+            this.CmbxCmdScriptList.Size = new System.Drawing.Size(334, 36);
+            this.CmbxCmdScriptList.TabIndex = 1;
+            this.CmbxCmdScriptList.Text = "- Select command file -";
+            this.CmbxCmdScriptList.SelectedIndexChanged += new System.EventHandler(this.CmbxCmdScriptList_SelectedIndexChanged);
             // 
-            // lblCmmdDisplay
+            // LblCmmdDisplay
             // 
-            this.lblCmmdDisplay.AutoSize = true;
-            this.lblCmmdDisplay.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblCmmdDisplay.Location = new System.Drawing.Point(106, 109);
-            this.lblCmmdDisplay.Name = "lblCmmdDisplay";
-            this.lblCmmdDisplay.Size = new System.Drawing.Size(180, 28);
-            this.lblCmmdDisplay.TabIndex = 2;
-            this.lblCmmdDisplay.Text = "Command display";
+            this.LblCmmdDisplay.AutoSize = true;
+            this.LblCmmdDisplay.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LblCmmdDisplay.Location = new System.Drawing.Point(168, 110);
+            this.LblCmmdDisplay.Name = "LblCmmdDisplay";
+            this.LblCmmdDisplay.Size = new System.Drawing.Size(180, 28);
+            this.LblCmmdDisplay.TabIndex = 2;
+            this.LblCmmdDisplay.Text = "Command display";
             // 
-            // lbxConfigScript
+            // LbxConfigScript
             // 
-            this.lbxConfigScript.BackColor = System.Drawing.SystemColors.Control;
-            this.lbxConfigScript.FormattingEnabled = true;
-            this.lbxConfigScript.HorizontalScrollbar = true;
-            this.lbxConfigScript.ItemHeight = 28;
-            this.lbxConfigScript.Location = new System.Drawing.Point(14, 141);
-            this.lbxConfigScript.Name = "lbxConfigScript";
-            this.lbxConfigScript.ScrollAlwaysVisible = true;
-            this.lbxConfigScript.Size = new System.Drawing.Size(393, 368);
-            this.lbxConfigScript.TabIndex = 3;
-            this.lbxConfigScript.DoubleClick += new System.EventHandler(this.lbxConfigScript_DoubleClick);
+            this.LbxConfigScript.BackColor = System.Drawing.SystemColors.Control;
+            this.LbxConfigScript.FormattingEnabled = true;
+            this.LbxConfigScript.HorizontalScrollbar = true;
+            this.LbxConfigScript.ItemHeight = 28;
+            this.LbxConfigScript.Location = new System.Drawing.Point(14, 141);
+            this.LbxConfigScript.Name = "LbxConfigScript";
+            this.LbxConfigScript.ScrollAlwaysVisible = true;
+            this.LbxConfigScript.Size = new System.Drawing.Size(505, 368);
+            this.LbxConfigScript.TabIndex = 3;
+            this.LbxConfigScript.DoubleClick += new System.EventHandler(this.LbxConfigScript_DoubleClick);
             // 
-            // lblScriptEditor
+            // LblScriptEditor
             // 
-            this.lblScriptEditor.AutoSize = true;
-            this.lblScriptEditor.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblScriptEditor.Location = new System.Drawing.Point(575, 57);
-            this.lblScriptEditor.Name = "lblScriptEditor";
-            this.lblScriptEditor.Size = new System.Drawing.Size(130, 28);
-            this.lblScriptEditor.TabIndex = 4;
-            this.lblScriptEditor.Text = "Script editor";
+            this.LblScriptEditor.AutoSize = true;
+            this.LblScriptEditor.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LblScriptEditor.Location = new System.Drawing.Point(707, 57);
+            this.LblScriptEditor.Name = "LblScriptEditor";
+            this.LblScriptEditor.Size = new System.Drawing.Size(130, 28);
+            this.LblScriptEditor.TabIndex = 4;
+            this.LblScriptEditor.Text = "Script editor";
             // 
-            // rtbxScript
+            // RtbxScript
             // 
-            this.rtbxScript.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.rtbxScript.ContextMenuStrip = this.contextMenuStrip1;
-            this.rtbxScript.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rtbxScript.Location = new System.Drawing.Point(465, 88);
-            this.rtbxScript.Name = "rtbxScript";
-            this.rtbxScript.Size = new System.Drawing.Size(359, 271);
-            this.rtbxScript.TabIndex = 5;
-            this.rtbxScript.Text = "";
+            this.RtbxScript.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.RtbxScript.ContextMenuStrip = this.ContextMenuStrip1;
+            this.RtbxScript.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.RtbxScript.Location = new System.Drawing.Point(571, 88);
+            this.RtbxScript.Name = "RtbxScript";
+            this.RtbxScript.Size = new System.Drawing.Size(402, 271);
+            this.RtbxScript.TabIndex = 5;
+            this.RtbxScript.Text = "";
             // 
-            // contextMenuStrip1
+            // ContextMenuStrip1
             // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.selectAllToolStripMenuItem,
-            this.selectAllCopyToolStripMenuItem,
-            this.copyToolStripMenuItem,
-            this.helpToolStripMenuItem,
-            this.saveFileToolStripMenuItem,
-            this.loadFileToolStripMenuItem,
-            this.appendToFileToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(199, 228);
+            this.ContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SelectAllToolStripMenuItem,
+            this.SelectAllCopyToolStripMenuItem,
+            this.CopyToolStripMenuItem,
+            this.HelpToolStripMenuItem,
+            this.SaveFileToolStripMenuItem,
+            this.LoadFileToolStripMenuItem,
+            this.AppendToFileToolStripMenuItem});
+            this.ContextMenuStrip1.Name = "contextMenuStrip1";
+            this.ContextMenuStrip1.Size = new System.Drawing.Size(199, 228);
             // 
-            // selectAllToolStripMenuItem
+            // SelectAllToolStripMenuItem
             // 
-            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
-            this.selectAllToolStripMenuItem.Text = "Select all";
-            this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
+            this.SelectAllToolStripMenuItem.Name = "SelectAllToolStripMenuItem";
+            this.SelectAllToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.SelectAllToolStripMenuItem.Text = "Select all";
+            this.SelectAllToolStripMenuItem.Click += new System.EventHandler(this.SelectAllToolStripMenuItem_Click);
             // 
-            // selectAllCopyToolStripMenuItem
+            // SelectAllCopyToolStripMenuItem
             // 
-            this.selectAllCopyToolStripMenuItem.Name = "selectAllCopyToolStripMenuItem";
-            this.selectAllCopyToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
-            this.selectAllCopyToolStripMenuItem.Text = "Select all copy";
-            this.selectAllCopyToolStripMenuItem.Click += new System.EventHandler(this.selectAllCopyToolStripMenuItem_Click);
+            this.SelectAllCopyToolStripMenuItem.Name = "SelectAllCopyToolStripMenuItem";
+            this.SelectAllCopyToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.SelectAllCopyToolStripMenuItem.Text = "Select all copy";
+            this.SelectAllCopyToolStripMenuItem.Click += new System.EventHandler(this.SelectAllCopyToolStripMenuItem_Click);
             // 
-            // copyToolStripMenuItem
+            // CopyToolStripMenuItem
             // 
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
-            this.copyToolStripMenuItem.Text = "Copy";
-            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            this.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem";
+            this.CopyToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.CopyToolStripMenuItem.Text = "Copy";
+            this.CopyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
             // 
-            // helpToolStripMenuItem
+            // HelpToolStripMenuItem
             // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
-            this.helpToolStripMenuItem.Text = "Help";
-            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            this.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem";
+            this.HelpToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.HelpToolStripMenuItem.Text = "Help";
+            this.HelpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
             // 
-            // saveFileToolStripMenuItem
+            // SaveFileToolStripMenuItem
             // 
-            this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
-            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
-            this.saveFileToolStripMenuItem.Text = "Save file";
-            this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_Click);
+            this.SaveFileToolStripMenuItem.Name = "SaveFileToolStripMenuItem";
+            this.SaveFileToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.SaveFileToolStripMenuItem.Text = "Save file";
+            this.SaveFileToolStripMenuItem.Click += new System.EventHandler(this.SaveFileToolStripMenuItem_Click);
             // 
-            // loadFileToolStripMenuItem
+            // LoadFileToolStripMenuItem
             // 
-            this.loadFileToolStripMenuItem.Name = "loadFileToolStripMenuItem";
-            this.loadFileToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
-            this.loadFileToolStripMenuItem.Text = "Load file";
-            this.loadFileToolStripMenuItem.Click += new System.EventHandler(this.loadFileToolStripMenuItem_Click);
+            this.LoadFileToolStripMenuItem.Name = "LoadFileToolStripMenuItem";
+            this.LoadFileToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.LoadFileToolStripMenuItem.Text = "Load file";
+            this.LoadFileToolStripMenuItem.Click += new System.EventHandler(this.LoadFileToolStripMenuItem_Click);
             // 
-            // appendToFileToolStripMenuItem
+            // AppendToFileToolStripMenuItem
             // 
-            this.appendToFileToolStripMenuItem.Name = "appendToFileToolStripMenuItem";
-            this.appendToFileToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
-            this.appendToFileToolStripMenuItem.Text = "Append to file";
-            this.appendToFileToolStripMenuItem.Click += new System.EventHandler(this.appendToFileToolStripMenuItem_Click);
+            this.AppendToFileToolStripMenuItem.Name = "AppendToFileToolStripMenuItem";
+            this.AppendToFileToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.AppendToFileToolStripMenuItem.Text = "Append to file";
+            this.AppendToFileToolStripMenuItem.Click += new System.EventHandler(this.AppendToFileToolStripMenuItem_Click);
             // 
-            // lblInfo2
+            // LblInfo2
             // 
-            this.lblInfo2.AutoSize = true;
-            this.lblInfo2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblInfo2.Location = new System.Drawing.Point(14, 534);
-            this.lblInfo2.Name = "lblInfo2";
-            this.lblInfo2.Size = new System.Drawing.Size(424, 58);
-            this.lblInfo2.TabIndex = 7;
-            this.lblInfo2.Text = "Double click command to append to editor.\r\nInsert command into editor using butto" +
+            this.LblInfo2.AutoSize = true;
+            this.LblInfo2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.LblInfo2.Location = new System.Drawing.Point(14, 521);
+            this.LblInfo2.Name = "LblInfo2";
+            this.LblInfo2.Size = new System.Drawing.Size(424, 58);
+            this.LblInfo2.TabIndex = 7;
+            this.LblInfo2.Text = "Double click command to append to editor.\r\nInsert command into editor using butto" +
     "n below.";
             // 
-            // lblInfo
+            // LblInfo
             // 
-            this.lblInfo.AutoSize = true;
-            this.lblInfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblInfo.Location = new System.Drawing.Point(465, 363);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(355, 86);
-            this.lblInfo.TabIndex = 8;
-            this.lblInfo.Text = "Edit text as normal, insert a command  \r\nbetween commands. Right click or\r\nCtl+C " +
+            this.LblInfo.AutoSize = true;
+            this.LblInfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.LblInfo.Location = new System.Drawing.Point(571, 362);
+            this.LblInfo.Name = "LblInfo";
+            this.LblInfo.Size = new System.Drawing.Size(355, 86);
+            this.LblInfo.TabIndex = 8;
+            this.LblInfo.Text = "Edit text as normal, insert a command  \r\nbetween commands. Right click or\r\nCtl+C " +
     "to copy to the clipboard.";
             // 
-            // tbShowCommands
+            // TbShowCommands
             // 
-            this.tbShowCommands.Location = new System.Drawing.Point(465, 464);
-            this.tbShowCommands.Multiline = true;
-            this.tbShowCommands.Name = "tbShowCommands";
-            this.tbShowCommands.ReadOnly = true;
-            this.tbShowCommands.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbShowCommands.Size = new System.Drawing.Size(359, 128);
-            this.tbShowCommands.TabIndex = 9;
+            this.TbShowCommands.Location = new System.Drawing.Point(571, 466);
+            this.TbShowCommands.Multiline = true;
+            this.TbShowCommands.Name = "TbShowCommands";
+            this.TbShowCommands.ReadOnly = true;
+            this.TbShowCommands.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TbShowCommands.Size = new System.Drawing.Size(402, 128);
+            this.TbShowCommands.TabIndex = 9;
             // 
-            // btnAppendDisplay
+            // BtnAppendDisplay
             // 
-            this.btnAppendDisplay.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAppendDisplay.Location = new System.Drawing.Point(14, 600);
-            this.btnAppendDisplay.Name = "btnAppendDisplay";
-            this.btnAppendDisplay.Size = new System.Drawing.Size(124, 65);
-            this.btnAppendDisplay.TabIndex = 10;
-            this.btnAppendDisplay.Text = "Insert in editor";
-            this.btnAppendDisplay.UseVisualStyleBackColor = true;
-            this.btnAppendDisplay.Click += new System.EventHandler(this.btnAppendDisplay_Click);
+            this.BtnAppendDisplay.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnAppendDisplay.Location = new System.Drawing.Point(14, 600);
+            this.BtnAppendDisplay.Name = "BtnAppendDisplay";
+            this.BtnAppendDisplay.Size = new System.Drawing.Size(124, 65);
+            this.BtnAppendDisplay.TabIndex = 10;
+            this.BtnAppendDisplay.Text = "Insert in editor";
+            this.BtnAppendDisplay.UseVisualStyleBackColor = true;
+            this.BtnAppendDisplay.Click += new System.EventHandler(this.BtnAppendDisplay_Click);
             // 
-            // btnSaveFile
+            // BtnSaveFile
             // 
-            this.btnSaveFile.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSaveFile.Location = new System.Drawing.Point(168, 600);
-            this.btnSaveFile.Name = "btnSaveFile";
-            this.btnSaveFile.Size = new System.Drawing.Size(124, 65);
-            this.btnSaveFile.TabIndex = 11;
-            this.btnSaveFile.Text = "Save to file";
-            this.btnSaveFile.UseVisualStyleBackColor = true;
-            this.btnSaveFile.Click += new System.EventHandler(this.btnSaveFile_Click);
+            this.BtnSaveFile.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnSaveFile.Location = new System.Drawing.Point(168, 600);
+            this.BtnSaveFile.Name = "BtnSaveFile";
+            this.BtnSaveFile.Size = new System.Drawing.Size(124, 65);
+            this.BtnSaveFile.TabIndex = 11;
+            this.BtnSaveFile.Text = "Save to file";
+            this.BtnSaveFile.UseVisualStyleBackColor = true;
+            this.BtnSaveFile.Click += new System.EventHandler(this.BtnSaveFile_Click);
             // 
-            // btnClearDisplay
+            // BtnClearDisplay
             // 
-            this.btnClearDisplay.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnClearDisplay.Location = new System.Drawing.Point(314, 600);
-            this.btnClearDisplay.Name = "btnClearDisplay";
-            this.btnClearDisplay.Size = new System.Drawing.Size(124, 65);
-            this.btnClearDisplay.TabIndex = 12;
-            this.btnClearDisplay.Text = "Clear editor";
-            this.btnClearDisplay.UseVisualStyleBackColor = true;
-            this.btnClearDisplay.Click += new System.EventHandler(this.btnClearDisplay_Click);
+            this.BtnClearDisplay.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnClearDisplay.Location = new System.Drawing.Point(314, 600);
+            this.BtnClearDisplay.Name = "BtnClearDisplay";
+            this.BtnClearDisplay.Size = new System.Drawing.Size(124, 65);
+            this.BtnClearDisplay.TabIndex = 12;
+            this.BtnClearDisplay.Text = "Clear editor";
+            this.BtnClearDisplay.UseVisualStyleBackColor = true;
+            this.BtnClearDisplay.Click += new System.EventHandler(this.BtnClearDisplay_Click);
             // 
-            // btnExit
+            // BtnExit
             // 
-            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnExit.Location = new System.Drawing.Point(588, 600);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(124, 65);
-            this.btnExit.TabIndex = 13;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.BtnExit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnExit.Location = new System.Drawing.Point(734, 600);
+            this.BtnExit.Name = "BtnExit";
+            this.BtnExit.Size = new System.Drawing.Size(124, 65);
+            this.BtnExit.TabIndex = 13;
+            this.BtnExit.Text = "Exit";
+            this.BtnExit.UseVisualStyleBackColor = true;
+            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
-            // lblPoint
+            // LblPoint
             // 
-            this.lblPoint.AutoSize = true;
-            this.lblPoint.Location = new System.Drawing.Point(414, 217);
-            this.lblPoint.Name = "lblPoint";
-            this.lblPoint.Size = new System.Drawing.Size(40, 56);
-            this.lblPoint.TabIndex = 14;
-            this.lblPoint.Text = ">>\r\n>>";
+            this.LblPoint.AutoSize = true;
+            this.LblPoint.Location = new System.Drawing.Point(525, 208);
+            this.LblPoint.Name = "LblPoint";
+            this.LblPoint.Size = new System.Drawing.Size(40, 56);
+            this.LblPoint.TabIndex = 14;
+            this.LblPoint.Text = ">>\r\n>>";
             // 
-            // lblAbout
+            // LblAbout
             // 
-            this.lblAbout.AutoSize = true;
-            this.lblAbout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblAbout.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.lblAbout.Location = new System.Drawing.Point(773, 634);
-            this.lblAbout.Name = "lblAbout";
-            this.lblAbout.Size = new System.Drawing.Size(54, 23);
-            this.lblAbout.TabIndex = 15;
-            this.lblAbout.Text = "About";
-            this.lblAbout.Click += new System.EventHandler(this.lblAbout_Click);
+            this.LblAbout.AutoSize = true;
+            this.LblAbout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LblAbout.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.LblAbout.Location = new System.Drawing.Point(893, 642);
+            this.LblAbout.Name = "LblAbout";
+            this.LblAbout.Size = new System.Drawing.Size(54, 23);
+            this.LblAbout.TabIndex = 15;
+            this.LblAbout.Text = "About";
+            this.LblAbout.Click += new System.EventHandler(this.LblAbout_Click);
+            // 
+            // BtnAddFile
+            // 
+            this.BtnAddFile.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnAddFile.Location = new System.Drawing.Point(459, 600);
+            this.BtnAddFile.Name = "BtnAddFile";
+            this.BtnAddFile.Size = new System.Drawing.Size(112, 65);
+            this.BtnAddFile.TabIndex = 16;
+            this.BtnAddFile.Text = "Add file";
+            this.BtnAddFile.UseVisualStyleBackColor = true;
+            this.BtnAddFile.Click += new System.EventHandler(this.BtnAddFile_Click);
             // 
             // ConfigScriptorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(839, 675);
-            this.Controls.Add(this.lblAbout);
-            this.Controls.Add(this.lblPoint);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnClearDisplay);
-            this.Controls.Add(this.btnSaveFile);
-            this.Controls.Add(this.btnAppendDisplay);
-            this.Controls.Add(this.tbShowCommands);
-            this.Controls.Add(this.lblInfo);
-            this.Controls.Add(this.lblInfo2);
-            this.Controls.Add(this.rtbxScript);
-            this.Controls.Add(this.lblScriptEditor);
-            this.Controls.Add(this.lbxConfigScript);
-            this.Controls.Add(this.lblCmmdDisplay);
-            this.Controls.Add(this.cmbxCmdScriptList);
-            this.Controls.Add(this.lblPageTitle);
+            this.ClientSize = new System.Drawing.Size(985, 675);
+            this.Controls.Add(this.BtnAddFile);
+            this.Controls.Add(this.LblAbout);
+            this.Controls.Add(this.LblPoint);
+            this.Controls.Add(this.BtnExit);
+            this.Controls.Add(this.BtnClearDisplay);
+            this.Controls.Add(this.BtnSaveFile);
+            this.Controls.Add(this.BtnAppendDisplay);
+            this.Controls.Add(this.TbShowCommands);
+            this.Controls.Add(this.LblInfo);
+            this.Controls.Add(this.LblInfo2);
+            this.Controls.Add(this.RtbxScript);
+            this.Controls.Add(this.LblScriptEditor);
+            this.Controls.Add(this.LbxConfigScript);
+            this.Controls.Add(this.LblCmmdDisplay);
+            this.Controls.Add(this.CmbxCmdScriptList);
+            this.Controls.Add(this.LblPageTitle);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ConfigScriptorForm";
             this.Text = "Mr Scriptor";
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.ContextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,29 +339,30 @@ namespace NWConfigScriptor
 
         #endregion
 
-        private System.Windows.Forms.Label lblPageTitle;
-        private System.Windows.Forms.ComboBox cmbxCmdScriptList;
-        private System.Windows.Forms.Label lblCmmdDisplay;
-        private System.Windows.Forms.ListBox lbxConfigScript;
-        private System.Windows.Forms.Label lblScriptEditor;
-        private System.Windows.Forms.RichTextBox rtbxScript;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem selectAllCopyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.Label lblInfo2;
-        private System.Windows.Forms.Label lblInfo;
-        private System.Windows.Forms.TextBox tbShowCommands;
-        private System.Windows.Forms.Button btnAppendDisplay;
-        private System.Windows.Forms.Button btnSaveFile;
-        private System.Windows.Forms.Button btnClearDisplay;
-        private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Label lblPoint;
-        private System.Windows.Forms.Label lblAbout;
-        private System.Windows.Forms.ToolStripMenuItem saveFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loadFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem appendToFileToolStripMenuItem;
+        private System.Windows.Forms.Label LblPageTitle;
+        private System.Windows.Forms.ComboBox CmbxCmdScriptList;
+        private System.Windows.Forms.Label LblCmmdDisplay;
+        private System.Windows.Forms.ListBox LbxConfigScript;
+        private System.Windows.Forms.Label LblScriptEditor;
+        private System.Windows.Forms.RichTextBox RtbxScript;
+        private System.Windows.Forms.ContextMenuStrip ContextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem SelectAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SelectAllCopyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CopyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem HelpToolStripMenuItem;
+        private System.Windows.Forms.Label LblInfo2;
+        private System.Windows.Forms.Label LblInfo;
+        private System.Windows.Forms.TextBox TbShowCommands;
+        private System.Windows.Forms.Button BtnAppendDisplay;
+        private System.Windows.Forms.Button BtnSaveFile;
+        private System.Windows.Forms.Button BtnClearDisplay;
+        private System.Windows.Forms.Button BtnExit;
+        private System.Windows.Forms.Label LblPoint;
+        private System.Windows.Forms.Label LblAbout;
+        private System.Windows.Forms.ToolStripMenuItem SaveFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem LoadFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AppendToFileToolStripMenuItem;
+        private System.Windows.Forms.Button BtnAddFile;
     }
 }
 

@@ -22,3 +22,8 @@
     without loading by right click in the 
     editor and selecting append to file. Will
     append all text in editor.
+10. Add a new command text file to the script
+    list and added to the text.deployed folder
+    in the project. The file can be created in
+    the internal editor and saved to a local 
+    folder or by using notepad. 

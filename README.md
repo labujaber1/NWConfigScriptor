@@ -1,21 +1,21 @@
 # NWConfigScriptor
-Used .NETCore. Win Forms was chosen for construction speed and design experimentation.
+Used .NETCore. Win Forms was chosen for easier design experimentation and construction speed.
 
  This is a simple win form program aimed at students learning routing who are tired of typing
 in repeated configuration commands for devices. It is not a learning tool to teach routing 
 configuration as Cisco and packet tracer do a great job of doing that. It is essentially a 
 tool to construct config commands to copy and paste into network devices CLI. It also allows 
-the config commands to be saved into a text file for the user to choose location and filename.
+the config commands to be saved into a text file and the user to choose location and filename.
 
  Text files contain basic routing commands that are used up to level 6 (UK degree) with 
 a question mark to identify additional user input. This includes ip addresses, hostnames, 
 network addresses, and so forth. Text files have been chosen as they are small in size
 and easier to manage in such a small program.
 
- The tool will only look for .txt file extensions stored in a folder "ConfigTextFiles" 
-which when built are copied (set to 'copy if newer') to bin/debug. They will be listed in
-a combo box for the user to select and the contents displayed in a list box. Any "show.." 
-commands are displayed in a seperate text box as read only for additional testing help.
+ The tool will only look for .txt file extensions stored in a folder "ConfigTextFiles".
+ They will be listed in a combo box for the user to select and the contents displayed in a
+ list box. Any "show.." commands are displayed in a seperate text box as read only for 
+ additional testing help.
 
  Double click a command in the list box and it will append to a rich text box for editing
 including adding user essential input as previously mentioned. To insert a command between
@@ -32,13 +32,16 @@ text boxes.
 
  The user is free to adjust the text files holding the config/show commands or add new ones
 as long as they are .txt and added to the ConfigTextFiles folder, no other extensions are 
-looked for.
+looked for. If ammending existing files they will need to be saved and the file overwritten
+as the commands are only read in from a file, the file is not kept open for editing. If files 
+are added while in debug mode, the file properties will need to be changed in the solution so
+they included on build. Build action change to 'content', and copy to output to 'Copy if newer'.
  
  Help, Load file, save file, and append to file options added to right click menu in the 
 editor. The load file reads in file content into the editor for editing or appending and
 so will need to overwrite existing file when saving. Append to file allows commands to be
 added to files without the need for them to be opened in the editor.
  
- Version 1.2 will consider if there is a need to update devices straight away or used as
-an add on to packet tracer.
+ Version 1.2 will consider if there is a need to update devices straight away via a TFTP server
+ or used as an add on to packet tracer.
  
