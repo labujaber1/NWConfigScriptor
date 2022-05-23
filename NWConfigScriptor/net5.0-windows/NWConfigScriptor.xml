@@ -42,13 +42,13 @@
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.CmbxCmdScriptList_SelectedIndexChanged(System.Object,System.EventArgs)">
             <summary>
-            read selected script into lbxConfigScript
+            read selected script into command display
             </summary>
             <remarks>Used in "searchAddTextFiles" method</remarks>
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.ShowConfigScript(System.String)">
             <summary>
-            display config scripts in check list box clear previous selection
+            display command file names in check list box, clear previous selection
             called by cmbxCmdScriptList_SelectedIndexChanged switch based method
             </summary>
             <param name="fileName">created in "cmbxCmdScriptList_SelectedIndexChanged" method from user click event 
@@ -58,12 +58,12 @@
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.LbxConfigScript_DoubleClick(System.Object,System.EventArgs)">
             <summary>
-            copies commands to listbox editor with newline
+            copies commands to the editor with newline
             </summary>
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.SaveToTextFile">
             <summary>
-            save editor contents to a text or richtext file in location of users choice.
+            save editor contents to a text file in location of users choice.
             </summary>
             <returns>exception error, if correct then file saved message</returns>
             <exception cref="T:System.UnauthorizedAccessException"></exception>
@@ -71,25 +71,25 @@
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.LoadTextFile">
             <summary>
-            load file contents of txt or rtf to editor to append, adjust, or view
+            load file contents of .txt to the editor to append, adjust, or view
             </summary>
             <returns>exception error or file loaded successfully message</returns>
             <exception cref="T:System.IO.FileFormatException"></exception>
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.AddTextFile">
             <summary>
-            Add a command text file created by a user to the configtext folder in the application. 
+            Add a command text file created by a user to the configtext folder in the application for continued use. 
             Becomes available to select from command script list.
             </summary>
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.DeleteFile">
             <summary>
-            Open file browser and remove file from configtextfiles folder
+            Open file browser and remove file from the application configtextfiles folder
             </summary>
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.BtnAppendDisplay_Click(System.Object,System.EventArgs)">
             <summary>
-            insert a command in the editor between commands at the cursor with no newline
+            insert a command in the editor between existing commands at the cursor with no newline
             </summary>
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.BtnSaveFile_Click(System.Object,System.EventArgs)">

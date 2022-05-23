@@ -256,7 +256,7 @@ namespace NWConfigScriptor
             this.BtnSaveFile.Name = "BtnSaveFile";
             this.BtnSaveFile.Size = new System.Drawing.Size(124, 65);
             this.BtnSaveFile.TabIndex = 11;
-            this.BtnSaveFile.Text = "Save to file";
+            this.BtnSaveFile.Text = "Save editor to file";
             this.BtnSaveFile.UseVisualStyleBackColor = true;
             this.BtnSaveFile.Click += new System.EventHandler(this.BtnSaveFile_Click);
             // 
@@ -274,7 +274,7 @@ namespace NWConfigScriptor
             // BtnExit
             // 
             this.BtnExit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnExit.Location = new System.Drawing.Point(734, 600);
+            this.BtnExit.Location = new System.Drawing.Point(752, 601);
             this.BtnExit.Name = "BtnExit";
             this.BtnExit.Size = new System.Drawing.Size(124, 65);
             this.BtnExit.TabIndex = 13;
@@ -310,18 +310,18 @@ namespace NWConfigScriptor
             this.BtnAddFile.Name = "BtnAddFile";
             this.BtnAddFile.Size = new System.Drawing.Size(112, 68);
             this.BtnAddFile.TabIndex = 16;
-            this.BtnAddFile.Text = "Add file";
+            this.BtnAddFile.Text = "Add cmmd file";
             this.BtnAddFile.UseVisualStyleBackColor = true;
             this.BtnAddFile.Click += new System.EventHandler(this.BtnAddFile_Click);
             // 
             // BtnDeleteFile
             // 
             this.BtnDeleteFile.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnDeleteFile.Location = new System.Drawing.Point(581, 600);
+            this.BtnDeleteFile.Location = new System.Drawing.Point(571, 598);
             this.BtnDeleteFile.Name = "BtnDeleteFile";
-            this.BtnDeleteFile.Size = new System.Drawing.Size(112, 66);
+            this.BtnDeleteFile.Size = new System.Drawing.Size(112, 69);
             this.BtnDeleteFile.TabIndex = 17;
-            this.BtnDeleteFile.Text = "Delete file";
+            this.BtnDeleteFile.Text = "Delete cmmd file";
             this.BtnDeleteFile.UseVisualStyleBackColor = true;
             this.BtnDeleteFile.Click += new System.EventHandler(this.BtnDeleteFile_Click);
             // 
