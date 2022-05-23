@@ -55,6 +55,7 @@ namespace NWConfigScriptor
             this.SaveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LoadFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AppendToFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateScriptListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LblInfo2 = new System.Windows.Forms.Label();
             this.LblInfo = new System.Windows.Forms.Label();
             this.TbShowCommands = new System.Windows.Forms.TextBox();
@@ -65,6 +66,7 @@ namespace NWConfigScriptor
             this.LblPoint = new System.Windows.Forms.Label();
             this.LblAbout = new System.Windows.Forms.Label();
             this.BtnAddFile = new System.Windows.Forms.Button();
+            this.BtnDeleteFile = new System.Windows.Forms.Button();
             this.ContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -143,58 +145,66 @@ namespace NWConfigScriptor
             this.HelpToolStripMenuItem,
             this.SaveFileToolStripMenuItem,
             this.LoadFileToolStripMenuItem,
-            this.AppendToFileToolStripMenuItem});
+            this.AppendToFileToolStripMenuItem,
+            this.updateScriptListToolStripMenuItem});
             this.ContextMenuStrip1.Name = "contextMenuStrip1";
-            this.ContextMenuStrip1.Size = new System.Drawing.Size(199, 228);
+            this.ContextMenuStrip1.Size = new System.Drawing.Size(256, 260);
             // 
             // SelectAllToolStripMenuItem
             // 
             this.SelectAllToolStripMenuItem.Name = "SelectAllToolStripMenuItem";
-            this.SelectAllToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.SelectAllToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
             this.SelectAllToolStripMenuItem.Text = "Select all";
             this.SelectAllToolStripMenuItem.Click += new System.EventHandler(this.SelectAllToolStripMenuItem_Click);
             // 
             // SelectAllCopyToolStripMenuItem
             // 
             this.SelectAllCopyToolStripMenuItem.Name = "SelectAllCopyToolStripMenuItem";
-            this.SelectAllCopyToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.SelectAllCopyToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
             this.SelectAllCopyToolStripMenuItem.Text = "Select all copy";
             this.SelectAllCopyToolStripMenuItem.Click += new System.EventHandler(this.SelectAllCopyToolStripMenuItem_Click);
             // 
             // CopyToolStripMenuItem
             // 
             this.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem";
-            this.CopyToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.CopyToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
             this.CopyToolStripMenuItem.Text = "Copy";
             this.CopyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
             // 
             // HelpToolStripMenuItem
             // 
             this.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem";
-            this.HelpToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.HelpToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
             this.HelpToolStripMenuItem.Text = "Help";
             this.HelpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
             // 
             // SaveFileToolStripMenuItem
             // 
             this.SaveFileToolStripMenuItem.Name = "SaveFileToolStripMenuItem";
-            this.SaveFileToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.SaveFileToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
             this.SaveFileToolStripMenuItem.Text = "Save file";
             this.SaveFileToolStripMenuItem.Click += new System.EventHandler(this.SaveFileToolStripMenuItem_Click);
             // 
             // LoadFileToolStripMenuItem
             // 
             this.LoadFileToolStripMenuItem.Name = "LoadFileToolStripMenuItem";
-            this.LoadFileToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.LoadFileToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
             this.LoadFileToolStripMenuItem.Text = "Load file";
             this.LoadFileToolStripMenuItem.Click += new System.EventHandler(this.LoadFileToolStripMenuItem_Click);
             // 
             // AppendToFileToolStripMenuItem
             // 
             this.AppendToFileToolStripMenuItem.Name = "AppendToFileToolStripMenuItem";
-            this.AppendToFileToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.AppendToFileToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
             this.AppendToFileToolStripMenuItem.Text = "Append to file";
             this.AppendToFileToolStripMenuItem.Click += new System.EventHandler(this.AppendToFileToolStripMenuItem_Click);
+            // 
+            // updateScriptListToolStripMenuItem
+            // 
+            this.updateScriptListToolStripMenuItem.Name = "updateScriptListToolStripMenuItem";
+            this.updateScriptListToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
+            this.updateScriptListToolStripMenuItem.Text = "Update command list";
+            this.updateScriptListToolStripMenuItem.Click += new System.EventHandler(this.updateCommandListToolStripMenuItem_Click);
             // 
             // LblInfo2
             // 
@@ -231,9 +241,9 @@ namespace NWConfigScriptor
             // BtnAppendDisplay
             // 
             this.BtnAppendDisplay.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnAppendDisplay.Location = new System.Drawing.Point(14, 600);
+            this.BtnAppendDisplay.Location = new System.Drawing.Point(14, 598);
             this.BtnAppendDisplay.Name = "BtnAppendDisplay";
-            this.BtnAppendDisplay.Size = new System.Drawing.Size(124, 65);
+            this.BtnAppendDisplay.Size = new System.Drawing.Size(124, 67);
             this.BtnAppendDisplay.TabIndex = 10;
             this.BtnAppendDisplay.Text = "Insert in editor";
             this.BtnAppendDisplay.UseVisualStyleBackColor = true;
@@ -242,7 +252,7 @@ namespace NWConfigScriptor
             // BtnSaveFile
             // 
             this.BtnSaveFile.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnSaveFile.Location = new System.Drawing.Point(168, 600);
+            this.BtnSaveFile.Location = new System.Drawing.Point(158, 598);
             this.BtnSaveFile.Name = "BtnSaveFile";
             this.BtnSaveFile.Size = new System.Drawing.Size(124, 65);
             this.BtnSaveFile.TabIndex = 11;
@@ -253,9 +263,9 @@ namespace NWConfigScriptor
             // BtnClearDisplay
             // 
             this.BtnClearDisplay.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnClearDisplay.Location = new System.Drawing.Point(314, 600);
+            this.BtnClearDisplay.Location = new System.Drawing.Point(299, 598);
             this.BtnClearDisplay.Name = "BtnClearDisplay";
-            this.BtnClearDisplay.Size = new System.Drawing.Size(124, 65);
+            this.BtnClearDisplay.Size = new System.Drawing.Size(124, 67);
             this.BtnClearDisplay.TabIndex = 12;
             this.BtnClearDisplay.Text = "Clear editor";
             this.BtnClearDisplay.UseVisualStyleBackColor = true;
@@ -296,13 +306,24 @@ namespace NWConfigScriptor
             // BtnAddFile
             // 
             this.BtnAddFile.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnAddFile.Location = new System.Drawing.Point(459, 600);
+            this.BtnAddFile.Location = new System.Drawing.Point(443, 598);
             this.BtnAddFile.Name = "BtnAddFile";
-            this.BtnAddFile.Size = new System.Drawing.Size(112, 65);
+            this.BtnAddFile.Size = new System.Drawing.Size(112, 68);
             this.BtnAddFile.TabIndex = 16;
             this.BtnAddFile.Text = "Add file";
             this.BtnAddFile.UseVisualStyleBackColor = true;
             this.BtnAddFile.Click += new System.EventHandler(this.BtnAddFile_Click);
+            // 
+            // BtnDeleteFile
+            // 
+            this.BtnDeleteFile.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnDeleteFile.Location = new System.Drawing.Point(581, 600);
+            this.BtnDeleteFile.Name = "BtnDeleteFile";
+            this.BtnDeleteFile.Size = new System.Drawing.Size(112, 66);
+            this.BtnDeleteFile.TabIndex = 17;
+            this.BtnDeleteFile.Text = "Delete file";
+            this.BtnDeleteFile.UseVisualStyleBackColor = true;
+            this.BtnDeleteFile.Click += new System.EventHandler(this.BtnDeleteFile_Click);
             // 
             // ConfigScriptorForm
             // 
@@ -310,6 +331,7 @@ namespace NWConfigScriptor
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(985, 675);
+            this.Controls.Add(this.BtnDeleteFile);
             this.Controls.Add(this.BtnAddFile);
             this.Controls.Add(this.LblAbout);
             this.Controls.Add(this.LblPoint);
@@ -363,6 +385,8 @@ namespace NWConfigScriptor
         private System.Windows.Forms.ToolStripMenuItem LoadFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AppendToFileToolStripMenuItem;
         private System.Windows.Forms.Button BtnAddFile;
+        private System.Windows.Forms.ToolStripMenuItem updateScriptListToolStripMenuItem;
+        private System.Windows.Forms.Button BtnDeleteFile;
     }
 }
 

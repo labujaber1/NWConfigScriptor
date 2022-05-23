@@ -82,6 +82,11 @@
             Becomes available to select from command script list.
             </summary>
         </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.DeleteFile">
+            <summary>
+            Open file browser and remove file from configtextfiles folder
+            </summary>
+        </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.BtnAppendDisplay_Click(System.Object,System.EventArgs)">
             <summary>
             insert a command in the editor between commands at the cursor with no newline
@@ -104,6 +109,11 @@
         <member name="M:NWConfigScriptor.ConfigScriptorForm.BtnAddFile_Click(System.Object,System.EventArgs)">
             <summary>
             Add command text file to the application and include in the script list 
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.BtnDeleteFile_Click(System.Object,System.EventArgs)">
+            <summary>
+            Delete command file from configtextfiles folder and update command dropdown list
             </summary>
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.BtnExit_Click(System.Object,System.EventArgs)">

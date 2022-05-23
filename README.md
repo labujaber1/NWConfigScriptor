@@ -35,7 +35,8 @@ as long as they are .txt and added to the ConfigTextFiles folder, no other exten
 looked for. If ammending existing files they will need to be saved and the file overwritten
 as the commands are only read in from a file, the file is not kept open for editing. If files 
 are added while in debug mode, the file properties will need to be changed in the solution so
-they included on build. Build action change to 'content', and copy to output to 'Copy if newer'.
+they are included on build. Build action change to 'content', and copy to output to 'Copy if 
+newer'.
  
  Help, Load file, save file, and append to file options added to right click menu in the 
 editor. The load file reads in file content into the editor for editing or appending and
@@ -43,5 +44,5 @@ so will need to overwrite existing file when saving. Append to file allows comma
 added to files without the need for them to be opened in the editor.
  
  Version 1.2 will consider if there is a need to update devices straight away via a TFTP server
- or used as an add on to packet tracer.
+ or act as an add on to packet tracer somehow.
  

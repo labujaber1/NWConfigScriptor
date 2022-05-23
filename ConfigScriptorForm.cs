@@ -24,7 +24,8 @@ namespace NWConfigScriptor
             InitializeComponent();
             SearchAddTextFiles();
         }
-
+        private string FilePath = Path.Combine(Application.StartupPath + @"ConfigTextFiles\");
+        
         /// <summary>
         /// search directory for text files
         /// read into combo box cmbxCmdScriptList include .txt extension
@@ -35,11 +36,11 @@ namespace NWConfigScriptor
         /// <exception cref="DirectoryNotFoundException"></exception>
         private void SearchAddTextFiles()
         {
-            string filePath = Path.Combine(Application.StartupPath+ @"ConfigTextFiles\");
+            //string filePath = Path.Combine(Application.StartupPath+ @"ConfigTextFiles\");
             string fileName = "*.txt";
             try
             {
-                string[] fi = Directory.GetFiles(filePath, fileName);
+                string[] fi = Directory.GetFiles(FilePath, fileName);
                 foreach (var file in fi)
                 {
                     CmbxCmdScriptList.Items.Add(Path.GetFileName(file));
@@ -52,7 +53,7 @@ namespace NWConfigScriptor
         }
         
         /// <summary>
-        /// read selected script into lbxConfigScript
+        /// read selected script into command display
         /// </summary>
         /// <remarks>Used in "searchAddTextFiles" method</remarks>
         private void CmbxCmdScriptList_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,7 +65,7 @@ namespace NWConfigScriptor
         }
 
         /// <summary>
-        /// display config scripts in check list box clear previous selection
+        /// display command file names in check list box, clear previous selection
         /// called by cmbxCmdScriptList_SelectedIndexChanged switch based method
         /// </summary>
         /// <param name="fileName">created in "cmbxCmdScriptList_SelectedIndexChanged" method from user click event 
@@ -73,11 +74,12 @@ namespace NWConfigScriptor
         /// file not exist message if not found.</returns>
         private void ShowConfigScript(string fileName)
         {
-            string filePath = Path.Combine(Application.StartupPath + @"ConfigTextFiles\", fileName);
-            if (File.Exists(filePath))
+            //string filePath = Path.Combine(Application.StartupPath + @"ConfigTextFiles\", fileName);
+            string filePath1 = Path.Combine(FilePath, fileName);
+            if (File.Exists(filePath1))
             {
                 LbxConfigScript.ClearSelected();
-                string[] lines = File.ReadAllLines(filePath);
+                string[] lines = File.ReadAllLines(filePath1);
                 foreach (string line in lines)
                 {
                     if (line.StartsWith("show"))
@@ -91,7 +93,7 @@ namespace NWConfigScriptor
         }
 
         /// <summary>
-        /// copies commands to listbox editor with newline
+        /// copies commands to the editor with newline
         /// </summary>
         private void LbxConfigScript_DoubleClick(object sender, EventArgs e)
         {
@@ -109,7 +111,7 @@ namespace NWConfigScriptor
         }
 
         /// <summary>
-        /// save editor contents to a text or richtext file in location of users choice.
+        /// save editor contents to a text file in location of users choice.
         /// </summary>
         /// <returns>exception error, if correct then file saved message</returns>
         /// <exception cref="UnauthorizedAccessException"></exception>
@@ -118,14 +120,13 @@ namespace NWConfigScriptor
         {
             SaveFileDialog savef = new()
             {
+                InitialDirectory = @"C:\Documents\",
                 Title = "Save to file",
                 DefaultExt = "txt",
                 Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*",
                 FilterIndex = 1,
-                InitialDirectory = @"C:\Documents\",
-                RestoreDirectory = true
+                //RestoreDirectory = true
             };
-
             try
             {
                 savef.ShowDialog();
@@ -144,7 +145,7 @@ namespace NWConfigScriptor
         }
 
         /// <summary>
-        /// load file contents of txt or rtf to editor to append, adjust, or view
+        /// load file contents of .txt to the editor to append, adjust, or view
         /// </summary>
         /// <returns>exception error or file loaded successfully message</returns>
         /// <exception cref="FileFormatException"></exception>
@@ -152,12 +153,12 @@ namespace NWConfigScriptor
         {
             OpenFileDialog openf = new()
             {
+                InitialDirectory = @"C:\Documents\",
                 Title = "Load file",
                 Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*",
                 FilterIndex = 1,
                 DefaultExt = "txt",
-                InitialDirectory = @"C:\Documents\",
-                RestoreDirectory = true
+                //RestoreDirectory = true
             };
             try
             {
@@ -178,32 +179,30 @@ namespace NWConfigScriptor
         }
 
         /// <summary>
-        /// Add a command text file created by a user to the configtext folder in the application. 
+        /// Add a command text file created by a user to the configtext folder in the application for continued use. 
         /// Becomes available to select from command script list.
         /// </summary>
         private void AddTextFile()
         {
             OpenFileDialog sf = new()
             {
+                InitialDirectory = @"C:\Documents\",
                 Title = "Add a new file",
                 Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*",
                 FilterIndex = 1,
                 DefaultExt = "txt",
-                InitialDirectory = @"C:\Documents\",
-                RestoreDirectory = true
+                //RestoreDirectory = true
             };
             sf.ShowDialog();
             string sellectedFilePath = sf.FileName;
             string sellectedFileName = Path.GetFileName(sellectedFilePath);
-            string newFilePath = Path.Combine(Application.StartupPath+ @"ConfigTextFiles\", sellectedFileName);
+            //string newFilePath = Path.Combine(Application.StartupPath+ @"ConfigTextFiles\", sellectedFileName);
+            string newFilePath = Path.Combine(FilePath, sellectedFileName);
             try
             {
                 if (sf.FileName != "" && (sf.FileName.EndsWith(".txt")))
                 {
                     File.Copy(sellectedFilePath, newFilePath,true);
-                    //reload script drop down list to include new file
-                    CmbxCmdScriptList.Items.Clear();
-                    SearchAddTextFiles();
                     MessageBox.Show("New command file "+ sellectedFileName+" added, command script list also updated");
                 }
                 if (sf.FileName != "" && !sf.FileName.EndsWith(".txt"))
@@ -218,7 +217,42 @@ namespace NWConfigScriptor
         }
 
         /// <summary>
-        /// insert a command in the editor between commands at the cursor with no newline
+        /// Open file browser and remove file from the application configtextfiles folder
+        /// </summary>
+        private void DeleteFile()
+        {
+            OpenFileDialog df = new()
+            {
+                InitialDirectory = FilePath,
+                Title = "Delete a file",
+                Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*",
+                FilterIndex = 1,
+                DefaultExt = "txt",
+                //RestoreDirectory = true
+            };
+            df.ShowDialog();
+            string sellectedFilePath = df.FileName;
+            string sellectedFileName = Path.GetFileName(sellectedFilePath);
+            try
+            {
+                if (df.FileName != "" && (df.FileName.EndsWith(".txt")))
+                {
+                    File.Delete(sellectedFilePath);
+                    MessageBox.Show("Command file " + sellectedFileName + " deleted, command script list also updated");
+                }
+                if (df.FileName != "" && !df.FileName.EndsWith(".txt"))
+                {
+                    MessageBox.Show("Incorrect file format only .txt available", df.Title);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, df.Title);
+            }
+        }
+
+        /// <summary>
+        /// insert a command in the editor between existing commands at the cursor with no newline
         /// </summary>
         private void BtnAppendDisplay_Click(object sender, EventArgs e)
         {
@@ -266,6 +300,20 @@ namespace NWConfigScriptor
         private void BtnAddFile_Click(object sender, EventArgs e)
         {
             AddTextFile();
+            //reload script drop down list to include new file
+            CmbxCmdScriptList.Items.Clear();
+            SearchAddTextFiles();
+        }
+
+        /// <summary>
+        /// Delete command file from configtextfiles folder and update command dropdown list
+        /// </summary>
+        private void BtnDeleteFile_Click(object sender, EventArgs e)
+        {
+            DeleteFile();
+            //reload script drop down list to include new file
+            CmbxCmdScriptList.Items.Clear();
+            SearchAddTextFiles();
         }
 
         /// <summary>
@@ -373,6 +421,12 @@ namespace NWConfigScriptor
             }
         }
 
+        private void updateCommandListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CmbxCmdScriptList.Items.Clear();
+            SearchAddTextFiles();
+        }
+
         /// <summary>
         /// Display an about form with project details and a brief description
         /// </summary>
@@ -381,6 +435,8 @@ namespace NWConfigScriptor
             AboutBox1 about = new();
             about.ShowDialog();
         }
+
+        
 
         /// <summary>
         /// could the files be distributed to devices, is it needed?
@@ -391,9 +447,7 @@ namespace NWConfigScriptor
         //    client.UploadFile("upload to path", "path of file");
         //    client.DownloadFile("download to path", "path of file");
         //}
-        
 
-        //todo - refactor
-        //     - view xml file 
+
     }
 }
