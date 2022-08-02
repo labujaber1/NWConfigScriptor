@@ -352,6 +352,7 @@ namespace NWConfigScriptor
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ConfigScriptorForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mr Scriptor";
             this.ContextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
