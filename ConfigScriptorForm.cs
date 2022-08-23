@@ -1,6 +1,6 @@
 ﻿//##########################################//
 //                                          //
-// Project: Network Scriptor Config Creater //
+// Project: Network Config Scriptor Creater //
 // Author:  L. Abu-Jaber                    //
 // Date:    09/05/2022                      //
 // Control System: Github                   //
@@ -8,6 +8,7 @@
 //##########################################//
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Windows.Forms;
@@ -24,19 +25,19 @@ namespace NWConfigScriptor
             InitializeComponent();
             SearchAddTextFiles();
         }
-        private string FilePath = Path.Combine(Application.StartupPath + @"ConfigTextFiles\");
+        private readonly string FilePath = Path.Combine(Application.StartupPath + @"ConfigTemplateFiles\");
         
         /// <summary>
         /// search directory for text files
         /// read into combo box cmbxCmdScriptList include .txt extension
         /// </summary>
-        /// <returns>returns, in a combo box, a list of all .txt files in debug\configtextfiles folder, 
+        /// <returns>returns, in a combo box, a list of all .txt files in debug\ConfigTemplateFiles folder, 
         /// directory/file not found exception</returns>
         /// <exception cref="FileNotFoundException"></exception>
         /// <exception cref="DirectoryNotFoundException"></exception>
         private void SearchAddTextFiles()
         {
-            //string filePath = Path.Combine(Application.StartupPath+ @"ConfigTextFiles\");
+            //string filePath = Path.Combine(Application.StartupPath+ @"ConfigTemplateFiles\");
             string fileName = "*.txt";
             try
             {
@@ -74,7 +75,7 @@ namespace NWConfigScriptor
         /// file not exist message if not found.</returns>
         private void ShowConfigScript(string fileName)
         {
-            //string filePath = Path.Combine(Application.StartupPath + @"ConfigTextFiles\", fileName);
+            //string filePath = Path.Combine(Application.StartupPath + @"ConfigTemplateFiles\", fileName);
             string filePath1 = Path.Combine(FilePath, fileName);
             if (File.Exists(filePath1))
             {
@@ -140,7 +141,7 @@ namespace NWConfigScriptor
             catch (Exception ex)
             {
                 //MessageBox.Show(ex.Message, savef.Title);
-                Console.WriteLine(ex.Message, savef.Title);
+                Debug.WriteLine(ex.Message, savef.Title);
             }
         }
 
@@ -196,7 +197,7 @@ namespace NWConfigScriptor
             sf.ShowDialog();
             string sellectedFilePath = sf.FileName;
             string sellectedFileName = Path.GetFileName(sellectedFilePath);
-            //string newFilePath = Path.Combine(Application.StartupPath+ @"ConfigTextFiles\", sellectedFileName);
+            //string newFilePath = Path.Combine(Application.StartupPath+ @"ConfigTemplateFiles\", sellectedFileName);
             string newFilePath = Path.Combine(FilePath, sellectedFileName);
             try
             {
@@ -217,7 +218,7 @@ namespace NWConfigScriptor
         }
 
         /// <summary>
-        /// Open file browser and remove file from the application configtextfiles folder
+        /// Open file browser and remove file from the application ConfigTemplateFiles folder
         /// </summary>
         private void DeleteFile()
         {
@@ -306,7 +307,7 @@ namespace NWConfigScriptor
         }
 
         /// <summary>
-        /// Delete command file from configtextfiles folder and update command dropdown list
+        /// Delete command file from ConfigTemplateFiles folder and update command dropdown list
         /// </summary>
         private void BtnDeleteFile_Click(object sender, EventArgs e)
         {
@@ -321,6 +322,7 @@ namespace NWConfigScriptor
         /// </summary>
         private void BtnExit_Click(object sender, EventArgs e)
         {
+            
             this.Close();
         }
 
@@ -421,7 +423,7 @@ namespace NWConfigScriptor
             }
         }
 
-        private void updateCommandListToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UpdateCommandListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CmbxCmdScriptList.Items.Clear();
             SearchAddTextFiles();
@@ -436,8 +438,33 @@ namespace NWConfigScriptor
             about.ShowDialog();
         }
 
-        
-
+        private static ConfigScriptorForm instance;
+        /// <summary>
+        /// Open a single module form using a singleton pattern
+        /// </summary>
+        /// <param name="parentContainer"></param>
+        /// <returns>ConfigScriptorForm instance</returns>
+        public static ConfigScriptorForm GetInstance(Form parentContainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new ConfigScriptorForm
+                {
+                    MdiParent = parentContainer,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Dock = DockStyle.Fill
+                };
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                {
+                    instance.WindowState = FormWindowState.Normal;
+                }
+                instance.BringToFront();
+            }
+            return instance;
+        }
         /// <summary>
         /// could the files be distributed to devices, is it needed?
         /// </summary>

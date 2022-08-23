@@ -204,7 +204,7 @@ namespace NWConfigScriptor
             this.updateScriptListToolStripMenuItem.Name = "updateScriptListToolStripMenuItem";
             this.updateScriptListToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
             this.updateScriptListToolStripMenuItem.Text = "Update command list";
-            this.updateScriptListToolStripMenuItem.Click += new System.EventHandler(this.updateCommandListToolStripMenuItem_Click);
+            this.updateScriptListToolStripMenuItem.Click += new System.EventHandler(this.UpdateCommandListToolStripMenuItem_Click);
             // 
             // LblInfo2
             // 
@@ -274,7 +274,7 @@ namespace NWConfigScriptor
             // BtnExit
             // 
             this.BtnExit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnExit.Location = new System.Drawing.Point(752, 601);
+            this.BtnExit.Location = new System.Drawing.Point(828, 598);
             this.BtnExit.Name = "BtnExit";
             this.BtnExit.Size = new System.Drawing.Size(124, 65);
             this.BtnExit.TabIndex = 13;
@@ -296,7 +296,7 @@ namespace NWConfigScriptor
             this.LblAbout.AutoSize = true;
             this.LblAbout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LblAbout.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.LblAbout.Location = new System.Drawing.Point(893, 642);
+            this.LblAbout.Location = new System.Drawing.Point(888, 23);
             this.LblAbout.Name = "LblAbout";
             this.LblAbout.Size = new System.Drawing.Size(54, 23);
             this.LblAbout.TabIndex = 15;
@@ -329,6 +329,7 @@ namespace NWConfigScriptor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(985, 675);
             this.Controls.Add(this.BtnDeleteFile);
