@@ -27,13 +27,73 @@
         </member>
         <member name="M:NWConfigScriptor.AddToGns3Form.#ctor">
             <summary>
+            Initialises Gns3 form and calls 'DisplayConfigScripts()' to display lists in checkbox lists on load.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.ProjectPath">
+            <summary>
+            Return local user profile path combined with Gns3 project path. 
+            Called in 'DisplayConfigScripts()' on load.
+            </summary>
+            <returns>User profile path</returns>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.DisplayConfigTextScripts">
+            <summary>
+            Display all files in the application 'ConfigScripts' folder and 
+            saved Gns3 projects to select and replace Gns3 device config file.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.DisplayProjects">
+            <summary>
             
             </summary>
         </member>
-        <member name="M:NWConfigScriptor.AddToGns3Form.DisplayConfigScripts">
+        <member name="M:NWConfigScriptor.AddToGns3Form.Btn_SelectAppPath_Click(System.Object,System.EventArgs)">
             <summary>
-            Display all files in the application 'ConfigScripts' folder to select and replace Gns3 device config file.
+            Select different app/project path than default Gns3 installed path
             </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.ClearAll">
+            <summary>
+            Clear all checklist boxes of items to be refilled with new list
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.Btn_OtherConfigFolder_Click(System.Object,System.EventArgs)">
+            <summary>
+            Select config scripts from another folder. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.Cklbx_Gns3Projects_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            Search and display all routers in Cklbx_ProjectDevices for selected project.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.Btn_Append_Click(System.Object,System.EventArgs)">
+            <summary>
+            Append text file to selected router start-up config file. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.Btn_ReplaceConfig_Click(System.Object,System.EventArgs)">
+            <summary>
+            Replace the selected routers' start-up config file with the text file
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.Btn_ExitGns3Form_Click(System.Object,System.EventArgs)">
+            <summary>
+            Close instance of Gns3form
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
         </member>
         <member name="M:NWConfigScriptor.AddToGns3Form.GetInstance(System.Windows.Forms.Form)">
             <summary>
@@ -215,6 +275,11 @@
              the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="F:NWConfigScriptor.Main.main">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:NWConfigScriptor.Main.#ctor">
             <summary>
             Main menu form for configscriptor
@@ -268,6 +333,61 @@
         <member name="M:NWConfigScriptor.Program.Main">
             <summary>
              The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:NWConfigScriptor.VmTftpTransfer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.DisplayTftpConfigFiles">
+            <summary>
+            Display all files in the application 'ConfigScripts' folder to select for Tftp transfer
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_GetFilePath_Click(System.Object,System.EventArgs)">
+            <summary>
+            Open dialog box to select config file path if default does not return config files.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_TestTftpCon_Click(System.Object,System.EventArgs)">
+            <summary>
+            Test Tftp connection to target device
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_SendTftp_Click(System.Object,System.EventArgs)">
+            <summary>
+            Send selected config file to target device via Tftp
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_OpenTftpd64_Click(System.Object,System.EventArgs)">
+            <summary>
+            Open TFTP64 application
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_ExitVmTftpTransfer_Click(System.Object,System.EventArgs)">
+            <summary>
+            Close instance of TftpTransfer form
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:NWConfigScriptor.VmTftpTransfer.instance">
+            <summary>
+            Instance using singleton pattern //////////////////////////////////////////////////////////////////////////////
             </summary>
         </member>
         <member name="M:NWConfigScriptor.VmTftpTransfer.GetInstance(System.Windows.Forms.Form)">

@@ -36,11 +36,13 @@ namespace NWConfigScriptor
 
         /// <summary>
         /// Return local user profile path combined with Gns3 project path. 
-        /// Set as default folder on start-up. 
+        /// Called in 'DisplayConfigScripts()' on load.
         /// </summary>
         /// <returns>User profile path</returns>
         private void ProjectPath()
         {
+            // MAY NEED TO INCLUDE OPTION FOR USER TO SELECT PATH INCASE...
+            // Also called by method DisplayConfigTextScripts() to display projects in this path
             var userPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             var cpath = $"{userPath}\\Gns3\\Projects\\";
             if (cpath != null)
@@ -65,6 +67,7 @@ namespace NWConfigScriptor
                 {
                     Cklbx_ScriptList.Items.Add(Path.GetFileName(file));
                 }
+                                
             }
             catch (Exception ex)
             {
@@ -179,11 +182,6 @@ namespace NWConfigScriptor
             // call replace method to convert text file to config file and replace 
         }
 
-        private void TextToConfig()
-        {
-
-
-        }
         /// <summary>
         /// Close instance of Gns3form
         /// </summary>

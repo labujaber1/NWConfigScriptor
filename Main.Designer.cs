@@ -36,6 +36,8 @@ namespace NWConfigScriptor
             this.Btn_VmTftpTrans = new System.Windows.Forms.Button();
             this.Btn_AddToGns3 = new System.Windows.Forms.Button();
             this.Btn_CreateScript = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +49,7 @@ namespace NWConfigScriptor
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1218, 94);
+            this.panel1.Size = new System.Drawing.Size(1274, 98);
             this.panel1.TabIndex = 0;
             // 
             // Lbl_TitleMain
@@ -68,9 +70,9 @@ namespace NWConfigScriptor
             this.panel2.Controls.Add(this.Btn_AddToGns3);
             this.panel2.Controls.Add(this.Btn_CreateScript);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 94);
+            this.panel2.Location = new System.Drawing.Point(0, 98);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(228, 680);
+            this.panel2.Size = new System.Drawing.Size(239, 718);
             this.panel2.TabIndex = 1;
             // 
             // Btn_Exit
@@ -87,7 +89,7 @@ namespace NWConfigScriptor
             // Btn_VmTftpTrans
             // 
             this.Btn_VmTftpTrans.BackColor = System.Drawing.Color.YellowGreen;
-            this.Btn_VmTftpTrans.Location = new System.Drawing.Point(40, 240);
+            this.Btn_VmTftpTrans.Location = new System.Drawing.Point(40, 299);
             this.Btn_VmTftpTrans.Name = "Btn_VmTftpTrans";
             this.Btn_VmTftpTrans.Size = new System.Drawing.Size(156, 77);
             this.Btn_VmTftpTrans.TabIndex = 2;
@@ -98,7 +100,7 @@ namespace NWConfigScriptor
             // Btn_AddToGns3
             // 
             this.Btn_AddToGns3.BackColor = System.Drawing.Color.YellowGreen;
-            this.Btn_AddToGns3.Location = new System.Drawing.Point(40, 133);
+            this.Btn_AddToGns3.Location = new System.Drawing.Point(40, 192);
             this.Btn_AddToGns3.Name = "Btn_AddToGns3";
             this.Btn_AddToGns3.Size = new System.Drawing.Size(156, 77);
             this.Btn_AddToGns3.TabIndex = 1;
@@ -109,7 +111,7 @@ namespace NWConfigScriptor
             // Btn_CreateScript
             // 
             this.Btn_CreateScript.BackColor = System.Drawing.Color.YellowGreen;
-            this.Btn_CreateScript.Location = new System.Drawing.Point(40, 28);
+            this.Btn_CreateScript.Location = new System.Drawing.Point(40, 87);
             this.Btn_CreateScript.Name = "Btn_CreateScript";
             this.Btn_CreateScript.Size = new System.Drawing.Size(156, 77);
             this.Btn_CreateScript.TabIndex = 0;
@@ -117,16 +119,39 @@ namespace NWConfigScriptor
             this.Btn_CreateScript.UseVisualStyleBackColor = false;
             this.Btn_CreateScript.Click += new System.EventHandler(this.Btn_CreateScript_Click);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Beige;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(1243, 98);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(31, 718);
+            this.panel3.TabIndex = 3;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Beige;
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(239, 782);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1004, 34);
+            this.panel4.TabIndex = 4;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1218, 774);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(1274, 816);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.HelpButton = true;
             this.IsMdiContainer = true;
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -144,5 +169,7 @@ namespace NWConfigScriptor
         private System.Windows.Forms.Button Btn_VmTftpTrans;
         private System.Windows.Forms.Button Btn_AddToGns3;
         private System.Windows.Forms.Button Btn_CreateScript;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
     }
 }

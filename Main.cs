@@ -19,8 +19,12 @@ using System.Windows.Forms;
 
 namespace NWConfigScriptor
 {
+    
     public partial class Main : Form
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private readonly Main main;
         /// <summary>
         /// Main menu form for configscriptor
