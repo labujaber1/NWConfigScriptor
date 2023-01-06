@@ -139,6 +139,18 @@ namespace NWConfigScriptor
         }
 
         /// <summary>
+        /// Convert selected text file to working config file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Btn_ConvertTxtToConfig_Click(object sender, EventArgs e)  // TO DO
+        {
+            //put the text file selected through a converter to construct config to replace existing startup-config
+
+        }
+
+
+        /// <summary>
         /// Search and display all routers in Cklbx_ProjectDevices for selected project.
         /// </summary>
         /// <param name="sender"></param>
@@ -166,7 +178,8 @@ namespace NWConfigScriptor
         private void Btn_Append_Click(object sender, EventArgs e)  // TO DO
         {
             // 
-            // call append method to add text to config file
+            // call append method to add text file contents to an existing config file
+
         }
         /// <summary>
         /// Replace the selected routers' start-up config file with the text file
@@ -184,6 +197,7 @@ namespace NWConfigScriptor
 
 
         }
+
         /// <summary>
         /// Close instance of Gns3form
         /// </summary>

@@ -33,7 +33,7 @@
         <member name="M:NWConfigScriptor.AddToGns3Form.ProjectPath">
             <summary>
             Return local user profile path combined with Gns3 project path. 
-            Called in 'DisplayConfigScripts()' on load.
+            Set as default folder on start-up. 
             </summary>
             <returns>User profile path</returns>
         </member>

@@ -45,6 +45,7 @@ namespace NWConfigScriptor
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Btn_SelectAppPath = new System.Windows.Forms.Button();
+            this.Btn_ConvertTxtToConfig = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +69,7 @@ namespace NWConfigScriptor
             this.Cklbx_ScriptList.FormattingEnabled = true;
             this.Cklbx_ScriptList.Location = new System.Drawing.Point(24, 154);
             this.Cklbx_ScriptList.Name = "Cklbx_ScriptList";
-            this.Cklbx_ScriptList.Size = new System.Drawing.Size(281, 340);
+            this.Cklbx_ScriptList.Size = new System.Drawing.Size(281, 228);
             this.Cklbx_ScriptList.TabIndex = 1;
             this.Cklbx_ScriptList.ThreeDCheckBoxes = true;
             // 
@@ -127,7 +128,7 @@ namespace NWConfigScriptor
             this.Cklbx_Gns3Projects.CheckOnClick = true;
             this.Cklbx_Gns3Projects.FormattingEnabled = true;
             this.Cklbx_Gns3Projects.HorizontalScrollbar = true;
-            this.Cklbx_Gns3Projects.Location = new System.Drawing.Point(338, 190);
+            this.Cklbx_Gns3Projects.Location = new System.Drawing.Point(490, 187);
             this.Cklbx_Gns3Projects.Name = "Cklbx_Gns3Projects";
             this.Cklbx_Gns3Projects.Size = new System.Drawing.Size(428, 88);
             this.Cklbx_Gns3Projects.TabIndex = 6;
@@ -138,7 +139,7 @@ namespace NWConfigScriptor
             // 
             this.Cklbx_ProjectDevices.CheckOnClick = true;
             this.Cklbx_ProjectDevices.FormattingEnabled = true;
-            this.Cklbx_ProjectDevices.Location = new System.Drawing.Point(338, 329);
+            this.Cklbx_ProjectDevices.Location = new System.Drawing.Point(490, 326);
             this.Cklbx_ProjectDevices.Name = "Cklbx_ProjectDevices";
             this.Cklbx_ProjectDevices.Size = new System.Drawing.Size(428, 228);
             this.Cklbx_ProjectDevices.TabIndex = 7;
@@ -154,29 +155,29 @@ namespace NWConfigScriptor
             // 
             // Btn_OtherConfigFolder
             // 
-            this.Btn_OtherConfigFolder.Location = new System.Drawing.Point(58, 509);
+            this.Btn_OtherConfigFolder.Location = new System.Drawing.Point(311, 154);
             this.Btn_OtherConfigFolder.Name = "Btn_OtherConfigFolder";
-            this.Btn_OtherConfigFolder.Size = new System.Drawing.Size(222, 34);
+            this.Btn_OtherConfigFolder.Size = new System.Drawing.Size(43, 36);
             this.Btn_OtherConfigFolder.TabIndex = 9;
-            this.Btn_OtherConfigFolder.Text = "Select other folder";
+            this.Btn_OtherConfigFolder.Text = " : ";
             this.Btn_OtherConfigFolder.UseVisualStyleBackColor = true;
             this.Btn_OtherConfigFolder.Click += new System.EventHandler(this.Btn_OtherConfigFolder_Click);
             // 
             // Btn_Append
             // 
-            this.Btn_Append.Location = new System.Drawing.Point(795, 339);
+            this.Btn_Append.Location = new System.Drawing.Point(24, 486);
             this.Btn_Append.Name = "Btn_Append";
-            this.Btn_Append.Size = new System.Drawing.Size(112, 97);
+            this.Btn_Append.Size = new System.Drawing.Size(281, 68);
             this.Btn_Append.TabIndex = 10;
-            this.Btn_Append.Text = "APPEND to start-up config";
+            this.Btn_Append.Text = "APPEND textf to start-up config file";
             this.Btn_Append.UseVisualStyleBackColor = true;
             this.Btn_Append.Click += new System.EventHandler(this.Btn_Append_Click);
             // 
             // Btn_ReplaceConfig
             // 
-            this.Btn_ReplaceConfig.Location = new System.Drawing.Point(795, 452);
+            this.Btn_ReplaceConfig.Location = new System.Drawing.Point(327, 411);
             this.Btn_ReplaceConfig.Name = "Btn_ReplaceConfig";
-            this.Btn_ReplaceConfig.Size = new System.Drawing.Size(112, 96);
+            this.Btn_ReplaceConfig.Size = new System.Drawing.Size(112, 143);
             this.Btn_ReplaceConfig.TabIndex = 11;
             this.Btn_ReplaceConfig.Text = "REPLACE start-up config file";
             this.Btn_ReplaceConfig.UseVisualStyleBackColor = true;
@@ -185,7 +186,7 @@ namespace NWConfigScriptor
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(338, 162);
+            this.label1.Location = new System.Drawing.Point(490, 159);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(391, 25);
             this.label1.TabIndex = 12;
@@ -194,7 +195,7 @@ namespace NWConfigScriptor
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(338, 301);
+            this.label2.Location = new System.Drawing.Point(490, 298);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(433, 25);
             this.label2.TabIndex = 13;
@@ -203,13 +204,23 @@ namespace NWConfigScriptor
             // Btn_SelectAppPath
             // 
             this.Btn_SelectAppPath.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Btn_SelectAppPath.Location = new System.Drawing.Point(924, 128);
+            this.Btn_SelectAppPath.Location = new System.Drawing.Point(924, 94);
             this.Btn_SelectAppPath.Name = "Btn_SelectAppPath";
-            this.Btn_SelectAppPath.Size = new System.Drawing.Size(38, 31);
+            this.Btn_SelectAppPath.Size = new System.Drawing.Size(38, 39);
             this.Btn_SelectAppPath.TabIndex = 14;
             this.Btn_SelectAppPath.Text = ":";
             this.Btn_SelectAppPath.UseVisualStyleBackColor = true;
             this.Btn_SelectAppPath.Click += new System.EventHandler(this.Btn_SelectAppPath_Click);
+            // 
+            // Btn_ConvertTxtToConfig
+            // 
+            this.Btn_ConvertTxtToConfig.Location = new System.Drawing.Point(24, 411);
+            this.Btn_ConvertTxtToConfig.Name = "Btn_ConvertTxtToConfig";
+            this.Btn_ConvertTxtToConfig.Size = new System.Drawing.Size(281, 69);
+            this.Btn_ConvertTxtToConfig.TabIndex = 15;
+            this.Btn_ConvertTxtToConfig.Text = "CONVERT textf to startup-configf";
+            this.Btn_ConvertTxtToConfig.UseVisualStyleBackColor = true;
+            this.Btn_ConvertTxtToConfig.Click += new System.EventHandler(this.Btn_ConvertTxtToConfig_Click);
             // 
             // AddToGns3Form
             // 
@@ -218,10 +229,11 @@ namespace NWConfigScriptor
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(985, 675);
+            this.Controls.Add(this.Btn_ConvertTxtToConfig);
+            this.Controls.Add(this.Btn_ReplaceConfig);
             this.Controls.Add(this.Btn_SelectAppPath);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.Btn_ReplaceConfig);
             this.Controls.Add(this.Btn_Append);
             this.Controls.Add(this.Btn_OtherConfigFolder);
             this.Controls.Add(this.Lbl_UserPath);
@@ -262,5 +274,6 @@ namespace NWConfigScriptor
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Btn_SelectAppPath;
+        private System.Windows.Forms.Button Btn_ConvertTxtToConfig;
     }
 }
