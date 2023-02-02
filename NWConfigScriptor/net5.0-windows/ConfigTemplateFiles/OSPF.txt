@@ -1,6 +1,6 @@
 ﻿config t
 router ospf ?1
-network ?192.168.16.0 0.0.0.255 area 0
+network ?192.168.16.0 0.0.0.255 (wildcard) area 0
 default-router ?192.168.1.1 255.255.255.0
 dns-server ?8.8.8.8
 domain-name ?example.com
@@ -9,7 +9,7 @@ lease 2
 router-id ?11.11.11.11
 end
 clear ip ospf process
-yes
+yes ?or y after clear
 Passive-interface ?fa0/5 for non ospf intfs
 
 router rip
@@ -32,3 +32,4 @@ show ip ospf int brief
 show ip route
 show ip route | begin gateway
 show ip protocols
+show ip protocols | include Router ID
