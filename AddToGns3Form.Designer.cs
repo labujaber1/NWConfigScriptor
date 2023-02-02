@@ -57,7 +57,7 @@ namespace NWConfigScriptor
             this.Btn_ExitGns3Form.Name = "Btn_ExitGns3Form";
             this.Btn_ExitGns3Form.Size = new System.Drawing.Size(135, 65);
             this.Btn_ExitGns3Form.TabIndex = 0;
-            this.Btn_ExitGns3Form.Text = "Exit";
+            this.Btn_ExitGns3Form.Text = "Close";
             this.Btn_ExitGns3Form.UseVisualStyleBackColor = false;
             this.Btn_ExitGns3Form.Click += new System.EventHandler(this.Btn_ExitGns3Form_Click);
             // 

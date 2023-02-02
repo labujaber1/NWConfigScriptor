@@ -59,7 +59,7 @@ namespace NWConfigScriptor
             this.LblInfo2 = new System.Windows.Forms.Label();
             this.LblInfo = new System.Windows.Forms.Label();
             this.TbShowCommands = new System.Windows.Forms.TextBox();
-            this.BtnAppendDisplay = new System.Windows.Forms.Button();
+            this.BtnGenConfigFile = new System.Windows.Forms.Button();
             this.BtnSaveFile = new System.Windows.Forms.Button();
             this.BtnClearDisplay = new System.Windows.Forms.Button();
             this.BtnExit = new System.Windows.Forms.Button();
@@ -67,6 +67,7 @@ namespace NWConfigScriptor
             this.LblAbout = new System.Windows.Forms.Label();
             this.BtnAddFile = new System.Windows.Forms.Button();
             this.BtnDeleteFile = new System.Windows.Forms.Button();
+            this.CmbxTextFiles = new System.Windows.Forms.ComboBox();
             this.ContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -212,10 +213,9 @@ namespace NWConfigScriptor
             this.LblInfo2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.LblInfo2.Location = new System.Drawing.Point(14, 521);
             this.LblInfo2.Name = "LblInfo2";
-            this.LblInfo2.Size = new System.Drawing.Size(424, 58);
+            this.LblInfo2.Size = new System.Drawing.Size(390, 30);
             this.LblInfo2.TabIndex = 7;
-            this.LblInfo2.Text = "Double click command to append to editor.\r\nInsert command into editor using butto" +
-    "n below.";
+            this.LblInfo2.Text = "Double click command to append to editor.";
             // 
             // LblInfo
             // 
@@ -238,21 +238,21 @@ namespace NWConfigScriptor
             this.TbShowCommands.Size = new System.Drawing.Size(402, 128);
             this.TbShowCommands.TabIndex = 9;
             // 
-            // BtnAppendDisplay
+            // BtnGenConfigFile
             // 
-            this.BtnAppendDisplay.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnAppendDisplay.Location = new System.Drawing.Point(14, 598);
-            this.BtnAppendDisplay.Name = "BtnAppendDisplay";
-            this.BtnAppendDisplay.Size = new System.Drawing.Size(124, 67);
-            this.BtnAppendDisplay.TabIndex = 10;
-            this.BtnAppendDisplay.Text = "Insert in editor";
-            this.BtnAppendDisplay.UseVisualStyleBackColor = true;
-            this.BtnAppendDisplay.Click += new System.EventHandler(this.BtnAppendDisplay_Click);
+            this.BtnGenConfigFile.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnGenConfigFile.Location = new System.Drawing.Point(14, 627);
+            this.BtnGenConfigFile.Name = "BtnGenConfigFile";
+            this.BtnGenConfigFile.Size = new System.Drawing.Size(390, 38);
+            this.BtnGenConfigFile.TabIndex = 10;
+            this.BtnGenConfigFile.Text = "Generate .config file ";
+            this.BtnGenConfigFile.UseVisualStyleBackColor = true;
+            this.BtnGenConfigFile.Click += new System.EventHandler(this.BtnGenConfigFile_Click);
             // 
             // BtnSaveFile
             // 
             this.BtnSaveFile.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnSaveFile.Location = new System.Drawing.Point(158, 598);
+            this.BtnSaveFile.Location = new System.Drawing.Point(428, 602);
             this.BtnSaveFile.Name = "BtnSaveFile";
             this.BtnSaveFile.Size = new System.Drawing.Size(124, 65);
             this.BtnSaveFile.TabIndex = 11;
@@ -263,9 +263,9 @@ namespace NWConfigScriptor
             // BtnClearDisplay
             // 
             this.BtnClearDisplay.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnClearDisplay.Location = new System.Drawing.Point(299, 598);
+            this.BtnClearDisplay.Location = new System.Drawing.Point(428, 526);
             this.BtnClearDisplay.Name = "BtnClearDisplay";
-            this.BtnClearDisplay.Size = new System.Drawing.Size(124, 67);
+            this.BtnClearDisplay.Size = new System.Drawing.Size(124, 68);
             this.BtnClearDisplay.TabIndex = 12;
             this.BtnClearDisplay.Text = "Clear editor";
             this.BtnClearDisplay.UseVisualStyleBackColor = true;
@@ -274,11 +274,11 @@ namespace NWConfigScriptor
             // BtnExit
             // 
             this.BtnExit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnExit.Location = new System.Drawing.Point(828, 598);
+            this.BtnExit.Location = new System.Drawing.Point(828, 600);
             this.BtnExit.Name = "BtnExit";
-            this.BtnExit.Size = new System.Drawing.Size(124, 65);
+            this.BtnExit.Size = new System.Drawing.Size(124, 68);
             this.BtnExit.TabIndex = 13;
-            this.BtnExit.Text = "Exit";
+            this.BtnExit.Text = "Close";
             this.BtnExit.UseVisualStyleBackColor = true;
             this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
@@ -306,7 +306,7 @@ namespace NWConfigScriptor
             // BtnAddFile
             // 
             this.BtnAddFile.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnAddFile.Location = new System.Drawing.Point(443, 598);
+            this.BtnAddFile.Location = new System.Drawing.Point(571, 600);
             this.BtnAddFile.Name = "BtnAddFile";
             this.BtnAddFile.Size = new System.Drawing.Size(112, 68);
             this.BtnAddFile.TabIndex = 16;
@@ -317,13 +317,23 @@ namespace NWConfigScriptor
             // BtnDeleteFile
             // 
             this.BtnDeleteFile.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnDeleteFile.Location = new System.Drawing.Point(571, 598);
+            this.BtnDeleteFile.Location = new System.Drawing.Point(689, 600);
             this.BtnDeleteFile.Name = "BtnDeleteFile";
             this.BtnDeleteFile.Size = new System.Drawing.Size(112, 69);
             this.BtnDeleteFile.TabIndex = 17;
             this.BtnDeleteFile.Text = "Delete cmmd file";
             this.BtnDeleteFile.UseVisualStyleBackColor = true;
             this.BtnDeleteFile.Click += new System.EventHandler(this.BtnDeleteFile_Click);
+            // 
+            // CmbxTextFiles
+            // 
+            this.CmbxTextFiles.BackColor = System.Drawing.SystemColors.Control;
+            this.CmbxTextFiles.FormattingEnabled = true;
+            this.CmbxTextFiles.Location = new System.Drawing.Point(14, 568);
+            this.CmbxTextFiles.Name = "CmbxTextFiles";
+            this.CmbxTextFiles.Size = new System.Drawing.Size(390, 36);
+            this.CmbxTextFiles.TabIndex = 18;
+            this.CmbxTextFiles.Text = "- Select script text file - ";
             // 
             // ConfigScriptorForm
             // 
@@ -332,6 +342,7 @@ namespace NWConfigScriptor
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(985, 675);
+            this.Controls.Add(this.CmbxTextFiles);
             this.Controls.Add(this.BtnDeleteFile);
             this.Controls.Add(this.BtnAddFile);
             this.Controls.Add(this.LblAbout);
@@ -339,7 +350,7 @@ namespace NWConfigScriptor
             this.Controls.Add(this.BtnExit);
             this.Controls.Add(this.BtnClearDisplay);
             this.Controls.Add(this.BtnSaveFile);
-            this.Controls.Add(this.BtnAppendDisplay);
+            this.Controls.Add(this.BtnGenConfigFile);
             this.Controls.Add(this.TbShowCommands);
             this.Controls.Add(this.LblInfo);
             this.Controls.Add(this.LblInfo2);
@@ -377,7 +388,7 @@ namespace NWConfigScriptor
         private System.Windows.Forms.Label LblInfo2;
         private System.Windows.Forms.Label LblInfo;
         private System.Windows.Forms.TextBox TbShowCommands;
-        private System.Windows.Forms.Button BtnAppendDisplay;
+        private System.Windows.Forms.Button BtnGenConfigFile;
         private System.Windows.Forms.Button BtnSaveFile;
         private System.Windows.Forms.Button BtnClearDisplay;
         private System.Windows.Forms.Button BtnExit;
@@ -389,6 +400,7 @@ namespace NWConfigScriptor
         private System.Windows.Forms.Button BtnAddFile;
         private System.Windows.Forms.ToolStripMenuItem updateScriptListToolStripMenuItem;
         private System.Windows.Forms.Button BtnDeleteFile;
+        private System.Windows.Forms.ComboBox CmbxTextFiles;
     }
 }
 

@@ -1,16 +1,17 @@
-﻿config t
+﻿enable
+config t
 hostname ?R1
 no ip domain-name 
 ip domain-name ?example.com
 security passwords min-length ?10
-enable secret ?password
+enable secret ?password10
 line console ?0
 password ?otherpswd
 exec-timeout ?75
 login 
 logging synchronous 
 line vty ?0 15
-service password encryprion 
+service password encryption 
 banner MOTD # ?Unauthorized access is strictly prohibited. #
 
 exit 

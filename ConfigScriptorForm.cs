@@ -25,8 +25,8 @@ namespace NWConfigScriptor
             InitializeComponent();
             SearchAddTextFiles();
         }
-        private readonly string FilePath = Path.Combine(Application.StartupPath + @"ConfigTemplateFiles\");
-        
+        private readonly string FilePath_template = Path.Combine(Application.StartupPath + @"ConfigTemplateFiles\");
+        private readonly string FilePath_script = Path.Combine(Application.StartupPath + @"ConfigTextFiles\");
         /// <summary>
         /// search directory for text files
         /// read into combo box cmbxCmdScriptList include .txt extension
@@ -41,10 +41,15 @@ namespace NWConfigScriptor
             string fileName = "*.txt";
             try
             {
-                string[] fi = Directory.GetFiles(FilePath, fileName);
-                foreach (var file in fi)
+                string[] fit = Directory.GetFiles(FilePath_template, fileName);
+                foreach (var file in fit)
                 {
                     CmbxCmdScriptList.Items.Add(Path.GetFileName(file));
+                }
+                string[] fis = Directory.GetFiles(FilePath_script, fileName);
+                foreach (var file in fis)
+                {
+                    CmbxTextFiles.Items.Add(Path.GetFileName(file));
                 }
             }
             catch (Exception ex)
@@ -76,7 +81,7 @@ namespace NWConfigScriptor
         private void ShowConfigScript(string fileName)
         {
             //string filePath = Path.Combine(Application.StartupPath + @"ConfigTemplateFiles\", fileName);
-            string filePath1 = Path.Combine(FilePath, fileName);
+            string filePath1 = Path.Combine(FilePath_template, fileName);
             if (File.Exists(filePath1))
             {
                 LbxConfigScript.ClearSelected();
@@ -198,7 +203,7 @@ namespace NWConfigScriptor
             string sellectedFilePath = sf.FileName;
             string sellectedFileName = Path.GetFileName(sellectedFilePath);
             //string newFilePath = Path.Combine(Application.StartupPath+ @"ConfigTemplateFiles\", sellectedFileName);
-            string newFilePath = Path.Combine(FilePath, sellectedFileName);
+            string newFilePath = Path.Combine(FilePath_template, sellectedFileName);
             try
             {
                 if (sf.FileName != "" && (sf.FileName.EndsWith(".txt")))
@@ -224,7 +229,7 @@ namespace NWConfigScriptor
         {
             OpenFileDialog df = new()
             {
-                InitialDirectory = FilePath,
+                InitialDirectory = FilePath_template,
                 Title = "Delete a file",
                 Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*",
                 FilterIndex = 1,
@@ -252,25 +257,23 @@ namespace NWConfigScriptor
             }
         }
 
+        // ########## BUTTONS ######### //
+
         /// <summary>
-        /// insert a command in the editor between existing commands at the cursor with no newline
+        /// Call python program to generate config file from the commands in the text file.
         /// </summary>
-        private void BtnAppendDisplay_Click(object sender, EventArgs e)
+        private void BtnGenConfigFile_Click(object sender, EventArgs e)
         {
-            if (LbxConfigScript.Items.Count > 0)
+            if(CmbxTextFiles.SelectedItem != null)
             {
-                string command = LbxConfigScript.SelectedItem.ToString();
-                if (command.Contains("?"))
-                {
-                    int icomm = command.IndexOf("?");
-                    command = command.Remove(icomm);
-                    RtbxScript.SelectedText = command;
-                }
-                else
-                {
-                    RtbxScript.SelectedText = command;
-                }
+                string file = CmbxTextFiles.SelectedItem.ToString();
+                string filePath1 = Path.Combine(FilePath_script, file);
+                // call python 
+                // oh shit need running config file first may not keep this in this form may put in tftp form.
+
+                MessageBox.Show("Not working yet");
             }
+                       
             else 
                 return;
         }

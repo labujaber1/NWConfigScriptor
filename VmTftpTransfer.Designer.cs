@@ -60,7 +60,7 @@ namespace NWConfigScriptor
             this.Btn_ExitVmTftpTransfer.Name = "Btn_ExitVmTftpTransfer";
             this.Btn_ExitVmTftpTransfer.Size = new System.Drawing.Size(137, 74);
             this.Btn_ExitVmTftpTransfer.TabIndex = 0;
-            this.Btn_ExitVmTftpTransfer.Text = "Exit";
+            this.Btn_ExitVmTftpTransfer.Text = "Close";
             this.Btn_ExitVmTftpTransfer.UseVisualStyleBackColor = false;
             this.Btn_ExitVmTftpTransfer.Click += new System.EventHandler(this.Btn_ExitVmTftpTransfer_Click);
             // 

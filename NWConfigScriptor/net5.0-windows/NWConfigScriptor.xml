@@ -67,6 +67,13 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.Btn_ConvertTxtToConfig_Click(System.Object,System.EventArgs)">
+            <summary>
+            Convert selected text file to working config file
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="M:NWConfigScriptor.AddToGns3Form.Cklbx_Gns3Projects_SelectedIndexChanged(System.Object,System.EventArgs)">
             <summary>
             Search and display all routers in Cklbx_ProjectDevices for selected project.
@@ -186,7 +193,7 @@
             Open file browser and remove file from the application ConfigTemplateFiles folder
             </summary>
         </member>
-        <member name="M:NWConfigScriptor.ConfigScriptorForm.BtnAppendDisplay_Click(System.Object,System.EventArgs)">
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.BtnGenConfigFile_Click(System.Object,System.EventArgs)">
             <summary>
             insert a command in the editor between existing commands at the cursor with no newline
             </summary>
