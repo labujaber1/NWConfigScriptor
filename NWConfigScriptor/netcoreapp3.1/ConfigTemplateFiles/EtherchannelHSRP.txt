@@ -1,0 +1,51 @@
+? make sure devices configured with
+line console 0
+logging synchronous
+line vty 0 15
+logging synchronous
+? to prevent messages popping up and interfere with command entry
+
+
+conf t
+? PaGP
+int range? r0/1-4
+channel-group 1 mode? desirable and auto for PaGP each connecting ends
+no shut
+
+? trunkports on each dev
+int port-channel 1
+switchport mode trunk
+switchport trunk native vlan? 99 conf to management first
+
+? LACP
+int range? f0/1-4
+switchport mode trunk
+switchport trunk native vlan? 99 conf to management first
+channel-group 2 mode? active and passive each connecting device
+no shut
+?channel-group number different for each tunnel configuring
+
+switchport mode encapsulation dot1q? vlan 99 
+? for older devices if error shows using above
+
+? HSRP conf rip2 first found in OSPF command file
+int g0/1
+standby version 2
+standby 1 ip? 192.168.1.254 virtual address
+standby 1 priority 150? set for main active dev no need on others
+standby 1 preempt? set for main dev no need on others
+
+ping? ip add to check
+
+wr
+copy running-config startup-config
+exit
+end
+
+show run int ?f0/1
+show int? f0/1 switchport
+show etherchannel summary
+show int trunk
+show spanning-tree
+show standby
+show standby brief

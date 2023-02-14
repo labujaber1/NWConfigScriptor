@@ -127,7 +127,7 @@ namespace NWConfigScriptor
             {
                 var opt = MessageBox.Show("Do you need to run as administrator to change settings?", "Open Tftpd64", MessageBoxButtons.YesNoCancel);
                 if (opt == DialogResult.Cancel) { return; }
-                Process pr = new();
+                Process pr = new Process();
                 pr.StartInfo.FileName = Application.StartupPath + @"tftpd64.exe";
                 if (opt == DialogResult.Yes)
                 {

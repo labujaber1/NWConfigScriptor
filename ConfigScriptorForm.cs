@@ -121,7 +121,7 @@ namespace NWConfigScriptor
         /// <exception cref="FileFormatException"></exception>
         private void SaveToTextFile()
         {
-            SaveFileDialog savef = new()
+            SaveFileDialog savef = new SaveFileDialog()
             {
                 InitialDirectory = @"C:\Documents\",
                 Title = "Save to file",
@@ -133,7 +133,7 @@ namespace NWConfigScriptor
             try
             {
                 savef.ShowDialog();
-                FileInfo fi = new(savef.FileName);
+                FileInfo fi = new FileInfo(savef.FileName);
                 string ext = fi.Extension;
                 if(savef.FileName != "" && ext == ".txt")
                 {
@@ -154,7 +154,7 @@ namespace NWConfigScriptor
         /// <exception cref="FileFormatException"></exception>
         private void LoadTextFile()
         {
-            OpenFileDialog openf = new()
+            OpenFileDialog openf = new OpenFileDialog()
             {
                 InitialDirectory = @"C:\Documents\",
                 Title = "Load file",
@@ -187,7 +187,7 @@ namespace NWConfigScriptor
         /// </summary>
         private void AddTextFile()
         {
-            OpenFileDialog sf = new()
+            OpenFileDialog sf = new OpenFileDialog()
             {
                 InitialDirectory = @"C:\Documents\",
                 Title = "Add a new file",
@@ -224,7 +224,7 @@ namespace NWConfigScriptor
         /// </summary>
         private void DeleteFile()
         {
-            OpenFileDialog df = new()
+            OpenFileDialog df = new OpenFileDialog()
             {
                 InitialDirectory = FilePath_template,
                 Title = "Delete a file",
@@ -381,7 +381,7 @@ namespace NWConfigScriptor
         /// </summary>
         private void AppendToFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openAppend = new();
+            OpenFileDialog openAppend = new OpenFileDialog();
             openAppend.Title = "Appending text to file";
             openAppend.ShowDialog();
             string path = openAppend.FileName;
@@ -417,7 +417,7 @@ namespace NWConfigScriptor
         /// </summary>
         private void LblAbout_Click(object sender, EventArgs e)
         {
-            AboutBox1 about = new();
+            AboutBox1 about = new AboutBox1();
             about.ShowDialog();
         }
 

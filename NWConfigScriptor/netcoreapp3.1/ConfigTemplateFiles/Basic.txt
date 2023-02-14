@@ -1,0 +1,25 @@
+﻿enable
+config t
+hostname ?R1
+no ip domain-name 
+ip domain-name ?example.com
+security passwords min-length ?10
+enable secret ?password10
+line console ?0
+password ?otherpswd
+exec-timeout ?75
+login 
+logging synchronous 
+line vty ?0 15
+service password encryption 
+banner MOTD # ?Unauthorized access is strictly prohibited. #
+
+exit 
+end 
+copy running-config startup-config
+wr
+
+show ip route
+show ip int brief
+show ip int ?fa0/1
+show running-config

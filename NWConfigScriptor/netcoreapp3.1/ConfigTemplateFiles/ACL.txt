@@ -1,0 +1,30 @@
+﻿config t
+access-list 10 remark ?Allow traffic R1
+access-list 10 permit ?192.168.0.0 0.0.31.255
+access-list 10 permit host ?192.168.0.1
+access-list 10 deny ?192.168.0.0
+access-list 10 deny any
+access-list end
+
+Ip access-list standard ?SOME-POLICY or 10
+remark ?ACL Policy for Something-in
+permit ?192.168.0.10 0.0.31.255(wildcard)
+permit host ?192.168.0.5
+deny ?2.2.2.2 0.0.0.0
+40 permit ?192.168.10.0 0.0.0.255(add to list)
+deny any
+end
+
+interface ?fa0/1
+ip access-group ?10 out
+ip access-group ?SOME-POLICY in
+
+exit
+end
+copy running-config startup-config
+wr
+
+show access-lists
+show ip access-lists
+show access-list ?10
+show ip int ?fa0/1

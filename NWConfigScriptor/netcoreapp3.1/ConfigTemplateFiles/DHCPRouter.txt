@@ -1,0 +1,23 @@
+﻿ip dhcp excluded-address ?192.168.1.0 192.168.1.9(range)
+ip dhcp pool ?name
+network ?192.168.1.2 255.255.255.0
+default-router ?192.168.2.1
+dns-server ?8.8.8.8
+domain-name ?example.com
+interface ?fa0/1
+ip address dhcp
+no shutdown
+interface ?fa0/2
+ip helper-address ?192.168.1.1(dhcp router or server)
+no service dhcp
+
+exit
+end
+copy running-config startup-config
+wr
+
+show ip dhcp binding
+show ip dhcp server statistics
+show ip dhcp pool
+show run | section dhcp
+show ip dhcp snooping

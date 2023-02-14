@@ -56,7 +56,7 @@ namespace NWConfigScriptor
         /// </summary>
         private void DisplayConfigTextScripts()
         {
-            var folderPath = Path.Combine(Application.StartupPath + @"\\ConfigScripts");
+            var folderPath = Path.Combine(Application.StartupPath + @"ConfigScripts");
             string fileName = "*.*";
             try
             {

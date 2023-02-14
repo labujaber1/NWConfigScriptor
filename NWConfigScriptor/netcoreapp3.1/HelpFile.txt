@@ -1,0 +1,29 @@
+﻿Directions:
+1. Click command script in combo box.
+2. Double click command in command display
+    to append to the editor.
+3. The commands with a "?" indicates further
+    user input with an example shown. 
+4. To insert between commands in the editor,
+    click command once, make a line space in 
+    the editor, click insert button, command 
+    will insert at the cursor.
+5. Copy script in editor to the clipboard
+    by right click in the editor or highlight 
+    text and ctl+c. Paste in device CLI.
+6. Can only save to a .txt file, use right 
+    click in the editor or save button.
+7. Can load a file's text into the editor to 
+    append, amend or just view by right 
+    clicking in the editor and load file. 
+8. If appending/ammending a loaded file then
+    save to file, select file and overwrite.
+9. Can append commands to an existing file 
+    without loading by right click in the 
+    editor and selecting append to file. Will
+    append all text in editor.
+10. Add a new command text file to the script
+    list and added to the configTextFiles folder
+    in the project. The file can be created in
+    the internal editor and saved to a local 
+    folder or by using notepad. 

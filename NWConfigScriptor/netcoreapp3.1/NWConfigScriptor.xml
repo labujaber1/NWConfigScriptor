@@ -1,0 +1,425 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NWConfigScriptor</name>
+    </assembly>
+    <members>
+        <member name="F:NWConfigScriptor.AboutBox1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.AboutBox1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.AboutBox1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:NWConfigScriptor.AddToGns3Form">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.#ctor">
+            <summary>
+            Initialises Gns3 form and calls 'DisplayConfigScripts()' to display lists in checkbox lists on load.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.ProjectPath">
+            <summary>
+            Return local user profile path combined with Gns3 project path. 
+            Set as default folder on start-up. 
+            </summary>
+            <returns>User profile path</returns>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.DisplayConfigTextScripts">
+            <summary>
+            Display all files in the application 'ConfigScripts' folder and 
+            saved Gns3 projects to select and replace Gns3 device config file.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.DisplayProjects">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.Btn_SelectAppPath_Click(System.Object,System.EventArgs)">
+            <summary>
+            Select different app/project path than default Gns3 installed path
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.ClearAll">
+            <summary>
+            Clear all checklist boxes of items to be refilled with new list
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.Btn_OtherConfigFolder_Click(System.Object,System.EventArgs)">
+            <summary>
+            Select config scripts from another folder. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.Btn_ConvertTxtToConfig_Click(System.Object,System.EventArgs)">
+            <summary>
+            Convert selected text file to working config file
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.Cklbx_Gns3Projects_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            Search and display all routers in Cklbx_ProjectDevices for selected project.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.Btn_Append_Click(System.Object,System.EventArgs)">
+            <summary>
+            Append text file to selected router start-up config file. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.Btn_ReplaceConfig_Click(System.Object,System.EventArgs)">
+            <summary>
+            Replace the selected routers' start-up config file with the text file
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.Btn_ExitGns3Form_Click(System.Object,System.EventArgs)">
+            <summary>
+            Close instance of Gns3form
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.GetInstance(System.Windows.Forms.Form)">
+            <summary>
+            Open a single module form using a singleton pattern
+            </summary>
+            <param name="parentContainer"></param>
+            <returns>AddToGns3Form instance</returns>
+        </member>
+        <member name="F:NWConfigScriptor.AddToGns3Form.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:NWConfigScriptor.AddToGns3Form.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:NWConfigScriptor.ConfigScriptorForm">
+            <summary>
+            ConfigScriptorForm
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.#ctor">
+            <summary>
+            Initialise ConfigScriptor form and search for text files to display in combo box on startup
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.SearchAddTextFiles">
+            <summary>
+            search directory for text files
+            read into combo box cmbxCmdScriptList include .txt extension
+            </summary>
+            <returns>returns, in a combo box, a list of all .txt files in debug\ConfigTemplateFiles folder, 
+            directory/file not found exception</returns>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException"></exception>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.CmbxCmdScriptList_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            read selected script into command display
+            </summary>
+            <remarks>Used in "searchAddTextFiles" method</remarks>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.ShowConfigScript(System.String)">
+            <summary>
+            display command file names in check list box, clear previous selection
+            called by cmbxCmdScriptList_SelectedIndexChanged switch based method
+            </summary>
+            <param name="fileName">created in "cmbxCmdScriptList_SelectedIndexChanged" method from user click event 
+            and passed in to search for</param>
+            <returns>read all lines to a list box from a text file passed in if found, 
+            file not exist message if not found.</returns>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.LbxConfigScript_DoubleClick(System.Object,System.EventArgs)">
+            <summary>
+            copies commands to the editor with newline
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.SaveToTextFile">
+            <summary>
+            save editor contents to a text file in location of users choice.
+            </summary>
+            <returns>exception error, if correct then file saved message</returns>
+            <exception cref="T:System.UnauthorizedAccessException"></exception>
+            <exception cref="T:System.IO.FileFormatException"></exception>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.LoadTextFile">
+            <summary>
+            load file contents of .txt to the editor to append, adjust, or view
+            </summary>
+            <returns>exception error or file loaded successfully message</returns>
+            <exception cref="T:System.IO.FileFormatException"></exception>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.AddTextFile">
+            <summary>
+            Add a command text file created by a user to the configtext folder in the application for continued use. 
+            Becomes available to select from command script list.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.DeleteFile">
+            <summary>
+            Open file browser and remove file from the application ConfigTemplateFiles folder
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.BtnSaveFile_Click(System.Object,System.EventArgs)">
+            <summary>
+            save editor contents to a user named file and location for future reference.
+            </summary>
+            <returns>saved to user selected location and file name,
+            file not saved if user cancels, directory access denied exception, file compilation error</returns>
+            <exception cref="T:System.UnauthorizedAccessException"></exception>
+            <exception cref="T:System.IO.FileFormatException"></exception>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.BtnClearDisplay_Click(System.Object,System.EventArgs)">
+            <summary>
+            clear all the displayed text in the editor to start again
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.BtnAddFile_Click(System.Object,System.EventArgs)">
+            <summary>
+            Add command text file to the application and include in the script list 
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.BtnDeleteFile_Click(System.Object,System.EventArgs)">
+            <summary>
+            Delete command file from ConfigTemplateFiles folder and update command dropdown list
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.BtnExit_Click(System.Object,System.EventArgs)">
+            <summary>
+             exit program
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.SelectAllToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            select and highlight all text in editor ready to copy to the clipboard.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.SelectAllCopyToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             select and highlight all text in editor and copy to clipboard ready to paste to a CLI or file.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.CopyToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            copy selected text to the clipboard ready to paste to a CLI or file.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.HelpToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             open help.txt with directions on program usage.
+            </summary>
+            <returns>Help file auto generated displayed in browser if found, file not found if not found </returns>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.AppendToFileToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Appending new commands to a file instead of opening and adding
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.LblAbout_Click(System.Object,System.EventArgs)">
+            <summary>
+            Display an about form with project details and a brief description
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.GetInstance(System.Windows.Forms.Form)">
+            <summary>
+            Open a single module form using a singleton pattern
+            </summary>
+            <param name="parentContainer"></param>
+            <returns>ConfigScriptorForm instance</returns>
+        </member>
+        <member name="F:NWConfigScriptor.ConfigScriptorForm.components">
+            <summary>
+             Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.Dispose(System.Boolean)">
+            <summary>
+             Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.InitializeComponent">
+            <summary>
+             Required method for Designer support - do not modify
+             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:NWConfigScriptor.Main">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:NWConfigScriptor.Main.main">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.Main.#ctor">
+            <summary>
+            Main menu form for configscriptor
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.Main.Btn_CreateScript_Click(System.Object,System.EventArgs)">
+            <summary>
+            Open configscriptorform to create scripts and copy/paste to emulators such as Packet Tracer.  
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.Main.Btn_AddToGns3_Click(System.Object,System.EventArgs)">
+            <summary>
+            Open form to replace network device config scripts within Gns3 simulator.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.Main.Btn_VmTftpTrans_Click(System.Object,System.EventArgs)">
+            <summary>
+            Open form to transfer scripts via Tftp within a VM enviroment such as Virtual box.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.Main.Btn_Exit_Click(System.Object,System.EventArgs)">
+            <summary>
+            Close application
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:NWConfigScriptor.Main.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.Main.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:NWConfigScriptor.Main.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.Program.Main">
+            <summary>
+             The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:NWConfigScriptor.VmTftpTransfer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.DisplayTftpConfigFiles">
+            <summary>
+            Display all files in the application 'ConfigScripts' folder to select for Tftp transfer
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_GetFilePath_Click(System.Object,System.EventArgs)">
+            <summary>
+            Open dialog box to select config file path if default does not return config files.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_TestTftpCon_Click(System.Object,System.EventArgs)">
+            <summary>
+            Test Tftp connection to target device
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_SendTftp_Click(System.Object,System.EventArgs)">
+            <summary>
+            Send selected config file to target device via Tftp
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_OpenTftpd64_Click(System.Object,System.EventArgs)">
+            <summary>
+            Open TFTP64 application
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_ExitVmTftpTransfer_Click(System.Object,System.EventArgs)">
+            <summary>
+            Close instance of TftpTransfer form
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:NWConfigScriptor.VmTftpTransfer.instance">
+            <summary>
+            Instance using singleton pattern //////////////////////////////////////////////////////////////////////////////
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.GetInstance(System.Windows.Forms.Form)">
+            <summary>
+            Open a single module form using a singleton pattern
+            </summary>
+            <param name="parentContainer"></param>
+            <returns>VmTftpTransfer instance</returns>
+        </member>
+        <member name="F:NWConfigScriptor.VmTftpTransfer.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>
