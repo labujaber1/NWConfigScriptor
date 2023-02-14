@@ -193,11 +193,6 @@
             Open file browser and remove file from the application ConfigTemplateFiles folder
             </summary>
         </member>
-        <member name="M:NWConfigScriptor.ConfigScriptorForm.BtnGenConfigFile_Click(System.Object,System.EventArgs)">
-            <summary>
-            Call python program to generate config file from the commands in the text file.
-            </summary>
-        </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.BtnSaveFile_Click(System.Object,System.EventArgs)">
             <summary>
             save editor contents to a user named file and location for future reference.
@@ -280,6 +275,11 @@
             <summary>
              Required method for Designer support - do not modify
              the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:NWConfigScriptor.Main">
+            <summary>
+            
             </summary>
         </member>
         <member name="F:NWConfigScriptor.Main.main">

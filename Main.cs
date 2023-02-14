@@ -19,7 +19,9 @@ using System.Windows.Forms;
 
 namespace NWConfigScriptor
 {
-    
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class Main : Form
     {
         /// <summary>

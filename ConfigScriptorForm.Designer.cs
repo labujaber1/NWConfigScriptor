@@ -117,7 +117,7 @@ namespace NWConfigScriptor
             // 
             this.LblScriptEditor.AutoSize = true;
             this.LblScriptEditor.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LblScriptEditor.Location = new System.Drawing.Point(499, 9);
+            this.LblScriptEditor.Location = new System.Drawing.Point(472, 12);
             this.LblScriptEditor.Name = "LblScriptEditor";
             this.LblScriptEditor.Size = new System.Drawing.Size(112, 23);
             this.LblScriptEditor.TabIndex = 4;
@@ -250,7 +250,7 @@ namespace NWConfigScriptor
             // BtnClearDisplay
             // 
             this.BtnClearDisplay.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnClearDisplay.Location = new System.Drawing.Point(666, 6);
+            this.BtnClearDisplay.Location = new System.Drawing.Point(600, 6);
             this.BtnClearDisplay.Name = "BtnClearDisplay";
             this.BtnClearDisplay.Size = new System.Drawing.Size(110, 35);
             this.BtnClearDisplay.TabIndex = 12;
@@ -283,7 +283,7 @@ namespace NWConfigScriptor
             this.LblAbout.AutoSize = true;
             this.LblAbout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LblAbout.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.LblAbout.Location = new System.Drawing.Point(888, 23);
+            this.LblAbout.Location = new System.Drawing.Point(727, 6);
             this.LblAbout.Name = "LblAbout";
             this.LblAbout.Size = new System.Drawing.Size(49, 21);
             this.LblAbout.TabIndex = 15;

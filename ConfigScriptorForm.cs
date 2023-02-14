@@ -47,10 +47,7 @@ namespace NWConfigScriptor
                     CmbxCmdScriptList.Items.Add(Path.GetFileName(file));
                 }
                 string[] fis = Directory.GetFiles(FilePath_script, fileName);
-                foreach (var file in fis)
-                {
-                    CmbxTextFiles.Items.Add(Path.GetFileName(file));
-                }
+                
             }
             catch (Exception ex)
             {
@@ -259,24 +256,7 @@ namespace NWConfigScriptor
 
         // ########## BUTTONS ######### //
 
-        /// <summary>
-        /// Call python program to generate config file from the commands in the text file.
-        /// </summary>
-        private void BtnGenConfigFile_Click(object sender, EventArgs e)
-        {
-            if(CmbxTextFiles.SelectedItem != null)
-            {
-                string file = CmbxTextFiles.SelectedItem.ToString();
-                string filePath1 = Path.Combine(FilePath_script, file);
-                // call python 
-                // oh shit need running config file first may not keep this in this form may put in tftp form.
-
-                MessageBox.Show("Not working yet");
-            }
-                       
-            else 
-                return;
-        }
+        
 
         /// <summary>
         /// save editor contents to a user named file and location for future reference.
