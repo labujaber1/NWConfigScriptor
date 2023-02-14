@@ -5,12 +5,19 @@ default-router ?192.168.1.1 255.255.255.0
 dns-server ?8.8.8.8
 domain-name ?example.com
 lease 2
+default-information originate
 
 router-id ?11.11.11.11
 end
 clear ip ospf process
 yes ?or y after clear
 Passive-interface ?fa0/5 for non ospf intfs
+Passive-interface ?f0/1 (single) or default (all)
+int? s0/0/1
+bandwidth? 128 on int
+auto-cost reference-bandwidth? 10000 on int
+ip ospf cost? 1565 on int
+
 
 router rip
 version 2
