@@ -449,7 +449,24 @@ namespace NWConfigScriptor
             return instance;
         }
 
-        
+        private void Btn_OpenPutty_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process pr = new Process();
+                String filepath = Application.StartupPath+ @"putty_standalone.exe";
+                pr.StartInfo.FileName = Application.StartupPath + @"putty_standalone.exe";
+                Debug.WriteLine("putty filepath = " + filepath);
+                pr.Start();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error opening putty", ex.Message);
+                MessageBox.Show("Error opening putty --> " + ex.Message, "Opening file");
+            }
+        }
+
+
         //private void updownTFTP()
         //{
         //    WebClient client = new WebClient();

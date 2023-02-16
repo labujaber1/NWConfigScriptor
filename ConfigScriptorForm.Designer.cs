@@ -66,6 +66,7 @@ namespace NWConfigScriptor
             this.LblAbout = new System.Windows.Forms.Label();
             this.BtnAddFile = new System.Windows.Forms.Button();
             this.BtnDeleteFile = new System.Windows.Forms.Button();
+            this.Btn_OpenPutty = new System.Windows.Forms.Button();
             this.ContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -312,6 +313,17 @@ namespace NWConfigScriptor
             this.BtnDeleteFile.UseVisualStyleBackColor = true;
             this.BtnDeleteFile.Click += new System.EventHandler(this.BtnDeleteFile_Click);
             // 
+            // Btn_OpenPutty
+            // 
+            this.Btn_OpenPutty.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.Btn_OpenPutty.Location = new System.Drawing.Point(472, 491);
+            this.Btn_OpenPutty.Name = "Btn_OpenPutty";
+            this.Btn_OpenPutty.Size = new System.Drawing.Size(94, 29);
+            this.Btn_OpenPutty.TabIndex = 18;
+            this.Btn_OpenPutty.Text = "Open putty";
+            this.Btn_OpenPutty.UseVisualStyleBackColor = true;
+            this.Btn_OpenPutty.Click += new System.EventHandler(this.Btn_OpenPutty_Click);
+            // 
             // ConfigScriptorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -319,6 +331,7 @@ namespace NWConfigScriptor
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(788, 540);
+            this.Controls.Add(this.Btn_OpenPutty);
             this.Controls.Add(this.BtnDeleteFile);
             this.Controls.Add(this.BtnAddFile);
             this.Controls.Add(this.LblAbout);
@@ -374,6 +387,7 @@ namespace NWConfigScriptor
         private System.Windows.Forms.Button BtnAddFile;
         private System.Windows.Forms.ToolStripMenuItem updateScriptListToolStripMenuItem;
         private System.Windows.Forms.Button BtnDeleteFile;
+        private System.Windows.Forms.Button Btn_OpenPutty;
     }
 }
 

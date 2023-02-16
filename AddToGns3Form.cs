@@ -191,12 +191,7 @@ namespace NWConfigScriptor
             // change currently displayed list to project routers.
             // call replace method to convert text file to config file and replace 
         }
-
-        private void TextToConfig()
-        {
-
-
-        }
+                
 
         /// <summary>
         /// Close instance of Gns3form

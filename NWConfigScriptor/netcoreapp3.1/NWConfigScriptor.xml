@@ -342,6 +342,86 @@
              The main entry point for the application.
             </summary>
         </member>
+        <member name="M:NWConfigScriptor.TelnetToDevice.TelnetCheck">
+            <summary>
+            Create ip and port sockets from data in input fields.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.TelnetToDevice.telnetSocketAsyncEventArgs_Completed(System.Object,System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            Confirm socket running or not.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.TelnetToDevice.ListNICs">
+            <summary>
+            List NICs on local pc
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.TelnetToDevice.isEmptyFields">
+            <summary>
+            Check if fields have not all been filled in and make visible hash next to empty field.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NWConfigScriptor.TelnetToDevice.clearFields">
+            <summary>
+            Clear all input fields.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.TelnetToDevice.Btn_CommandFileChooser_Click(System.Object,System.EventArgs)">
+            <summary>
+            Select text file for reading to device via telnet.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.TelnetToDevice.Btn_SendTelnet_Click(System.Object,System.EventArgs)">
+            <summary>
+            Check all fields filled, get telnet connection and read file to device.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.TelnetToDevice.Btn_ClearFields_Click(System.Object,System.EventArgs)">
+            <summary>
+            Clear all fields of input data using isEmptyFields method
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.TelnetToDevice.Btn_ExitTelnetPage_Click(System.Object,System.EventArgs)">
+            <summary>
+            Close instance of this form.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.TelnetToDevice.GetInstance(System.Windows.Forms.Form)">
+            <summary>
+            Singleton instance of this form
+            </summary>
+            <param name="parentContainer"></param>
+            <returns></returns>
+        </member>
+        <member name="F:NWConfigScriptor.TelnetToDevice.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.TelnetToDevice.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:NWConfigScriptor.TelnetToDevice.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:NWConfigScriptor.VmTftpTransfer">
             <summary>
             
