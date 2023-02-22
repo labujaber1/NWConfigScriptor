@@ -42,7 +42,22 @@ newer'.
 editor. The load file reads in file content into the editor for editing or appending and
 so will need to overwrite existing file when saving. Append to file allows commands to be
 added to files without the need for them to be opened in the editor.
- 
- Version 1.2 will consider if there is a need to update devices straight away via a TFTP server
- or act as an add on to packet tracer somehow.
+
+In the next form and once a text file is created it can be read, line by line, to a router in
+GNS3 via telnet. 
+Before this can be done the target router must be configured with: 
+•	Username gns3 password 0 gns3.
+•	Ip address on interface connecting to the cloud.
+•	Line vty 0 4 : transport input all; password gns3; 
+•	Line console 0 : logging synchronous; password gns3; login; 
+•	Enable secret gns3.
+A cloud device attached to the router with the vmnet1 adapter added and an IP address for 
+this also configured from the local pc. The process output is shown in a rich text box in the
+form to monitor progress. 
+
+Another option has also been included in the first form using putty to telnet/ssh to a routers
+CLI provided the configurations above are completed. 
+
+Next:
+TFTP transfer to backup config files in text format for a user to manually change and resend back.
  
