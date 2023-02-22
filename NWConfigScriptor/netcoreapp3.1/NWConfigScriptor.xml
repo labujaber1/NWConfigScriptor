@@ -342,30 +342,18 @@
              The main entry point for the application.
             </summary>
         </member>
-        <member name="M:NWConfigScriptor.TelnetToDevice.TelnetCheck">
-            <summary>
-            Create ip and port sockets from data in input fields.
-            </summary>
-        </member>
-        <member name="M:NWConfigScriptor.TelnetToDevice.telnetSocketAsyncEventArgs_Completed(System.Object,System.Net.Sockets.SocketAsyncEventArgs)">
-            <summary>
-            Confirm socket running or not.
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
         <member name="M:NWConfigScriptor.TelnetToDevice.ListNICs">
             <summary>
             List NICs on local pc
             </summary>
         </member>
-        <member name="M:NWConfigScriptor.TelnetToDevice.isEmptyFields">
+        <member name="M:NWConfigScriptor.TelnetToDevice.IsEmptyFields">
             <summary>
             Check if fields have not all been filled in and make visible hash next to empty field.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:NWConfigScriptor.TelnetToDevice.clearFields">
+        <member name="M:NWConfigScriptor.TelnetToDevice.ClearFields">
             <summary>
             Clear all input fields.
             </summary>

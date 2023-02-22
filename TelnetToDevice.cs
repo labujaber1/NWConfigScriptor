@@ -1,4 +1,14 @@
-﻿using System;
+﻿//##########################################//
+//                                          //
+// Project: Network Config Scriptor Creater //
+// Author:  L. Abu-Jaber                    //
+// Date:    09/05/2022                      //
+// Control System: Github                   //
+//                                          //
+//##########################################//
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,6 +16,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Net;
+using System.Net.Mail;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Reflection;
@@ -19,117 +30,81 @@ namespace NWConfigScriptor
     {
         // asynchronous program (one at a time)
         // select NIC? user may not always use vmnet1
-        // get telnet connection to device ip address (10.10.10.5), port number (23) and using passowrd (not active yet)
+        // get telnet connection to device ip address (10.10.10.5), port number (23) and using passowrd
         // return results to rich text box
         // allow for line drop possible retry connection 2 times
         // select file and read to connection line by line
         // confirm each line? 
         // close clean connection
-
+        private TelnetConnection telconn;
         
+        private String m_nic;
+        private String m_username;
+        private String m_ipaddress;
+        private String m_password;
+        private String m_portNum;
+        private String m_file;
 
+        private String Nic() { m_nic = (string)Cmbx_AdaptorChoice.SelectedItem; return m_nic; }
+        private String Username() { m_username = Tbx_Username.Text; return m_username; }
+        private String Ipaddress() { m_ipaddress = Tbx_IPAddress.Text; return m_ipaddress; }
+        private String Password() { m_password = Tbx_Password.Text; return m_password; }
+        private String PortNum() { m_portNum = Tbx_PortNum.Text; return m_portNum; }
+        private String CommFile() { m_file = Tbx_CommandFileDisplay.Text; return m_file; }
+        
         public TelnetToDevice()
         {
             InitializeComponent();
             //ListNICs();
+            
         }
-
-        private String m_nic, m_ipaddress, m_password, m_port, m_file;
-
-        public String nic() { m_nic = Cmbx_AdaptorChoice.SelectedItem.ToString(); return m_nic; }
-        public String ipaddress() { m_ipaddress = Tbx_IPAddress.Text; return m_ipaddress; }
-        public String password() { m_password = Tbx_Password.Text; return m_password; }
-        public String portNum() {m_port = Tbx_PortNum.Text; return m_port; }
-        public String file() { m_file = Tbx_PortNum.Text.ToString(); return m_file; }
 
         private void TelnetToDevice_Load(object sender, EventArgs e)
         {
             ListNICs();
         }
-
-        private Socket clientSocket;
-        private IPAddress hostAddress;
-        //h ttp://www.ultradevelopers.net/en-us/blog/how-to-telnet-a-remote-service-using-c-12 
-        /// <summary>
-        /// Create ip and port sockets from data in input fields.
-        /// </summary>
-        public void TelnetCheck()
+ 
+        public void ReadTextFile()
         {
             try
             {
-                if (string.IsNullOrEmpty(Tbx_IPAddress.Text))
-                    return;
+                UpdateTtbx("Initialising new socket please wait may take some time..");
+                telconn = new TelnetConnection(Ipaddress(), int.Parse(PortNum()));
+                UpdateTtbx("Initialised socket sussessfully now logging in..");
+                string s = telconn.Login(Username(), Password(), 100);
+                string prompt = s.TrimEnd();
+                prompt = s.Substring(prompt.Length - 1, 1);
 
-                if (string.IsNullOrEmpty(Tbx_PortNum.Text))
-                    return;
-
-                int port;
-                hostAddress = Dns.GetHostEntry(Tbx_IPAddress.Text).AddressList[0];
-                int.TryParse(Tbx_PortNum.Text, out port);
-
-                if (hostAddress.AddressFamily == AddressFamily.InterNetwork)
-                    clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                else if (hostAddress.AddressFamily == AddressFamily.InterNetworkV6)
-                    clientSocket = new Socket(AddressFamily.InterNetworkV6, SocketType.Stream, ProtocolType.Tcp);
-
-                SocketAsyncEventArgs telnetSocketAsyncEventArgs = new SocketAsyncEventArgs();
-                telnetSocketAsyncEventArgs.RemoteEndPoint = new IPEndPoint(hostAddress, port);
-                telnetSocketAsyncEventArgs.Completed += new
-                    EventHandler<SocketAsyncEventArgs>(telnetSocketAsyncEventArgs_Completed);
-
-                clientSocket.ConnectAsync(telnetSocketAsyncEventArgs);
-            }
-            catch (SocketException ex)
-            {
-                MessageBox.Show(ex.Message, "Service Is not Running",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-            }
-        }
-
-        // h ttp://www.ultradevelopers.net/en-us/blog/how-to-telnet-a-remote-service-using-c-12 
-        /// <summary>
-        /// Confirm socket running or not.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void telnetSocketAsyncEventArgs_Completed(object sender, SocketAsyncEventArgs e)
-        {
-            try
-            {
-                if (e.SocketError == SocketError.Success)
+                if (prompt != "$" && prompt != ">")
                 {
-                    if (e.LastOperation == SocketAsyncOperation.Connect)
-                    {
-                        MessageBox.Show("Service Is Running", hostAddress.ToString(),
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    UpdateTtbx("Connection failed at prompt check");
+                    throw new Exception("Connection failed at prompt check");
                 }
-                else
+                prompt = "";
+                UpdateTtbx("Logged in starting command transfer");
+                int counter = 0;
+                foreach (string line in File.ReadLines(CommFile()))
                 {
-                    MessageBox.Show("Service Is not Running", e.SocketError.ToString(),
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    prompt = Console.ReadLine();
+                    telconn.WriteLine(line);
+                    Debug.WriteLine(line);
+                    UpdateTtbx(line);
+                    counter++;
+                        
                 }
+                telconn.Dispose();
+                UpdateTtbx("Finished transfer, disconnecting");
+                UpdateTtbx("Number of lines read = " + counter);
+                Debug.WriteLine("Disconnected. Number of lines read = " + counter);
             }
-            catch (SocketException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Service Is not Running",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                UpdateTtbx("Exception message: "+ex.Message);
+                Debug.WriteLine(ex.ToString());
             }
-        }
-
-        public void readTextFile()
-        {
-            int counter = 0;
-            foreach (string line in System.IO.File.ReadLines(Tbx_CommandFileDisplay.Text))
-            {
-                Debug.WriteLine(line);
-                counter++;
-            }
-
-
+            //telconn.TelnetCheck(m_ipaddress, m_portNum);
+            
         }
 
         /// <summary>
@@ -152,34 +127,76 @@ namespace NWConfigScriptor
         /// Check if fields have not all been filled in and make visible hash next to empty field.
         /// </summary>
         /// <returns></returns>
-        private Boolean isEmptyFields()
+        private Boolean IsEmptyFields()
         {
-            if (Cmbx_AdaptorChoice.Text == "") { label5.Visible = true; return false; }
-            if (Tbx_IPAddress.Text == "") { label6.Visible = true; return false; }
-            if (Tbx_PortNum.Text == "") { label7.Visible = true; return false; }
-            if (password() == "") { label8.Visible = true; return false; }
-            if (Tbx_CommandFileDisplay.Text == "") { label9.Visible = true; return false; }
-            return true;
+            HashInvisible();
+            if (Nic() == "" || Nic() == null) 
+            {
+                label5.Visible = true; 
+                return false; 
+            }
+            if (Username() == "")
+            {
+                label3.Visible = true;
+                return false;
+            }
+            if (Ipaddress() == "") 
+            { 
+                label6.Visible = true; 
+                return false; 
+            }
+            if (PortNum() == "") 
+            { 
+                label7.Visible = true; 
+                return false; 
+            }
+            if (Password() == "") 
+            { 
+                label8.Visible = true; 
+                return false; 
+            }
+            if (CommFile() == "") 
+            { 
+                label9.Visible = true; 
+                return false; 
+            }
+            else
+            {
+                return true;
+            }
+                
         }
         
-        /// <summary>
-        /// Clear all input fields.
-        /// </summary>
-        private void clearFields()
+        public void HashInvisible() 
         {
-            
-            Tbx_IPAddress.Clear();
-            Tbx_PortNum.Clear();
-            Tbx_Password.Clear();
-            Tbx_CommandFileDisplay.Clear();
-            Rtbx_ViewComms.Clear();
+            label3.Visible = false;
             label5.Visible = false;
             label6.Visible = false;
             label7.Visible = false;
             label8.Visible = false;
             label9.Visible = false;
             label11.Visible = false;
-           
+        }
+        /// <summary>
+        /// Clear all input fields.
+        /// </summary>
+        private void ClearFields()
+        {
+            Tbx_Username.Clear();
+            Tbx_IPAddress.Clear();
+            Tbx_PortNum.Clear();
+            Tbx_Password.Clear();
+            Tbx_CommandFileDisplay.Clear();
+            Tbx_CommsDisplay.Clear();
+            HashInvisible();
+
+
+        }
+
+        private void UpdateTtbx(String message)
+        {
+            Tbx_CommsDisplay.AppendText(message + Environment.NewLine);
+            
         }
 
         // ######### BUTTONS #########
@@ -207,17 +224,22 @@ namespace NWConfigScriptor
         /// <param name="e"></param>
         private void Btn_SendTelnet_Click(object sender, EventArgs e)
         {
-            //if (isEmptyFields() != false)
-            //{
-            //    Debug.WriteLine("All fields filled");
-            //    // call connection and read method
-            //    TelnetCheck();
-            //}
-            //else
-            //{
-            //    label11.Visible = true;
-            //}
-            readTextFile();
+            Tbx_CommsDisplay.Clear();
+            UpdateTtbx("Starting comms");
+            UpdateTtbx("Checking connection..");
+            if (IsEmptyFields() != false)
+            {
+                UpdateTtbx("All fields filled");
+                Debug.WriteLine("All fields filled");
+                // call connection and read method
+                //TelnetCheck(Ipaddress(),PortNum());
+                ReadTextFile();
+            }
+            else
+            {
+                label11.Visible = true;
+            }
+            
         }
 
         /// <summary>
@@ -227,7 +249,7 @@ namespace NWConfigScriptor
         /// <param name="e"></param>
         private void Btn_ClearFields_Click(object sender, EventArgs e)
         {
-            clearFields();
+            ClearFields();
         }
 
         /// <summary>
@@ -269,7 +291,6 @@ namespace NWConfigScriptor
             }
             return instance;
         }
-
         
     }
 }

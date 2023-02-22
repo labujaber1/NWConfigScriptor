@@ -41,7 +41,6 @@
             this.Btn_ExitTelnetPage = new System.Windows.Forms.Button();
             this.Lbl_SelectAdaptor = new System.Windows.Forms.Label();
             this.Cmbx_AdaptorChoice = new System.Windows.Forms.ComboBox();
-            this.Rtbx_ViewComms = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -49,12 +48,17 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.Tbx_CommsDisplay = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Tbx_Username = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Lbl_IPAddress
             // 
             this.Lbl_IPAddress.AutoSize = true;
-            this.Lbl_IPAddress.Location = new System.Drawing.Point(68, 142);
+            this.Lbl_IPAddress.Location = new System.Drawing.Point(68, 141);
             this.Lbl_IPAddress.Name = "Lbl_IPAddress";
             this.Lbl_IPAddress.Size = new System.Drawing.Size(114, 20);
             this.Lbl_IPAddress.TabIndex = 0;
@@ -62,24 +66,26 @@
             // 
             // Tbx_IPAddress
             // 
-            this.Tbx_IPAddress.Location = new System.Drawing.Point(220, 139);
+            this.Tbx_IPAddress.Location = new System.Drawing.Point(220, 138);
             this.Tbx_IPAddress.Name = "Tbx_IPAddress";
             this.Tbx_IPAddress.PlaceholderText = "192.168.0.1";
             this.Tbx_IPAddress.Size = new System.Drawing.Size(245, 27);
             this.Tbx_IPAddress.TabIndex = 1;
+            this.Tbx_IPAddress.Text = "10.10.10.5";
             // 
             // Tbx_PortNum
             // 
-            this.Tbx_PortNum.Location = new System.Drawing.Point(220, 196);
+            this.Tbx_PortNum.Location = new System.Drawing.Point(220, 185);
             this.Tbx_PortNum.Name = "Tbx_PortNum";
             this.Tbx_PortNum.PlaceholderText = "23";
             this.Tbx_PortNum.Size = new System.Drawing.Size(245, 27);
             this.Tbx_PortNum.TabIndex = 2;
+            this.Tbx_PortNum.Text = "23";
             // 
             // Lbl_PortNumber
             // 
             this.Lbl_PortNumber.AutoSize = true;
-            this.Lbl_PortNumber.Location = new System.Drawing.Point(68, 203);
+            this.Lbl_PortNumber.Location = new System.Drawing.Point(68, 192);
             this.Lbl_PortNumber.Name = "Lbl_PortNumber";
             this.Lbl_PortNumber.Size = new System.Drawing.Size(130, 20);
             this.Lbl_PortNumber.TabIndex = 3;
@@ -88,7 +94,7 @@
             // Lbl_Password
             // 
             this.Lbl_Password.AutoSize = true;
-            this.Lbl_Password.Location = new System.Drawing.Point(69, 272);
+            this.Lbl_Password.Location = new System.Drawing.Point(69, 284);
             this.Lbl_Password.Name = "Lbl_Password";
             this.Lbl_Password.Size = new System.Drawing.Size(110, 20);
             this.Lbl_Password.TabIndex = 4;
@@ -96,11 +102,12 @@
             // 
             // Tbx_Password
             // 
-            this.Tbx_Password.Location = new System.Drawing.Point(220, 265);
+            this.Tbx_Password.Location = new System.Drawing.Point(220, 277);
             this.Tbx_Password.Name = "Tbx_Password";
-            this.Tbx_Password.PlaceholderText = "GNS3";
+            this.Tbx_Password.PlaceholderText = "gns3";
             this.Tbx_Password.Size = new System.Drawing.Size(245, 27);
             this.Tbx_Password.TabIndex = 5;
+            this.Tbx_Password.Text = "gns3";
             // 
             // Btn_CommandFileChooser
             // 
@@ -122,6 +129,7 @@
             this.Tbx_CommandFileDisplay.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Tbx_CommandFileDisplay.Size = new System.Drawing.Size(480, 57);
             this.Tbx_CommandFileDisplay.TabIndex = 7;
+            this.Tbx_CommandFileDisplay.Text = "C:\\Users\\labuj\\Documents\\Degree_CS2021_yr3\\Final_Project\\TestR1Config.txt";
             // 
             // Btn_SendTelnet
             // 
@@ -170,16 +178,6 @@
             this.Cmbx_AdaptorChoice.Name = "Cmbx_AdaptorChoice";
             this.Cmbx_AdaptorChoice.Size = new System.Drawing.Size(245, 28);
             this.Cmbx_AdaptorChoice.TabIndex = 13;
-            this.Cmbx_AdaptorChoice.Text = "  - Select NIC - ";
-            // 
-            // Rtbx_ViewComms
-            // 
-            this.Rtbx_ViewComms.Location = new System.Drawing.Point(498, 31);
-            this.Rtbx_ViewComms.Name = "Rtbx_ViewComms";
-            this.Rtbx_ViewComms.ReadOnly = true;
-            this.Rtbx_ViewComms.Size = new System.Drawing.Size(261, 398);
-            this.Rtbx_ViewComms.TabIndex = 14;
-            this.Rtbx_ViewComms.Text = "Comms: ";
             // 
             // label5
             // 
@@ -196,7 +194,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(199, 142);
+            this.label6.Location = new System.Drawing.Point(199, 141);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(15, 20);
             this.label6.TabIndex = 16;
@@ -207,7 +205,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(199, 199);
+            this.label7.Location = new System.Drawing.Point(199, 188);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(15, 20);
             this.label7.TabIndex = 17;
@@ -218,7 +216,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(199, 268);
+            this.label8.Location = new System.Drawing.Point(199, 280);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(15, 20);
             this.label8.TabIndex = 18;
@@ -258,11 +256,64 @@
             this.label11.Text = "** Please fill in all fields";
             this.label11.Visible = false;
             // 
+            // Tbx_CommsDisplay
+            // 
+            this.Tbx_CommsDisplay.Location = new System.Drawing.Point(498, 47);
+            this.Tbx_CommsDisplay.Multiline = true;
+            this.Tbx_CommsDisplay.Name = "Tbx_CommsDisplay";
+            this.Tbx_CommsDisplay.ReadOnly = true;
+            this.Tbx_CommsDisplay.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.Tbx_CommsDisplay.Size = new System.Drawing.Size(261, 382);
+            this.Tbx_CommsDisplay.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(498, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 20);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Comms display";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(68, 234);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(135, 20);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Enter device name ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(199, 238);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(15, 20);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "*";
+            this.label3.Visible = false;
+            // 
+            // Tbx_Username
+            // 
+            this.Tbx_Username.Location = new System.Drawing.Point(220, 231);
+            this.Tbx_Username.Name = "Tbx_Username";
+            this.Tbx_Username.PlaceholderText = "gns3";
+            this.Tbx_Username.Size = new System.Drawing.Size(245, 27);
+            this.Tbx_Username.TabIndex = 26;
+            this.Tbx_Username.Text = "gns3";
+            // 
             // TelnetToDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(788, 540);
+            this.Controls.Add(this.Tbx_Username);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Tbx_CommsDisplay);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -270,7 +321,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.Rtbx_ViewComms);
             this.Controls.Add(this.Cmbx_AdaptorChoice);
             this.Controls.Add(this.Lbl_SelectAdaptor);
             this.Controls.Add(this.Btn_ExitTelnetPage);
@@ -307,7 +357,6 @@
         private System.Windows.Forms.Button Btn_ExitTelnetPage;
         private System.Windows.Forms.Label Lbl_SelectAdaptor;
         private System.Windows.Forms.ComboBox Cmbx_AdaptorChoice;
-        private System.Windows.Forms.RichTextBox Rtbx_ViewComms;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -315,5 +364,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox Tbx_CommsDisplay;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox Tbx_Username;
     }
 }

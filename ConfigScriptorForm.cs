@@ -453,6 +453,7 @@ namespace NWConfigScriptor
         {
             try
             {
+                // issue putty not copied to publish folder had to manually copy..mmm!
                 Process pr = new Process();
                 String filepath = Application.StartupPath+ @"putty_standalone.exe";
                 pr.StartInfo.FileName = Application.StartupPath + @"putty_standalone.exe";
