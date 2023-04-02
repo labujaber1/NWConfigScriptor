@@ -53,12 +53,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Tbx_Username = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.Tbx_secretPassword = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Lbl_IPAddress
             // 
             this.Lbl_IPAddress.AutoSize = true;
-            this.Lbl_IPAddress.Location = new System.Drawing.Point(68, 141);
+            this.Lbl_IPAddress.Location = new System.Drawing.Point(65, 101);
             this.Lbl_IPAddress.Name = "Lbl_IPAddress";
             this.Lbl_IPAddress.Size = new System.Drawing.Size(114, 20);
             this.Lbl_IPAddress.TabIndex = 0;
@@ -66,7 +69,7 @@
             // 
             // Tbx_IPAddress
             // 
-            this.Tbx_IPAddress.Location = new System.Drawing.Point(220, 138);
+            this.Tbx_IPAddress.Location = new System.Drawing.Point(217, 98);
             this.Tbx_IPAddress.Name = "Tbx_IPAddress";
             this.Tbx_IPAddress.PlaceholderText = "192.168.0.1";
             this.Tbx_IPAddress.Size = new System.Drawing.Size(245, 27);
@@ -75,7 +78,7 @@
             // 
             // Tbx_PortNum
             // 
-            this.Tbx_PortNum.Location = new System.Drawing.Point(220, 185);
+            this.Tbx_PortNum.Location = new System.Drawing.Point(217, 145);
             this.Tbx_PortNum.Name = "Tbx_PortNum";
             this.Tbx_PortNum.PlaceholderText = "23";
             this.Tbx_PortNum.Size = new System.Drawing.Size(245, 27);
@@ -85,7 +88,7 @@
             // Lbl_PortNumber
             // 
             this.Lbl_PortNumber.AutoSize = true;
-            this.Lbl_PortNumber.Location = new System.Drawing.Point(68, 192);
+            this.Lbl_PortNumber.Location = new System.Drawing.Point(65, 152);
             this.Lbl_PortNumber.Name = "Lbl_PortNumber";
             this.Lbl_PortNumber.Size = new System.Drawing.Size(130, 20);
             this.Lbl_PortNumber.TabIndex = 3;
@@ -94,7 +97,7 @@
             // Lbl_Password
             // 
             this.Lbl_Password.AutoSize = true;
-            this.Lbl_Password.Location = new System.Drawing.Point(69, 284);
+            this.Lbl_Password.Location = new System.Drawing.Point(66, 244);
             this.Lbl_Password.Name = "Lbl_Password";
             this.Lbl_Password.Size = new System.Drawing.Size(110, 20);
             this.Lbl_Password.TabIndex = 4;
@@ -102,7 +105,7 @@
             // 
             // Tbx_Password
             // 
-            this.Tbx_Password.Location = new System.Drawing.Point(220, 277);
+            this.Tbx_Password.Location = new System.Drawing.Point(217, 237);
             this.Tbx_Password.Name = "Tbx_Password";
             this.Tbx_Password.PlaceholderText = "gns3";
             this.Tbx_Password.Size = new System.Drawing.Size(245, 27);
@@ -164,7 +167,7 @@
             // Lbl_SelectAdaptor
             // 
             this.Lbl_SelectAdaptor.AutoSize = true;
-            this.Lbl_SelectAdaptor.Location = new System.Drawing.Point(69, 96);
+            this.Lbl_SelectAdaptor.Location = new System.Drawing.Point(66, 56);
             this.Lbl_SelectAdaptor.Name = "Lbl_SelectAdaptor";
             this.Lbl_SelectAdaptor.Size = new System.Drawing.Size(106, 20);
             this.Lbl_SelectAdaptor.TabIndex = 12;
@@ -174,7 +177,7 @@
             // 
             this.Cmbx_AdaptorChoice.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.Cmbx_AdaptorChoice.FormattingEnabled = true;
-            this.Cmbx_AdaptorChoice.Location = new System.Drawing.Point(220, 93);
+            this.Cmbx_AdaptorChoice.Location = new System.Drawing.Point(217, 53);
             this.Cmbx_AdaptorChoice.Name = "Cmbx_AdaptorChoice";
             this.Cmbx_AdaptorChoice.Size = new System.Drawing.Size(245, 28);
             this.Cmbx_AdaptorChoice.TabIndex = 13;
@@ -183,7 +186,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(199, 96);
+            this.label5.Location = new System.Drawing.Point(196, 56);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(15, 20);
             this.label5.TabIndex = 15;
@@ -194,7 +197,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(199, 141);
+            this.label6.Location = new System.Drawing.Point(196, 101);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(15, 20);
             this.label6.TabIndex = 16;
@@ -205,7 +208,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(199, 188);
+            this.label7.Location = new System.Drawing.Point(196, 148);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(15, 20);
             this.label7.TabIndex = 17;
@@ -216,7 +219,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(199, 280);
+            this.label8.Location = new System.Drawing.Point(196, 240);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(15, 20);
             this.label8.TabIndex = 18;
@@ -278,7 +281,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(68, 234);
+            this.label2.Location = new System.Drawing.Point(65, 194);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(135, 20);
             this.label2.TabIndex = 24;
@@ -288,7 +291,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(199, 238);
+            this.label3.Location = new System.Drawing.Point(196, 198);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(15, 20);
             this.label3.TabIndex = 25;
@@ -297,18 +300,50 @@
             // 
             // Tbx_Username
             // 
-            this.Tbx_Username.Location = new System.Drawing.Point(220, 231);
+            this.Tbx_Username.Location = new System.Drawing.Point(217, 191);
             this.Tbx_Username.Name = "Tbx_Username";
             this.Tbx_Username.PlaceholderText = "gns3";
             this.Tbx_Username.Size = new System.Drawing.Size(245, 27);
             this.Tbx_Username.TabIndex = 26;
             this.Tbx_Username.Text = "gns3";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(196, 284);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(15, 20);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "*";
+            this.label4.Visible = false;
+            // 
+            // Tbx_secretPassword
+            // 
+            this.Tbx_secretPassword.Location = new System.Drawing.Point(217, 281);
+            this.Tbx_secretPassword.Name = "Tbx_secretPassword";
+            this.Tbx_secretPassword.PlaceholderText = "gns3";
+            this.Tbx_secretPassword.Size = new System.Drawing.Size(245, 27);
+            this.Tbx_secretPassword.TabIndex = 28;
+            this.Tbx_secretPassword.Text = "gns3";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(42, 288);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(153, 20);
+            this.label12.TabIndex = 27;
+            this.label12.Text = "Enter secret password";
+            // 
             // TelnetToDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(788, 540);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.Tbx_secretPassword);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.Tbx_Username);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -335,6 +370,7 @@
             this.Controls.Add(this.Tbx_IPAddress);
             this.Controls.Add(this.Lbl_IPAddress);
             this.Name = "TelnetToDevice";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelnetTo_Device";
             this.Load += new System.EventHandler(this.TelnetToDevice_Load);
             this.ResumeLayout(false);
@@ -369,5 +405,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox Tbx_Username;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox Tbx_secretPassword;
     }
 }

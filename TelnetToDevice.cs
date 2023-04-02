@@ -10,48 +10,40 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Net;
-using System.Net.Mail;
 using System.Net.NetworkInformation;
-using System.Net.Sockets;
-using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace NWConfigScriptor
 {
     public partial class TelnetToDevice : Form
     {
-        // asynchronous program (one at a time)
-        // select NIC? user may not always use vmnet1
-        // get telnet connection to device ip address (10.10.10.5), port number (23) and using passowrd
-        // return results to rich text box
-        // allow for line drop possible retry connection 2 times
-        // select file and read to connection line by line
-        // confirm each line? 
-        // close clean connection
         private TelnetConnection telconn;
-        
-        private String m_nic;
-        private String m_username;
-        private String m_ipaddress;
-        private String m_password;
-        private String m_portNum;
-        private String m_file;
+        private string m_nic;
+        private string m_username;
+        private string m_ipaddress;
+        private string m_password;
+        private string m_portNum;
+        private string m_file;
+        private string m_seretPassword;
 
-        private String Nic() { m_nic = (string)Cmbx_AdaptorChoice.SelectedItem; return m_nic; }
-        private String Username() { m_username = Tbx_Username.Text; return m_username; }
-        private String Ipaddress() { m_ipaddress = Tbx_IPAddress.Text; return m_ipaddress; }
-        private String Password() { m_password = Tbx_Password.Text; return m_password; }
-        private String PortNum() { m_portNum = Tbx_PortNum.Text; return m_portNum; }
-        private String CommFile() { m_file = Tbx_CommandFileDisplay.Text; return m_file; }
+        private string Nic() { m_nic = (string)Cmbx_AdaptorChoice.SelectedItem; return m_nic; }
+        private string Username() { m_username = Tbx_Username.Text; return m_username; }
+        private string Ipaddress() { m_ipaddress = Tbx_IPAddress.Text; return m_ipaddress; }
+        private string Password() { m_password = Tbx_Password.Text; return m_password; }
+        private string PortNum() { m_portNum = Tbx_PortNum.Text; return m_portNum; }
+        private string SecretPassword() { m_seretPassword = Tbx_secretPassword.Text; return m_seretPassword; }
+        private string CommFile() { m_file = Tbx_CommandFileDisplay.Text; return m_file; }
         
+        /*
+        private String m_nic { get { return Cmbx_AdaptorChoice.SelectedItem.ToString(); } }
+        private String m_username { get { return Tbx_Username.Text; } } //set { Tbx_Username.Text = value; }
+        private String m_ipaddress { get { return Tbx_IPAddress.Text; } } //set { Tbx_IPAddress.Text = value; }
+        private String m_password { get { return Tbx_Password.Text; } } //set { Tbx_Password.Text = value; }
+        private String m_portNum { get { return Tbx_PortNum.Text; } } //set { Tbx_PortNum.Text = value; }
+        private String m_commFile { get { return Tbx_CommandFileDisplay.Text; } } //set { Tbx_CommandFileDisplay.Text = value; }
+        */
         public TelnetToDevice()
         {
             InitializeComponent();
@@ -68,14 +60,16 @@ namespace NWConfigScriptor
         {
             try
             {
-                UpdateTtbx("Initialising new socket please wait may take some time..");
+                UpdateTtbx("Initialising new socket please wait..");
                 telconn = new TelnetConnection(Ipaddress(), int.Parse(PortNum()));
                 UpdateTtbx("Initialised socket sussessfully now logging in..");
-                string s = telconn.Login(Username(), Password(), 100);
+                string s = telconn.Login(Username(), Password(), 100, SecretPassword());
+                Debug.Write(s);
+                UpdateTtbx(s);
                 string prompt = s.TrimEnd();
                 prompt = s.Substring(prompt.Length - 1, 1);
 
-                if (prompt != "$" && prompt != ">")
+                if (prompt != "$" && prompt != ">" && prompt != "#")
                 {
                     UpdateTtbx("Connection failed at prompt check");
                     throw new Exception("Connection failed at prompt check");
@@ -83,20 +77,28 @@ namespace NWConfigScriptor
                 prompt = "";
                 UpdateTtbx("Logged in starting command transfer");
                 int counter = 0;
-                foreach (string line in File.ReadLines(CommFile()))
+                if (telconn.IsConnected)
                 {
-
-                    prompt = Console.ReadLine();
-                    telconn.WriteLine(line);
-                    Debug.WriteLine(line);
-                    UpdateTtbx(line);
-                    counter++;
+                    foreach (string line in File.ReadLines(CommFile()))
+                    {
+                        //Debug.Write(telconn.Read());  // server output
                         
+                        prompt = Console.ReadLine();
+                        telconn.WriteLine(line);        // sending command from text file to device cli
+                        Debug.Write(telconn.Read());    // reading device cli to edi output
+                        UpdateTtbx(line);               // view line from file in app
+                        //UpdateTtbx(telconn.Read());     
+                        counter++;
+
+                    }
+                    //telconn.Dispose();
+                    UpdateTtbx("Finished transfer, disconnecting");
+                    UpdateTtbx("Number of lines read = " + counter);
+
+                    Debug.WriteLine("Disconnected. Number of lines read = " + counter);
+                    
                 }
                 telconn.Dispose();
-                UpdateTtbx("Finished transfer, disconnecting");
-                UpdateTtbx("Number of lines read = " + counter);
-                Debug.WriteLine("Disconnected. Number of lines read = " + counter);
             }
             catch (Exception ex)
             {

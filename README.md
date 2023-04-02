@@ -44,8 +44,9 @@ so will need to overwrite existing file when saving. Append to file allows comma
 added to files without the need for them to be opened in the editor.
 
 In the next form and once a text file is created it can be read, line by line, to a router in
-GNS3 via telnet. 
-Before this can be done the target router must be configured with: 
+GNS3 via telnet. A VM must be used with the topolgy devices such as VMware (recommended by GNS3
+documentation).
+The target router must be configured with: 
 •	Username gns3 password 0 gns3.
 •	Ip address on interface connecting to the cloud.
 •	Line vty 0 4 : transport input all; password gns3; 

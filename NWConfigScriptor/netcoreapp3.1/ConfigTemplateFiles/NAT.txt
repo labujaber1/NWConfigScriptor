@@ -1,0 +1,36 @@
+ip nat inside source static? 192.168.10.254 <inside local> 209.165.201.5 <inside global>
+ip nat? <inside> or <outside> at config-if#
+
+
+?// clear stats before testing
+clear ip nat statistics? at config# 
+
+?Steps for dynamic NAT config
+?// 1. config dynamic pool on edge router 
+ip nat pool NAT-POOL1? 209.165.200.226 209.165.200.240 netmask 255.255.255.224 at config#
+?// 2. create acl to permit users
+access-list 1 permit? 192.168.0.0 0.0.255.255 at config#
+?// 3. bind acl to pool adds
+ip nat inside source list 1 pool NAT-POOL1? at config#
+?// 4. config inside int
+int? s0/1/0
+ip nat inside?? at config-if#
+?// 5. config outside int
+int? s0/1/1
+ip nat outside? ? at config-if#
+
+clear ip nat trans *? at config#
+
+
+show ip nat translations
+show ip nat trans verbose
+show ip nat statistics
+show running-config | include NAT
+
+
+
+
+
+
+
+

@@ -67,6 +67,7 @@ namespace NWConfigScriptor
             this.BtnAddFile = new System.Windows.Forms.Button();
             this.BtnDeleteFile = new System.Windows.Forms.Button();
             this.Btn_OpenPutty = new System.Windows.Forms.Button();
+            this.Btn_Help = new System.Windows.Forms.Button();
             this.ContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -324,6 +325,16 @@ namespace NWConfigScriptor
             this.Btn_OpenPutty.UseVisualStyleBackColor = true;
             this.Btn_OpenPutty.Click += new System.EventHandler(this.Btn_OpenPutty_Click);
             // 
+            // Btn_Help
+            // 
+            this.Btn_Help.Location = new System.Drawing.Point(576, 491);
+            this.Btn_Help.Name = "Btn_Help";
+            this.Btn_Help.Size = new System.Drawing.Size(94, 28);
+            this.Btn_Help.TabIndex = 19;
+            this.Btn_Help.Text = "Help";
+            this.Btn_Help.UseVisualStyleBackColor = true;
+            this.Btn_Help.Click += new System.EventHandler(this.Btn_Help_Click);
+            // 
             // ConfigScriptorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -331,6 +342,7 @@ namespace NWConfigScriptor
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(788, 540);
+            this.Controls.Add(this.Btn_Help);
             this.Controls.Add(this.Btn_OpenPutty);
             this.Controls.Add(this.BtnDeleteFile);
             this.Controls.Add(this.BtnAddFile);
@@ -388,6 +400,7 @@ namespace NWConfigScriptor
         private System.Windows.Forms.ToolStripMenuItem updateScriptListToolStripMenuItem;
         private System.Windows.Forms.Button BtnDeleteFile;
         private System.Windows.Forms.Button Btn_OpenPutty;
+        private System.Windows.Forms.Button Btn_Help;
     }
 }
 

@@ -1,0 +1,30 @@
+?Create OSPF area process ID 1
+?default encap HDLC change to PPP
+int? s0/0/0
+encapsulation ppp? do for each end of serial link
+
+?auth with CHAP each end of serial link
+username? <router name on other end> password <cisco> on each end
+int? s0/0/0
+ppp authentication chap? on each end
+
+?tunnelling at each end 
+ip route 0.0.0.0 0.0.0.0? 10.1.1.2 default route to isp router on each router
+interface tunnel? 0
+ip address? 172.16.12.1 255.255.255.252
+tunnel source? s0/0/0 
+tunnel destination? 10.2.2.1
+
+?ospf over tunnel each end adding networks that can travel over it
+router ospf 1
+network? 172.16.2.0 0.0.0.255 area 0
+
+debug ppp negotiation
+debug ppp packet
+undebug all
+
+show int tunnel 0
+show ip route ospf
+show ip int brief
+show ip ospf int brief
+show ip ospf neighbor

@@ -1,7 +1,7 @@
 ﻿// minimalistic telnet implementation
-// conceived by Tom Janssens on 2007/06/06  for codeproject
-// ammended by jonsagara to include IDisposable
-// h ttp://www.corebvba.be
+// conceived by Tom Janssens on 2007/06/06  h ttps://github.com/rafinhaa/MinimalisticTelnett
+// ammended by jonsagara to include IDisposable h ttps://github.com/jonsagara/MinimalisticTelnet/blob/master/src/MinimalisticTelnet/TelnetInterface.cs
+// 
 // used by SID2018481
 // Greatly appreciated for use in this project
 //##########################################//
@@ -20,10 +20,12 @@ using System.Net;
 using System.Windows.Forms;
 using System.Threading;
 using System.Diagnostics;
+using System.Runtime;
 
 namespace NWConfigScriptor
 {
-    
+
+    // h ttps://www.codeproject.com/articles/19071/quick-tool-a-minimalistic-telnet-library
     public class TelnetConnection : IDisposable
     {
         private TcpClient tcpSocket;
@@ -37,35 +39,49 @@ namespace NWConfigScriptor
 
         public TelnetConnection(string hostname, int port)
         {
-            
             tcpSocket = new TcpClient(hostname, port);
-            
         }
         ~TelnetConnection()
         {
-           
             Dispose(false);
         }
 
-        public string Login(string username, string password, int loginTimeOutMs)
+        public string Login(string username, string password, int loginTimeOutMs, string secretPassword)
         {
             int oldTimeOutMs = TimeOutMs;
             TimeOutMs = loginTimeOutMs;
             string s = Read();
-            if (!s.TrimEnd().EndsWith(":"))
+            Console.WriteLine(s); //########
+           if (s.TrimEnd().EndsWith("Username:"))
             {
-                throw new Exception("Failed to connect : no login prompt");
+                WriteLine(username);
+                s += Read();
+                Debug.WriteLine(s); //########
             }
-            WriteLine(username);
-            s += Read();
-
-            if (!s.TrimEnd().EndsWith(":"))
+            if(s.TrimEnd().EndsWith("Password:"))
             {
-                throw new Exception("Failed to connect : no password prompt");
+                WriteLine(password);
+                s += Read();
+                Debug.WriteLine(s); //#########
             }
-            WriteLine(password);
-            s += Read();
-
+            if(s.TrimEnd().EndsWith(">"))
+            {
+                WriteLine("enable");
+                s += Read();
+                Debug.WriteLine(s);
+                if (s.TrimEnd().EndsWith("Password:") && !s.TrimEnd().EndsWith(" set"))
+                {
+                    WriteLine(secretPassword);
+                    s += Read();
+                    Debug.WriteLine(s);
+                }
+                
+            }
+            else
+            {
+                throw new Exception("Failed to connect : " +
+                    "no password/username prompt. Check these have been configured on the device.");
+            }
             TimeOutMs = oldTimeOutMs;
             return s;
         }
@@ -81,8 +97,7 @@ namespace NWConfigScriptor
             {
                 return;
             }
-            //byte[] buf = Encoding.UTF8.GetBytes(cmd);
-            byte[] buf = Encoding.ASCII.GetBytes(cmd.Replace("\0xFF", "\0xFF\0xFF"));
+           byte[] buf = Encoding.ASCII.GetBytes(cmd.Replace("\0xFF", "\0xFF\0xFF"));
             tcpSocket.GetStream().Write(buf, 0, buf.Length);
         }
 

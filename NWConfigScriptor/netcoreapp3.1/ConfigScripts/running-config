@@ -1,0 +1,84 @@
+
+!
+! Last configuration change at 16:44:12 UTC Thu Mar 30 2023
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Test
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$RqJC$x9lgxESoOYfEjpEWDg3Er.
+!
+no aaa new-model
+!
+no ipv6 cef
+ip source-route
+ip cef
+!
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+license udi pid CISCO2901/K9 sn FCZ1517C0ZD
+!
+!
+username gns3 password 0 gns3
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 10.10.10.5 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface Serial0/0/0
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+interface Serial0/0/1
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+control-plane
+!
+banner motd  testing if comms connect 
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ password gns3
+ login
+ transport input all
+!
+scheduler allocate 20000 1000
+end

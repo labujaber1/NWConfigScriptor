@@ -148,13 +148,14 @@
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.CmbxCmdScriptList_SelectedIndexChanged(System.Object,System.EventArgs)">
             <summary>
-            read selected script into command display
+            Clears list boxes and passes selected file in the combo box to ShowConfigScript(string fileName)
+            to display the contents of text file 
             </summary>
             <remarks>Used in "searchAddTextFiles" method</remarks>
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.ShowConfigScript(System.String)">
             <summary>
-            display command file names in check list box, clear previous selection
+            read contents from selected file into list boxes
             called by cmbxCmdScriptList_SelectedIndexChanged switch based method
             </summary>
             <param name="fileName">created in "cmbxCmdScriptList_SelectedIndexChanged" method from user click event 
@@ -248,10 +249,31 @@
             Appending new commands to a file instead of opening and adding
             </summary>
         </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.UpdateCommandListToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Update combo box script file list
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.LblAbout_Click(System.Object,System.EventArgs)">
             <summary>
             Display an about form with project details and a brief description
             </summary>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.Btn_Help_Click(System.Object,System.EventArgs)">
+            <summary>
+            Display help text file
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.ConfigScriptorForm.Btn_OpenPutty_Click(System.Object,System.EventArgs)">
+            <summary>
+            Open instance of putty.exe
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
         </member>
         <member name="M:NWConfigScriptor.ConfigScriptorForm.GetInstance(System.Windows.Forms.Form)">
             <summary>
@@ -299,7 +321,7 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:NWConfigScriptor.Main.Btn_AddToGns3_Click(System.Object,System.EventArgs)">
+        <member name="M:NWConfigScriptor.Main.Btn_Telnet_Click(System.Object,System.EventArgs)">
             <summary>
             Open form to replace network device config scripts within Gns3 simulator.
             </summary>
@@ -420,28 +442,61 @@
             
             </summary>
         </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.sendCommandToDevice(System.Collections.Generic.List{System.String})">
+            <summary>
+            Opens a socket and login to a device for transfer of config commands passed in via list.
+            Used in button events to send and retrieve   config file.
+            </summary>
+            <param name="commscript"></param>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_GetFromRouter_Click(System.Object,System.EventArgs)">
+            <summary>
+            Send commands using telnet to copy selected config file by TFTP to target server.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="M:NWConfigScriptor.VmTftpTransfer.DisplayTftpConfigFiles">
             <summary>
-            Display all files in the application 'ConfigScripts' folder to select for Tftp transfer
+            Display all files in the application 'ConfigScripts' folder to select for Tftp transfer or edit.
             </summary>
         </member>
         <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_GetFilePath_Click(System.Object,System.EventArgs)">
             <summary>
-            Open dialog box to select config file path if default does not return config files.
+            Open dialog box to select config folder path if default does not return config files.
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_TestTftpCon_Click(System.Object,System.EventArgs)">
+        <member name="M:NWConfigScriptor.VmTftpTransfer.Cklbx_TftpConfigFiles_ItemCheck(System.Object,System.Windows.Forms.ItemCheckEventArgs)">
             <summary>
-            Test Tftp connection to target device
+            Enable ony one config file to be checked at one time.
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_SendTftp_Click(System.Object,System.EventArgs)">
+        <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_SendToRouter_Click(System.Object,System.EventArgs)">
             <summary>
-            Send selected config file to target device via Tftp
+            Send a config file transfer command to a device.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.ChangeFilesExtension(System.String)">
+            <summary>
+            search for files that do not have .config extension and rename
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_EditConfigFile_Click(System.Object,System.EventArgs)">
+            <summary>
+            Get selected config file, open and read content to the editor.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_Save_Click(System.Object,System.EventArgs)">
+            <summary>
+            Save and overwrite the checked config file with displayed config data.
             </summary>
             <param name="sender"></param>
             <param name="e"></param>

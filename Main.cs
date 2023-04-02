@@ -54,15 +54,15 @@ namespace NWConfigScriptor
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Btn_AddToGns3_Click(object sender, EventArgs e)
+        private void Btn_Telnet_Click(object sender, EventArgs e)
         {
             //AddToGns3Form gns3 = AddToGns3Form.GetInstance(main);
             //gns3.MdiParent = this;
             //gns3.Show();
 
-            TelnetToDevice gns3 = TelnetToDevice.GetInstance(main);
-            gns3.MdiParent = this;
-            gns3.Show();
+            TelnetToDevice telnet = TelnetToDevice.GetInstance(main);
+            telnet.MdiParent = this;
+            telnet.Show();
 
         }
 

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NWConfigScriptor.AboutBox1">
+    <Position X="2.25" Y="4" Width="2" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>kIACAAgAACAgCAUAAACAAAADAAAAEIAAAAAAAAAAAAA=</HashCode>
+      <FileName>AboutBox1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NWConfigScriptor.Main">
+    <Position X="2.25" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>MAgAAAAAACAAAAAAQACQAABCAAAAAgAAAIAAAQAAAAQ=</HashCode>
+      <FileName>Main.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NWConfigScriptor.ConfigScriptorForm">
+    <Position X="4.5" Y="0.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>gFAbgBQBICAIgACAwpiAABBDzERIECECEwEQAAQ4BTg=</HashCode>
+      <FileName>ConfigScriptorForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NWConfigScriptor.Program">
+    <Position X="2.25" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NWConfigScriptor.TelnetToDevice">
+    <Position X="7.25" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>MJBCIAEQACAEITBAgQCABUCiJKTBAQhCgQAoBAIEiAA=</HashCode>
+      <FileName>TelnetToDevice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NWConfigScriptor.VmTftpTransfer">
+    <Position X="12" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ACSESQAAIyAJABAAAADCBUIrBFxAAAAEgSAAAbAQQSw=</HashCode>
+      <FileName>VmTftpTransfer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NWConfigScriptor.TelnetConnection">
+    <Position X="9.75" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="NWConfigScriptor.TelnetConnection.Verbs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>TelnetInterface.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="NWConfigScriptor.TelnetConnection.Options" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>TelnetInterface.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAIAABMAAAAAAAgAAAAAAAAAAAQCAEAAAA=</HashCode>
+      <FileName>TelnetInterface.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

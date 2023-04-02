@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using File = System.IO.File;
 
 namespace NWConfigScriptor
 {
@@ -25,21 +23,140 @@ namespace NWConfigScriptor
             InitializeComponent();
             DisplayTftpConfigFiles();
         }
+        private string m_username { get { return Tbx_usernameTFTP.Text; } set { Tbx_usernameTFTP.Text = value; } }
+        private string m_password { get { return Tbx_passwordTFTP.Text; } set { Tbx_passwordTFTP.Text = value; } }
+        private string m_portnum { get { return Tbx_portNumTFTP.Text; } set { Tbx_portNumTFTP.Text = value; } }
+        private string m_secpass { get { return Tbx_secretPassword.Text; } set { Tbx_secretPassword.Text = value; } }
+        private string m_targetDeviceIP { get { return Tbx_TargetDeviceIP.Text; } set { Tbx_TargetDeviceIP.Text = value; } }
+        private string m_targetServer { get { return Tbx_TargetServerIP.Text; } set { Tbx_TargetServerIP.Text = value; } }
+        private string m_fileName { get { return Tbx_FileName.Text; } set { Tbx_FileName.Text = value; } }
+        private string m_tftpConfigFiles { get { return Cklbx_TftpConfigFiles.SelectedItem.ToString(); } set { Cklbx_TftpConfigFiles.SelectedItem = value; } }
+        private string m_editConfig { get { return Rtbx_EditConfig.Text; } set { Rtbx_EditConfig.Text = value; } }
+        private TelnetConnection telconn;
+        private List<string> script;
+        private readonly string FilePath_configFiles = Path.Combine(Application.StartupPath + @"ConfigScripts\");
+        private string m_saveFile;
 
+        private void updateOutputTtbx(String message)
+        {
+            Tbx_OutputDisplay.AppendText(message + Environment.NewLine);
+
+        }
+        //--------------------------------------------------------------------------------------//
+        // Description                  | Method name                    |Testing confirm       //
+        //--------------------------------------------------------------------------------------//
+        // update comms display         : updateOutputTbbx               : Tested->             //
+        // config from router           : Btn_GetFromRouter_Click        : Tested->             //  
+        // config to router             : Btn_SendToRouter_Click         : Tested->             //
+        // comms command method         : sendCommandToDevice            : Tested->             //
+        // display config files         : DisplayTftpConfigFiles         : Tested->             //
+        // select only one config file  : Cklbx_TftpConfigFiles_ItemCheck: Tested->             //
+        // display config selected file : Btn_EditConfigFile_Click       : Tested->             //
+        // save edited config file      : Btn_Save_Click                 : Tested->             //
+        // change folder path display   : Btn_GetFilePath_Click          : Tested->             //
+        // open tftpd64                 : Btn_OpenTftpd64_Click          : Tested->             //
+        // exit                         : Btn_ExitVmTftpTransfer_Click   : Tested->             //
+        //--------------------------------------------------------------------------------------//
+
+        /// <summary>
+        /// Opens a socket and login to a device for transfer of config commands passed in via list.
+        /// Used in button events to send and retrieve   config file.
+        /// </summary>
+        /// <param name="commscript"></param>
+        private void sendCommandToDevice(List<string> commscript)
+        {
+            try
+            {
+                updateOutputTtbx("Initialising new socket please wait..");
+                telconn = new TelnetConnection(m_targetDeviceIP, int.Parse(m_portnum));
+                updateOutputTtbx("Initialised socket sussessfully now logging in..");
+                string s = telconn.Login(m_username, m_password, 100, m_secpass);
+                Debug.Write(s);
+                updateOutputTtbx(s);
+                string prompt = s.TrimEnd();
+                prompt = s.Substring(prompt.Length - 1, 1);
+
+                if (prompt != "$" && prompt != ">" && prompt != "#")
+                {
+                    updateOutputTtbx("Connection failed at prompt check");
+                    throw new Exception("Connection failed at prompt check");
+                }
+                prompt = "";
+                updateOutputTtbx("Logged in starting command transfer");
+                int counter = 0;
+                if (telconn.IsConnected)
+                {
+                    foreach (var command in commscript)
+                    {
+                        Debug.Write(telconn.Read()); // server output
+                        prompt = Console.ReadLine();
+                        telconn.WriteLine(command); // sending command from text file to cli
+                        Debug.Write(telconn.Read());
+                        updateOutputTtbx(command);
+                        counter++;
+                    }
+                    Debug.Write(telconn.Read());
+                    updateOutputTtbx(telconn.Read());
+                    updateOutputTtbx("Finished transfer, disconnecting");
+                    updateOutputTtbx("Number of lines read = " + counter);
+                    Debug.WriteLine("Disconnected. Number of lines read = " + counter);
+                }
+                // check file transfered before closing
+                DisplayTftpConfigFiles();
+                telconn.Dispose();
+            }
+            catch (Exception ex)
+            {
+                updateOutputTtbx("Exception message: " + ex.Message);
+                Debug.WriteLine(ex.ToString());
+            }
+
+
+        }
+        /// <summary>
+        /// Send commands using telnet to copy selected config file by TFTP to target server.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Btn_GetFromRouter_Click(object sender, EventArgs e)
+        {
+
+            // send copy config commands to router via telnet
+            // return mes
+            // copy tftp://192.168.1.2/router-config running-config
+            // copy tftp://<server>/<name of copied file> startup-config
+            string comm = "copy running-config tftp:";
+            string space = "\r\n";
+            script = new List<string>
+            {
+                comm,
+                m_targetServer,
+                m_fileName,
+                space
+            };
+            sendCommandToDevice(script);
+        }
+
+        
         // use gns3 startup config file for now to test
         /// <summary>
-        /// Display all files in the application 'ConfigScripts' folder to select for Tftp transfer
+        /// Display all files in the application 'ConfigScripts' folder to select for Tftp transfer or edit.
         /// </summary>
         public void DisplayTftpConfigFiles()
         {
-            var folderPath = Path.Combine(Application.StartupPath + @"\\ConfigScripts");
+            
             string fileName = "*.*"; // don't forget to change to *.cfg
             try
             {
-                string[] fi = Directory.GetFiles(folderPath, fileName);
+                Cklbx_TftpConfigFiles.Items.Clear();
+                string[] fi = Directory.GetFiles(FilePath_configFiles, fileName);
                 foreach (var file in fi)
                 {
                     Cklbx_TftpConfigFiles.Items.Add(Path.GetFileName(file));
+                    if (file.Equals(m_fileName)) 
+                    { 
+                        updateOutputTtbx("This file exists in the config folder");
+                    }
                 }
             }
             catch (Exception ex)
@@ -49,7 +166,7 @@ namespace NWConfigScriptor
         }
 
         /// <summary>
-        /// Open dialog box to select config file path if default does not return config files.
+        /// Open dialog box to select config folder path if default does not return config files.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -60,14 +177,14 @@ namespace NWConfigScriptor
             Lbl_FilesNotFoundError.Visible = false;
             FolderBrowserDialog folderSel = new FolderBrowserDialog();
             DialogResult result = folderSel.ShowDialog();
-            string filename = "*.cfg";
+            string filename = "*.*";
             var folderpath = "";
             int count = 0;
             if (result == DialogResult.OK)
             {
                 Cklbx_TftpConfigFiles.Items.Clear();
                 folderpath = folderSel.SelectedPath;
-                Environment.SpecialFolder folder = folderSel.RootFolder; //????
+                Environment.SpecialFolder folder = folderSel.RootFolder; 
             }
             try
             {
@@ -86,35 +203,140 @@ namespace NWConfigScriptor
             }
         }
 
-
         /// <summary>
-        /// Test Tftp connection to target device
+        /// Enable ony one config file to be checked at one time.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Btn_TestTftpCon_Click(object sender, EventArgs e)
+        private void Cklbx_TftpConfigFiles_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            //send packet and wait for reply or ping
-
+            // make only one selectable of checked config file.
+            for (int ix = 0; ix < Cklbx_TftpConfigFiles.Items.Count; ++ix)
+                if (ix != e.Index) Cklbx_TftpConfigFiles.SetItemChecked(ix, false);
         }
 
         /// <summary>
-        /// Send selected config file to target device via Tftp
+        /// Send a config file transfer command to a device.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Btn_SendTftp_Click(object sender, EventArgs e)
+        private void Btn_SendToRouter_Click(object sender, EventArgs e)
         {
-            //use nuget packet I'm sure I've seen one
-            //may need to identify packet tracer or gns3 or something
-            var TargetIPAdd = TargetDeviceIP;
-            var TargetDevGateway = TargetGateway;
-            var TargetNW = TargetNWIP; //dont need variables as now included at bottom, may need to refornmat for ip address
-
-
+            
+            // copy tftp://192.168.1.2/router-config running-config
+            // copy tftp://<server>/<name of copied file> startup-config
+            string comm = "copy tftp://"+m_targetServer+"/"+m_tftpConfigFiles+ " running-config";
+            string space = "\r\n";
+            script = new List<string>
+            {
+                comm,
+                m_targetServer,
+                m_fileName,
+                space
+            };
+            sendCommandToDevice(script);
         }
 
-        
+        /// <summary>
+        /// search for files that do not have .config extension and rename
+        /// </summary>
+        private string ChangeFilesExtension(string file)
+        {
+            var folderPath = FilePath_configFiles;
+            var selectedFile = Path.Combine(folderPath, file);
+            string fileName = "*.*"; // don't forget to change to *.cfg
+            try
+            {
+                string newFileConfig = "";
+                string[] fi = Directory.GetFiles(folderPath, fileName);
+                foreach (var fil in fi)
+                {
+                    if (fil.Equals(selectedFile) && !fil.EndsWith(".cfg"))
+                    {
+                        string changeFile = Path.Combine(folderPath, fil);
+                        newFileConfig = Path.ChangeExtension(changeFile, ".cfg");
+                        File.Move(changeFile, newFileConfig);
+                        File.Delete(changeFile);
+                        updateOutputTtbx("File extension changed : " + newFileConfig);
+                        DisplayTftpConfigFiles();
+                        return newFileConfig;
+                    }
+                }
+                return file;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Change file extension : ");
+                File.Delete(selectedFile);
+                DisplayTftpConfigFiles();
+                return ex.Message;
+            }
+        }
+
+        /// <summary>
+        /// Get selected config file, open and read content to the editor.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Btn_EditConfigFile_Click(object sender, EventArgs e)
+        {
+            string file = m_tftpConfigFiles;
+            var filo = ChangeFilesExtension(file);
+            var filePath = Path.Combine(FilePath_configFiles, filo);
+            try
+            {
+                if (File.Exists(filePath)) 
+                {
+                    Rtbx_EditConfig.Clear();
+                    var fileContent = File.ReadAllText(filePath);
+                    m_editConfig = fileContent;
+                    m_saveFile = filePath;
+                    updateOutputTtbx("File contents read : " + filePath);
+                }
+                else
+                {
+                    Debug.WriteLine("File does not exist");
+                }
+            }
+            catch (IOException ex)
+            {
+                Debug.WriteLine("Error reading config file to rich text box: " + ex.Message);
+                updateOutputTtbx("Error reading config file to rich text box: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Save and overwrite the checked config file with displayed config data.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Btn_Save_Click(object sender, EventArgs e)
+        {
+            DialogResult result;
+            result = MessageBox.Show(this,"Are you sure you want to save and overwrite the existing configuration file?","Save check", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK) {
+                // read richtextbox contents to saveFile, overwrite
+                // store text var   // text in rich text box
+                var configContent = m_editConfig;
+                //MessageBox.Show(configContent);
+                if (File.Exists(m_saveFile))
+                {
+                    // save var to selected checklist file
+                    File.WriteAllText(m_saveFile, configContent);
+                    //MessageBox.Show(File.ReadAllText(m_saveFile), "File saved successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("File saved successfully");
+                }
+                else
+                {
+                    MessageBox.Show("Error saving to file " + m_saveFile + ", check it exists and try again.");
+                }
+            }
+            else 
+            {
+                MessageBox.Show("Save cancelled"); 
+            }
+ 
+        } 
 
         /// <summary>
         /// Open TFTP64 application
@@ -157,11 +379,7 @@ namespace NWConfigScriptor
         {
             this.Close();
         }
-
-        private string TargetDeviceIP { get { return Tbx_TargetDeviceIP.Text; } set { Tbx_TargetDeviceIP.Text = value; } }
-        private string TargetGateway { get { return Tbx_TargetDeviceGateway.Text; } set { Tbx_TargetDeviceGateway.Text = value; } }
-        private string TargetNWIP { get { return Tbx_TargetNetworkIP.Text; } set { Tbx_TargetNetworkIP.Text = value; } }
-
+        
         /// <summary>
         /// Instance using singleton pattern //////////////////////////////////////////////////////////////////////////////
         /// </summary>
@@ -192,7 +410,5 @@ namespace NWConfigScriptor
             }
             return instance;
         }
-
-        
     }
 }

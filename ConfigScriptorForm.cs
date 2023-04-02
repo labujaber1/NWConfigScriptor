@@ -17,6 +17,8 @@ namespace NWConfigScriptor
 {
     public partial class ConfigScriptorForm : Form
     {
+
+
         /// <summary>
         /// Initialise ConfigScriptor form and search for text files to display in combo box on startup
         /// </summary>
@@ -27,6 +29,7 @@ namespace NWConfigScriptor
         }
         private readonly string FilePath_template = Path.Combine(Application.StartupPath + @"ConfigTemplateFiles\");
         private readonly string FilePath_script = Path.Combine(Application.StartupPath + @"ConfigTextFiles\");
+        
         /// <summary>
         /// search directory for text files
         /// read into combo box cmbxCmdScriptList include .txt extension
@@ -45,6 +48,7 @@ namespace NWConfigScriptor
                 foreach (var file in fit)
                 {
                     CmbxCmdScriptList.Items.Add(Path.GetFileName(file));
+                    
                 }
                 string[] fis = Directory.GetFiles(FilePath_script, fileName);
                 
@@ -54,9 +58,10 @@ namespace NWConfigScriptor
                 MessageBox.Show(ex.Message);
             }
         }
-        
+
         /// <summary>
-        /// read selected script into command display
+        /// Clears list boxes and passes selected file in the combo box to ShowConfigScript(string fileName)
+        /// to display the contents of text file 
         /// </summary>
         /// <remarks>Used in "searchAddTextFiles" method</remarks>
         private void CmbxCmdScriptList_SelectedIndexChanged(object sender, EventArgs e)
@@ -68,7 +73,7 @@ namespace NWConfigScriptor
         }
 
         /// <summary>
-        /// display command file names in check list box, clear previous selection
+        /// read contents from selected file into list boxes
         /// called by cmbxCmdScriptList_SelectedIndexChanged switch based method
         /// </summary>
         /// <param name="fileName">created in "cmbxCmdScriptList_SelectedIndexChanged" method from user click event 
@@ -406,6 +411,11 @@ namespace NWConfigScriptor
             }
         }
 
+        /// <summary>
+        /// Update combo box script file list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UpdateCommandListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CmbxCmdScriptList.Items.Clear();
@@ -420,6 +430,42 @@ namespace NWConfigScriptor
             AboutBox1 about = new AboutBox1();
             about.ShowDialog();
         }
+        /// <summary>
+        /// Display help text file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Btn_Help_Click(object sender, EventArgs e)
+        {
+            string helpFilePath = Path.Combine(Application.StartupPath + @"HelpFile.txt");
+            string file = File.ReadAllText(helpFilePath);
+            MessageBox.Show(file, "Help file", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
+        /// Open instance of putty.exe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Btn_OpenPutty_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // issue putty not copied to publish folder had to manually copy..mmm!
+                Process pr = new Process();
+                String filepath = Application.StartupPath + @"putty_standalone.exe";
+                pr.StartInfo.FileName = Application.StartupPath + @"putty_standalone.exe";
+                Debug.WriteLine("putty filepath = " + filepath);
+                pr.Start();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error opening putty", ex.Message);
+                MessageBox.Show("Error opening putty --> " + ex.Message, "Opening file");
+            }
+        }
+
+
 
         private static ConfigScriptorForm instance;
         /// <summary>
@@ -449,23 +495,7 @@ namespace NWConfigScriptor
             return instance;
         }
 
-        private void Btn_OpenPutty_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // issue putty not copied to publish folder had to manually copy..mmm!
-                Process pr = new Process();
-                String filepath = Application.StartupPath+ @"putty_standalone.exe";
-                pr.StartInfo.FileName = Application.StartupPath + @"putty_standalone.exe";
-                Debug.WriteLine("putty filepath = " + filepath);
-                pr.Start();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("Error opening putty", ex.Message);
-                MessageBox.Show("Error opening putty --> " + ex.Message, "Opening file");
-            }
-        }
+        
 
 
         //private void updownTFTP()
