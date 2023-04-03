@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -11,12 +8,12 @@ using File = System.IO.File;
 namespace NWConfigScriptor
 {
     /// <summary>
-    /// 
+    /// TFTP transfer GUI form
     /// </summary>
     public partial class VmTftpTransfer : Form
     {
         /// <summary>
-        /// 
+        /// Initialise class
         /// </summary>
         public VmTftpTransfer()
         {
@@ -30,33 +27,40 @@ namespace NWConfigScriptor
         private string m_targetDeviceIP { get { return Tbx_TargetDeviceIP.Text; } set { Tbx_TargetDeviceIP.Text = value; } }
         private string m_targetServer { get { return Tbx_TargetServerIP.Text; } set { Tbx_TargetServerIP.Text = value; } }
         private string m_fileName { get { return Tbx_FileName.Text; } set { Tbx_FileName.Text = value; } }
-        private string m_tftpConfigFiles { get { return Cklbx_TftpConfigFiles.SelectedItem.ToString(); } set { Cklbx_TftpConfigFiles.SelectedItem = value; } }
+        private string m_tftpConfigFiles { get { return Cklbx_TftpConfigFiles.SelectedItem.ToString(); }; set { Cklbx_TftpConfigFiles.SelectedItem = value; } }
         private string m_editConfig { get { return Rtbx_EditConfig.Text; } set { Rtbx_EditConfig.Text = value; } }
         private TelnetConnection telconn;
         private List<string> script;
         private readonly string FilePath_configFiles = Path.Combine(Application.StartupPath + @"ConfigScripts\");
         private string m_saveFile;
 
+
+        //---------------------------------------------------------------------//
+        // Description                  | Method name                          //
+        //---------------------------------------------------------------------//
+        // update comms display         : updateOutputTbbx                     //
+        // comms command method         : sendCommandToDevice                  //
+        // config from router           : Btn_GetFromRouter_Click              //  
+        // display config files         : DisplayTftpConfigFiles               //
+        // change folder path display   : Btn_GetFilePath_Click                //
+        // select only one config file  : Cklbx_TftpConfigFiles_ItemCheck      //
+        // config to router             : Btn_SendToRouter_Click               //
+        // change .file to .cfg         : ChangeFilesExtension                 //
+        // display config selected file : Btn_EditConfigFile_Click             //
+        // save edited config file      : Btn_Save_Click                       //
+        // open tftpd64                 : Btn_OpenTftpd64_Click                //
+        // exit VmTftpTransfer          : Btn_ExitVmTftpTransfer_Click         //
+        //---------------------------------------------------------------------//
+
+        /// <summary>
+        /// Replace console print to send message to text box.
+        /// </summary>
+        /// <param name="message"></param>
         private void updateOutputTtbx(String message)
         {
             Tbx_OutputDisplay.AppendText(message + Environment.NewLine);
 
         }
-        //--------------------------------------------------------------------------------------//
-        // Description                  | Method name                    |Testing confirm       //
-        //--------------------------------------------------------------------------------------//
-        // update comms display         : updateOutputTbbx               : Tested->             //
-        // config from router           : Btn_GetFromRouter_Click        : Tested->             //  
-        // config to router             : Btn_SendToRouter_Click         : Tested->             //
-        // comms command method         : sendCommandToDevice            : Tested->             //
-        // display config files         : DisplayTftpConfigFiles         : Tested->             //
-        // select only one config file  : Cklbx_TftpConfigFiles_ItemCheck: Tested->             //
-        // display config selected file : Btn_EditConfigFile_Click       : Tested->             //
-        // save edited config file      : Btn_Save_Click                 : Tested->             //
-        // change folder path display   : Btn_GetFilePath_Click          : Tested->             //
-        // open tftpd64                 : Btn_OpenTftpd64_Click          : Tested->             //
-        // exit                         : Btn_ExitVmTftpTransfer_Click   : Tested->             //
-        //--------------------------------------------------------------------------------------//
 
         /// <summary>
         /// Opens a socket and login to a device for transfer of config commands passed in via list.
@@ -136,8 +140,7 @@ namespace NWConfigScriptor
             };
             sendCommandToDevice(script);
         }
-
-        
+                
         // use gns3 startup config file for now to test
         /// <summary>
         /// Display all files in the application 'ConfigScripts' folder to select for Tftp transfer or edit.
@@ -145,7 +148,7 @@ namespace NWConfigScriptor
         public void DisplayTftpConfigFiles()
         {
             
-            string fileName = "*.*"; // don't forget to change to *.cfg
+            string fileName = "*.*"; 
             try
             {
                 Cklbx_TftpConfigFiles.Items.Clear();
@@ -244,7 +247,7 @@ namespace NWConfigScriptor
         {
             var folderPath = FilePath_configFiles;
             var selectedFile = Path.Combine(folderPath, file);
-            string fileName = "*.*"; // don't forget to change to *.cfg
+            string fileName = "*.*"; 
             try
             {
                 string newFileConfig = "";

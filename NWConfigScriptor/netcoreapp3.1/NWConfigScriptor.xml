@@ -434,13 +434,19 @@
         </member>
         <member name="T:NWConfigScriptor.VmTftpTransfer">
             <summary>
-            
+            TFTP transfer GUI form
             </summary>
         </member>
         <member name="M:NWConfigScriptor.VmTftpTransfer.#ctor">
             <summary>
-            
+            Initialise class
             </summary>
+        </member>
+        <member name="M:NWConfigScriptor.VmTftpTransfer.updateOutputTtbx(System.String)">
+            <summary>
+            Replace console print to send message to text box.
+            </summary>
+            <param name="message"></param>
         </member>
         <member name="M:NWConfigScriptor.VmTftpTransfer.sendCommandToDevice(System.Collections.Generic.List{System.String})">
             <summary>

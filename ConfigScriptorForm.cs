@@ -466,7 +466,6 @@ namespace NWConfigScriptor
         }
 
 
-
         private static ConfigScriptorForm instance;
         /// <summary>
         /// Open a single module form using a singleton pattern
@@ -494,17 +493,5 @@ namespace NWConfigScriptor
             }
             return instance;
         }
-
-        
-
-
-        //private void updownTFTP()
-        //{
-        //    WebClient client = new WebClient();
-        //    client.UploadFile("upload to path", "path of file");
-        //    client.DownloadFile("download to path", "path of file");
-        //}
-
-
     }
 }
