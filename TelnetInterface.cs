@@ -97,6 +97,7 @@ namespace NWConfigScriptor
             tcpSocket.GetStream().Write(buf, 0, buf.Length);
         }
 
+        // prepare CLI output as string 
         public string Read()
         {
             if (!tcpSocket.Connected)
@@ -112,6 +113,16 @@ namespace NWConfigScriptor
             return sb.ToString();
         }
        
+        /// <summary>
+        /// CLI retreival: getting each byte from socket stream, translating to char and 
+        /// append to string of chars. 
+        /// Specifically checks if data contains telnet command sequences and handles echo
+        /// to enable CLI retreival for the user to view. 
+        /// IAC indicates stream should be handled as telnet command rather than just text.
+        /// SGA suppress go ahead to client and reduce traffic which improves response time.
+        /// </summary>
+        /// <param name="sb"></param>
+        
         private void ParseTelnet(StringBuilder sb)
         {
             while (tcpSocket.Available > 0)
@@ -138,7 +149,7 @@ namespace NWConfigScriptor
                             case (int)Verbs.Dont:
                             case (int)Verbs.Will:
                             case (int)Verbs.Wont:
-                                // reply to all commands with "WONT", unless it is SGA (suppres go ahead)
+                                // reply to all commands with "WONT", unless it is SGA (suppress go ahead)
                                 int inputoption = tcpSocket.GetStream().ReadByte();
                                 if (inputoption == -1)
                                 {

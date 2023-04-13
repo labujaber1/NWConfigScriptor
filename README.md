@@ -59,6 +59,7 @@ form to monitor progress.
 Another option has also been included in the first form using putty to telnet/ssh to a routers
 CLI provided the configurations above are completed. 
 
-Next:
-TFTP transfer to backup config files in text format for a user to manually change and resend back.
+Third form  is TFTP transfer to backup config files for a user to manually change and resend back.
+Included TFTPD64 as the server, commands sent directly to router. Can display config file which
+then replaces the extension from .file to .cfg.
  

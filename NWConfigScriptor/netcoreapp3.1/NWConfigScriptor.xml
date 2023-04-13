@@ -364,6 +364,31 @@
              The main entry point for the application.
             </summary>
         </member>
+        <member name="T:NWConfigScriptor.TelnetToDevice">
+            <summary>
+            Creates a form for telnet connection to read and write text from a device. 
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.TelnetToDevice.#ctor">
+            <summary>
+            Initialise form.
+            </summary>
+        </member>
+        <member name="M:NWConfigScriptor.TelnetToDevice.TelnetToDevice_Load(System.Object,System.EventArgs)">
+            <summary>
+            Calls method to display all local interfaces in combo box to select on form load.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NWConfigScriptor.TelnetToDevice.ReadTextFile">
+            <summary>
+            On connection login and read text file commands to device's CLI. 
+            Uses TelnetInterface to read and write to device via telnet connection.
+            Passes CLI output to text area for user information and progress status.
+            Will show incorrect commands in list for user to correct for next connection.
+            </summary>
+        </member>
         <member name="M:NWConfigScriptor.TelnetToDevice.ListNICs">
             <summary>
             List NICs on local pc
@@ -375,10 +400,21 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:NWConfigScriptor.TelnetToDevice.HashInvisible">
+            <summary>
+            Resets all unfilled text box fields warning to invisible.
+            </summary>
+        </member>
         <member name="M:NWConfigScriptor.TelnetToDevice.ClearFields">
             <summary>
             Clear all input fields.
             </summary>
+        </member>
+        <member name="M:NWConfigScriptor.TelnetToDevice.UpdateTtbx(System.String)">
+            <summary>
+            Writes string message to text area instead of to console.
+            </summary>
+            <param name="message"></param>
         </member>
         <member name="M:NWConfigScriptor.TelnetToDevice.Btn_CommandFileChooser_Click(System.Object,System.EventArgs)">
             <summary>

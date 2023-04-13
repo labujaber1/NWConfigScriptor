@@ -17,6 +17,9 @@ using System.Windows.Forms;
 
 namespace NWConfigScriptor
 {
+    /// <summary>
+    /// Creates a form for telnet connection to read and write text from a device. 
+    /// </summary>
     public partial class TelnetToDevice : Form
     {
         private TelnetConnection telconn;
@@ -36,26 +39,30 @@ namespace NWConfigScriptor
         private string SecretPassword() { m_seretPassword = Tbx_secretPassword.Text; return m_seretPassword; }
         private string CommFile() { m_file = Tbx_CommandFileDisplay.Text; return m_file; }
         
-        /*
-        private String m_nic { get { return Cmbx_AdaptorChoice.SelectedItem.ToString(); } }
-        private String m_username { get { return Tbx_Username.Text; } } //set { Tbx_Username.Text = value; }
-        private String m_ipaddress { get { return Tbx_IPAddress.Text; } } //set { Tbx_IPAddress.Text = value; }
-        private String m_password { get { return Tbx_Password.Text; } } //set { Tbx_Password.Text = value; }
-        private String m_portNum { get { return Tbx_PortNum.Text; } } //set { Tbx_PortNum.Text = value; }
-        private String m_commFile { get { return Tbx_CommandFileDisplay.Text; } } //set { Tbx_CommandFileDisplay.Text = value; }
-        */
+        /// <summary>
+        /// Initialise form.
+        /// </summary>
         public TelnetToDevice()
         {
             InitializeComponent();
-            //ListNICs();
-            
         }
 
+        /// <summary>
+        /// Calls method to display all local interfaces in combo box to select on form load.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TelnetToDevice_Load(object sender, EventArgs e)
         {
             ListNICs();
         }
- 
+
+        /// <summary>
+        /// On connection login and read text file commands to device's CLI. 
+        /// Uses TelnetInterface to read and write to device via telnet connection.
+        /// Passes CLI output to text area for user information and progress status.
+        /// Will show incorrect commands in list for user to correct for next connection.
+        /// </summary>
         public void ReadTextFile()
         {
             try
@@ -64,7 +71,7 @@ namespace NWConfigScriptor
                 telconn = new TelnetConnection(Ipaddress(), int.Parse(PortNum()));
                 UpdateTtbx("Initialised socket sussessfully now logging in..");
                 string s = telconn.Login(Username(), Password(), 100, SecretPassword());
-                Debug.Write(s);
+                //Debug.Write(s);
                 UpdateTtbx(s);
                 string prompt = s.TrimEnd();
                 prompt = s.Substring(prompt.Length - 1, 1);
@@ -75,21 +82,22 @@ namespace NWConfigScriptor
                     throw new Exception("Connection failed at prompt check");
                 }
                 prompt = "";
+                string temp = "";
                 UpdateTtbx("Logged in starting command transfer");
                 int counter = 0;
                 if (telconn.IsConnected)
                 {
                     foreach (string line in File.ReadLines(CommFile()))
                     {
-                        //Debug.Write(telconn.Read());  // server output
-                        
                         prompt = Console.ReadLine();
-                        telconn.WriteLine(line);        // sending command from text file to device cli
-                        Debug.Write(telconn.Read());    // reading device cli to edi output
-                        UpdateTtbx(line);               // view line from file in app
-                        //UpdateTtbx(telconn.Read());     
+                        // sending command from text file to device cli
+                        telconn.WriteLine(line);
+                        temp = telconn.Read();
+                        // reading device cli to edi output
+                        Debug.Write(temp);
+                        // reading device cli to text area
+                        UpdateTtbx(temp);               
                         counter++;
-
                     }
                     //telconn.Dispose();
                     UpdateTtbx("Finished transfer, disconnecting");
@@ -105,8 +113,6 @@ namespace NWConfigScriptor
                 UpdateTtbx("Exception message: "+ex.Message);
                 Debug.WriteLine(ex.ToString());
             }
-            //telconn.TelnetCheck(m_ipaddress, m_portNum);
-            
         }
 
         /// <summary>
@@ -125,6 +131,7 @@ namespace NWConfigScriptor
                 
             }
         }
+
         /// <summary>
         /// Check if fields have not all been filled in and make visible hash next to empty field.
         /// </summary>
@@ -169,6 +176,9 @@ namespace NWConfigScriptor
                 
         }
         
+        /// <summary>
+        /// Resets all unfilled text box fields warning to invisible.
+        /// </summary>
         public void HashInvisible() 
         {
             label3.Visible = false;
@@ -191,10 +201,12 @@ namespace NWConfigScriptor
             Tbx_CommandFileDisplay.Clear();
             Tbx_CommsDisplay.Clear();
             HashInvisible();
-
-
         }
 
+        /// <summary>
+        /// Writes string message to text area instead of to console.
+        /// </summary>
+        /// <param name="message"></param>
         private void UpdateTtbx(String message)
         {
             Tbx_CommsDisplay.AppendText(message + Environment.NewLine);

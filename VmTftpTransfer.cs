@@ -27,7 +27,7 @@ namespace NWConfigScriptor
         private string m_targetDeviceIP { get { return Tbx_TargetDeviceIP.Text; } set { Tbx_TargetDeviceIP.Text = value; } }
         private string m_targetServer { get { return Tbx_TargetServerIP.Text; } set { Tbx_TargetServerIP.Text = value; } }
         private string m_fileName { get { return Tbx_FileName.Text; } set { Tbx_FileName.Text = value; } }
-        private string m_tftpConfigFiles { get { return Cklbx_TftpConfigFiles.SelectedItem.ToString(); }; set { Cklbx_TftpConfigFiles.SelectedItem = value; } }
+        private string m_tftpConfigFiles { get { return Cklbx_TftpConfigFiles.SelectedItem.ToString(); } set { Cklbx_TftpConfigFiles.SelectedItem = value; } }
         private string m_editConfig { get { return Rtbx_EditConfig.Text; } set { Rtbx_EditConfig.Text = value; } }
         private TelnetConnection telconn;
         private List<string> script;
