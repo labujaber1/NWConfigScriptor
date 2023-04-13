@@ -364,6 +364,17 @@
              The main entry point for the application.
             </summary>
         </member>
+        <member name="M:NWConfigScriptor.TelnetConnection.ParseTelnet(System.Text.StringBuilder)">
+            <summary>
+            CLI retreival: getting each byte from socket stream, translating to char and 
+            append to string of chars. 
+            Specifically checks if data contains telnet command sequences and handles echo
+            to enable CLI retreival for the user to view. 
+            IAC indicates stream should be handled as telnet command rather than just text.
+            SGA suppress go ahead to client and reduce traffic which improves response time.
+            </summary>
+            <param name="sb"></param>
+        </member>
         <member name="T:NWConfigScriptor.TelnetToDevice">
             <summary>
             Creates a form for telnet connection to read and write text from a device. 
