@@ -1,6 +1,6 @@
 
 !
-! Last configuration change at 21:52:02 UTC Mon Feb 27 2023
+! Last configuration change at 15:36:04 UTC Sat Apr 22 2023
 upgrade fpd auto
 version 15.2
 service timestamps debug datetime msec
@@ -37,7 +37,7 @@ multilink bundle-name authenticated
 !
 !
 !
-username gns3 password 0 gns3
+username gns3 password 0 gns3.
 !
 redundancy
 !
@@ -113,7 +113,7 @@ mgcp profile default
 gatekeeper
  shutdown
 !
-banner motd  Unauthorised access is strictly prohibited 
+banner motd  Changed by telnet 
 !
 line con 0
  exec-timeout 0 0
