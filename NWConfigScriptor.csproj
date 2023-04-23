@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ConfigScripts\Basic.txt" />
+    <None Remove="ConfigFiles\Basic.txt" />
     <None Remove="ConfigTemplateFiles\ACL.txt" />
     <None Remove="ConfigTemplateFiles\AdvBasic.txt" />
     <None Remove="ConfigTemplateFiles\Basic.txt" />
@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="ConfigTextFiles\Basic.txt">
+    <Content Include="ConfigTextFiles\ConfigRoom602.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ConfigTemplateFiles\ACL.txt">
@@ -85,13 +85,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ConfigScripts\i1_startup-config.cfg">
+    <None Update="ConfigFiles\i1_startup-config.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="ConfigScripts\router1-confg">
+    <None Update="ConfigFiles\router1-confg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="ConfigScripts\running-config">
+    <None Update="ConfigFiles\running-config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigFiles\running-config2">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="ConfigTemplateFiles\EIGRP.txt">

@@ -1,7 +1,12 @@
+//##########################################//
+//                                          //
+// Project: Network Config Scriptor Creater //
+// Author:  2018481                         //
+// Date:    24/04/2023                      //
+// Control version: Github                  //
+//                                          //
+//##########################################//
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NWConfigScriptor

@@ -1,0 +1,10 @@
+﻿enable
+gns3
+config t
+hostname Router1
+no ip domain-name 
+banner MOTD # Changed by telnet room 602 #
+interface f0/0
+description Main Router1 room 602
+exit
+end

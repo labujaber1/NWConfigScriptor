@@ -1,7 +1,16 @@
-﻿using System;
+﻿//##########################################//
+//                                          //
+// Project: Network Config Scriptor Creater //
+// Author:  2018481                         //
+// Date:    24/04/2023                      //
+// Control version: Github                  //
+//                                          //
+//##########################################//
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using File = System.IO.File;
 
@@ -31,7 +40,7 @@ namespace NWConfigScriptor
         private string m_editConfig { get { return Rtbx_EditConfig.Text; } set { Rtbx_EditConfig.Text = value; } }
         private TelnetConnection telconn;
         private List<string> script;
-        private readonly string FilePath_configFiles = Path.Combine(Application.StartupPath + @"ConfigScripts\");
+        private readonly string FilePath_configFiles = Path.Combine(Application.StartupPath + @"ConfigFiles\");
         private string m_saveFile;
 
 
@@ -56,7 +65,7 @@ namespace NWConfigScriptor
         /// Replace console print to send message to text box.
         /// </summary>
         /// <param name="message"></param>
-        private void updateOutputTtbx(String message)
+        private void _updateOutputTtbx(String message)
         {
             Tbx_OutputDisplay.AppendText(message + Environment.NewLine);
 
@@ -67,51 +76,59 @@ namespace NWConfigScriptor
         /// Used in button events to send and retrieve   config file.
         /// </summary>
         /// <param name="commscript"></param>
-        private void sendCommandToDevice(List<string> commscript)
+        private async void SendCommandToDevice(List<string> commscript)
         {
             try
             {
-                updateOutputTtbx("Initialising new socket please wait..");
+                _updateOutputTtbx("Initialising new socket please wait..");
                 telconn = new TelnetConnection(m_targetDeviceIP, int.Parse(m_portnum));
-                updateOutputTtbx("Initialised socket sussessfully now logging in..");
+                _updateOutputTtbx("Initialised socket sussessfully now logging in..");
                 string s = telconn.Login(m_username, m_password, 100, m_secpass);
                 Debug.Write(s);
-                updateOutputTtbx(s);
+                _updateOutputTtbx(s);
                 string prompt = s.TrimEnd();
                 prompt = s.Substring(prompt.Length - 1, 1);
 
                 if (prompt != "$" && prompt != ">" && prompt != "#")
                 {
-                    updateOutputTtbx("Connection failed at prompt check");
+                    _updateOutputTtbx("Connection failed at prompt check");
                     throw new Exception("Connection failed at prompt check");
                 }
                 prompt = "";
-                updateOutputTtbx("Logged in starting command transfer");
+                string temp = "";
+                _updateOutputTtbx("Logged in starting command transfer");
                 int counter = 0;
                 if (telconn.IsConnected)
                 {
                     foreach (var command in commscript)
                     {
-                        Debug.Write(telconn.Read()); // server output
+                        // server output
+                        Debug.Write(telconn.Read()); 
                         prompt = Console.ReadLine();
-                        telconn.WriteLine(command); // sending command from text file to cli
-                        Debug.Write(telconn.Read());
-                        updateOutputTtbx(command);
+                        // sending command from text file to cli
+                        telconn.WriteLine(command); 
+                        temp = telconn.Read();
+                        Debug.Write(temp);
+                        _updateOutputTtbx(temp);
                         counter++;
                     }
                     Debug.Write(telconn.Read());
-                    updateOutputTtbx(telconn.Read());
-                    updateOutputTtbx("Finished transfer, disconnecting");
-                    updateOutputTtbx("Number of lines read = " + counter);
-                    Debug.WriteLine("Disconnected. Number of lines read = " + counter);
+                    _updateOutputTtbx(telconn.Read());
+                    _updateOutputTtbx("Finished transfer\nNumber of lines read = " + counter);
+                    Debug.WriteLine("Disconnecting.Number of lines read = " + counter);
                 }
                 // check file transfered before closing
                 DisplayTftpConfigFiles();
+                // wait for file to be sent and received
+                await Task.Delay(4000);
+                temp = telconn.Read();
+                _updateOutputTtbx(temp);
                 telconn.Dispose();
+                _updateOutputTtbx("Disconnected");
             }
             catch (Exception ex)
             {
-                updateOutputTtbx("Exception message: " + ex.Message);
+                _updateOutputTtbx("Exception message: " + ex.Message);
                 Debug.WriteLine(ex.ToString());
             }
 
@@ -138,12 +155,13 @@ namespace NWConfigScriptor
                 m_fileName,
                 space
             };
-            sendCommandToDevice(script);
+            SendCommandToDevice(script);
+            DisplayTftpConfigFiles();
         }
                 
         // use gns3 startup config file for now to test
         /// <summary>
-        /// Display all files in the application 'ConfigScripts' folder to select for Tftp transfer or edit.
+        /// Display all files in the application 'ConfigFiles' folder to select for Tftp transfer or edit.
         /// </summary>
         public void DisplayTftpConfigFiles()
         {
@@ -158,7 +176,7 @@ namespace NWConfigScriptor
                     Cklbx_TftpConfigFiles.Items.Add(Path.GetFileName(file));
                     if (file.Equals(m_fileName)) 
                     { 
-                        updateOutputTtbx("This file exists in the config folder");
+                        _updateOutputTtbx("This file exists in the config folder");
                     }
                 }
             }
@@ -225,19 +243,22 @@ namespace NWConfigScriptor
         /// <param name="e"></param>
         private void Btn_SendToRouter_Click(object sender, EventArgs e)
         {
-            
+
             // copy tftp://192.168.1.2/router-config running-config
             // copy tftp://<server>/<name of copied file> startup-config
+            string enable = "enable";
+            string password = m_secpass;
             string comm = "copy tftp://"+m_targetServer+"/"+m_tftpConfigFiles+ " running-config";
             string space = "\r\n";
             script = new List<string>
             {
+                enable,
+                password,
                 comm,
-                m_targetServer,
-                m_fileName,
                 space
             };
-            sendCommandToDevice(script);
+            SendCommandToDevice(script);
+            DisplayTftpConfigFiles();
         }
 
         /// <summary>
@@ -260,7 +281,7 @@ namespace NWConfigScriptor
                         newFileConfig = Path.ChangeExtension(changeFile, ".cfg");
                         File.Move(changeFile, newFileConfig);
                         File.Delete(changeFile);
-                        updateOutputTtbx("File extension changed : " + newFileConfig);
+                        _updateOutputTtbx("File extension changed : " + newFileConfig);
                         DisplayTftpConfigFiles();
                         return newFileConfig;
                     }
@@ -294,7 +315,7 @@ namespace NWConfigScriptor
                     var fileContent = File.ReadAllText(filePath);
                     m_editConfig = fileContent;
                     m_saveFile = filePath;
-                    updateOutputTtbx("File contents read : " + filePath);
+                    _updateOutputTtbx("File contents read : " + filePath);
                 }
                 else
                 {
@@ -304,7 +325,7 @@ namespace NWConfigScriptor
             catch (IOException ex)
             {
                 Debug.WriteLine("Error reading config file to rich text box: " + ex.Message);
-                updateOutputTtbx("Error reading config file to rich text box: " + ex.Message);
+                _updateOutputTtbx("Error reading config file to rich text box: " + ex.Message);
             }
         }
 
@@ -379,7 +400,7 @@ namespace NWConfigScriptor
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Btn_ExitVmTftpTransfer_Click(object sender, EventArgs e)
-        {
+         {
             this.Close();
         }
         

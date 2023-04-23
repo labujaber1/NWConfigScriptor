@@ -505,13 +505,13 @@
             Initialise class
             </summary>
         </member>
-        <member name="M:NWConfigScriptor.VmTftpTransfer.updateOutputTtbx(System.String)">
+        <member name="M:NWConfigScriptor.VmTftpTransfer._updateOutputTtbx(System.String)">
             <summary>
             Replace console print to send message to text box.
             </summary>
             <param name="message"></param>
         </member>
-        <member name="M:NWConfigScriptor.VmTftpTransfer.sendCommandToDevice(System.Collections.Generic.List{System.String})">
+        <member name="M:NWConfigScriptor.VmTftpTransfer.SendCommandToDevice(System.Collections.Generic.List{System.String})">
             <summary>
             Opens a socket and login to a device for transfer of config commands passed in via list.
             Used in button events to send and retrieve   config file.
@@ -527,7 +527,7 @@
         </member>
         <member name="M:NWConfigScriptor.VmTftpTransfer.DisplayTftpConfigFiles">
             <summary>
-            Display all files in the application 'ConfigScripts' folder to select for Tftp transfer or edit.
+            Display all files in the application 'ConfigFiles' folder to select for Tftp transfer or edit.
             </summary>
         </member>
         <member name="M:NWConfigScriptor.VmTftpTransfer.Btn_GetFilePath_Click(System.Object,System.EventArgs)">

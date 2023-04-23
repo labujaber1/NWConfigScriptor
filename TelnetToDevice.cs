@@ -1,9 +1,9 @@
 ﻿//##########################################//
 //                                          //
 // Project: Network Config Scriptor Creater //
-// Author:  L. Abu-Jaber                    //
-// Date:    09/05/2022                      //
-// Control System: Github                   //
+// Author:  2018481                         //
+// Date:    24/04/2023                      //
+// Control version: Github                  //
 //                                          //
 //##########################################//
 

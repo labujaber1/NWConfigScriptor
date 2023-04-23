@@ -1,20 +1,13 @@
 ﻿//##########################################//
 //                                          //
 // Project: Network Config Scriptor Creater //
-// Author:  L. Abu-Jaber                    //
-// Date:    09/05/2022                      //
-// Control System: Github                   //
+// Author:  2018481                         //
+// Date:    24/04/2023                      //
+// Control version: Github                  //
 //                                          //
 //##########################################//
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NWConfigScriptor

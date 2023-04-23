@@ -1,16 +1,15 @@
 ﻿//##########################################//
 //                                          //
 // Project: Network Config Scriptor Creater //
-// Author:  L. Abu-Jaber                    //
-// Date:    09/05/2022                      //
-// Control System: Github                   //
+// Author:  2018481                         //
+// Date:    24/04/2023                      //
+// Control version: Github                  //
 //                                          //
 //##########################################//
 
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Net;
 using System.Windows.Forms;
 
 namespace NWConfigScriptor
@@ -360,7 +359,6 @@ namespace NWConfigScriptor
             {
                 try
                 {
-                    //string filepath = Path.Combine(Directory.GetCurrentDirectory(), "HelpFile.txt");
                     string filepath = Path.Combine(Application.StartupPath + @"HelpFile.txt");
                     MessageBox.Show(File.ReadAllText(filepath));
                 }

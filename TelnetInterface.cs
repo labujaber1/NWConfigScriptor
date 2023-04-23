@@ -2,14 +2,13 @@
 // conceived by Tom Janssens on 2007/06/06  h ttps://github.com/rafinhaa/MinimalisticTelnett
 // ammended by jonsagara to include IDisposable h ttps://github.com/jonsagara/MinimalisticTelnet/blob/master/src/MinimalisticTelnet/TelnetInterface.cs
 // 
-// used by SID2018481
-// Greatly appreciated for use in this project
+// used by SID2018481 and greatly appreciated for use in this project.
 //##########################################//
 //                                          //
 // Project: Network Config Scriptor Creater //
-// Author:  L. Abu-Jaber                    //
-// Date:    09/05/2022                      //
-// Control System: Github                   //
+// Author:  2018481                         //
+// Date:    24/04/2023                      //
+// Control version: Github                  //
 //                                          //
 //##########################################//
 using System;
@@ -17,7 +16,7 @@ using System.Text;
 using System.Net.Sockets;
 using System.Threading;
 using System.Diagnostics;
-using System.Reflection.Metadata.Ecma335;
+
 
 namespace NWConfigScriptor
 {
