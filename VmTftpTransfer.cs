@@ -117,14 +117,23 @@ namespace NWConfigScriptor
                     _updateOutputTtbx("Finished transfer\nNumber of lines read = " + counter);
                     Debug.WriteLine("Disconnecting.Number of lines read = " + counter);
                 }
-                // check file transfered before closing
-                DisplayTftpConfigFiles();
                 // wait for file to be sent and received
-                await Task.Delay(4000);
+                _updateOutputTtbx("Processing please wait..");
+                await Task.Delay(5000);
                 temp = telconn.Read();
                 _updateOutputTtbx(temp);
-                telconn.Dispose();
-                _updateOutputTtbx("Disconnected");
+                if (temp.EndsWith("#") || temp.EndsWith(">"))
+                { 
+                    telconn.Dispose();
+                    _updateOutputTtbx("File delivered, connection closed.");
+                    // check file transfered before closing
+                    DisplayTftpConfigFiles();
+                }
+                else
+                {
+                    _updateOutputTtbx("File not delivered please try again");
+                }
+                
             }
             catch (Exception ex)
             {
